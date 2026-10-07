@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="description" content="비지북 3종 세트 랜딩 프레임 - 디자이너 전달용. 구조와 확정 문구까지." />
+<style>
+  html { color-scheme: light; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>비지북 세트 랜딩 프레임</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500&display=swap" />
+
+<style>
+  /* 레이아웃: 블록마다 390px 폰 화면 하나 + 옆에 제작 메모. 좁아지면 메모가 밑으로.
+     색은 비지북 세 테마에서 가져왔다 — 프린세스 코랄, 오션 틸, 정글 그린. */
+  :root {
+    --paper:   #f4f1ec;
+    --card:    #ffffff;
+    --ink:     #241f1a;
+    --ink-dim: #6d6459;
+    --line:    #ddd6cb;
+    --pink:    #d9566b;
+    --teal:    #2d7f8c;
+    --green:   #4f7a3a;
+    --slot:    #b9ae9d;
+    --font-display: "Gowun Dodum", "Noto Sans KR", sans-serif;
+    --font-body: "Noto Sans KR", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #191714; --card: #221f1b; --ink: #f0ebe3; --ink-dim: #a79c8e;
+      --line: #3b352e; --pink: #e8808f; --teal: #5fb2bc; --green: #8fbb6e;
+      --slot: #4a4339; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #191714; --card: #221f1b; --ink: #f0ebe3; --ink-dim: #a79c8e;
+    --line: #3b352e; --pink: #e8808f; --teal: #5fb2bc; --green: #8fbb6e;
+    --slot: #4a4339; color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--font-body); font-size: 15px; line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin-inline: auto; padding-inline: 16px; padding-block: 40px 90px; }
+
+  /* ── 머리말 ── */
+  .lede { max-width: 62ch; }
+  .kicker {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-dim); margin: 0 0 10px;
+  }
+  h1 {
+    font-family: var(--font-display); font-size: clamp(28px, 6vw, 40px);
+    line-height: 1.25; margin: 0 0 14px; text-wrap: balance; font-weight: 400;
+  }
+  .lede p { margin: 0 0 14px; color: var(--ink-dim); }
+  .lede strong { color: var(--ink); font-weight: 700; }
+
+  .facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .fact {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px 14px; min-width: 0;
+  }
+  .fact b { display: block; font-size: 18px; font-variant-numeric: tabular-nums; }
+  .fact span { font-size: 12px; color: var(--ink-dim); }
+
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+    margin: 28px 0 6px; padding: 12px 14px;
+    border: 1px solid var(--line); border-radius: 10px; background: var(--card);
+    font-size: 13px; color: var(--ink-dim);
+  }
+  .legend i { display: inline-block; width: 26px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 7px; }
+  .legend .l-real { background: var(--card); border: 1.5px solid var(--ink); }
+  .legend .l-slot { border: 1.5px dashed var(--slot); }
+
+  /* ── 블록 ── */
+  .block { display: grid; grid-template-columns: 390px minmax(0, 1fr); gap: 26px; margin-top: 44px; align-items: start; }
+  @media (max-width: 820px) { .block { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
+
+  .screen {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden; max-width: 100%;
+  }
+  .screen__tab {
+    display: flex; align-items: baseline; gap: 9px;
+    padding: 9px 14px; border-bottom: 1px solid var(--line);
+    font-family: var(--font-mono); font-size: 12px; color: var(--ink-dim);
+  }
+  .screen__tab b { color: var(--ink); font-size: 13px; font-family: var(--font-body); font-weight: 700; }
+  .screen__body { padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; }
+
+  /* 디자이너 제작물 자리 */
+  .slot {
+    border: 1.5px dashed var(--slot); border-radius: 10px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 4px; padding: 14px 10px; text-align: center; color: var(--ink-dim);
+    font-size: 12px; line-height: 1.5; min-height: 0;
+  }
+  .slot em { font-style: normal; font-family: var(--font-mono); font-size: 11px; color: var(--slot); }
+  .slot--tall { aspect-ratio: 3 / 4; }
+  .slot--video { aspect-ratio: 9 / 16; }
+  .slot--wide { aspect-ratio: 4 / 3; }
+  .slot--logo { aspect-ratio: 5 / 1.4; }
+
+  .row3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .row2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .row4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--teal); margin: 0;
+  }
+  .h {
+    font-family: var(--font-display); font-size: 25px; line-height: 1.35;
+    margin: 0; text-wrap: balance; font-weight: 400;
+  }
+  .h--big { font-size: 29px; }
+  .p { margin: 0; font-size: 14px; color: var(--ink-dim); }
+  .p--ink { color: var(--ink); }
+
+  .themes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .theme__name { font-size: 11px; font-weight: 700; text-align: center; margin-top: 5px; }
+  .t-pink { color: var(--pink); }
+  .t-teal { color: var(--teal); }
+  .t-green { color: var(--green); }
+
+  .price { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+  .price s { color: var(--ink-dim); font-size: 15px; }
+  .price b { font-size: 30px; font-weight: 900; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .ship { font-size: 12px; color: var(--green); font-weight: 700; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; }
+  .stat { border: 1px solid var(--line); border-radius: 9px; padding: 11px 6px; }
+  .stat b { display: block; font-size: 19px; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: 10.5px; color: var(--ink-dim); line-height: 1.4; display: block; }
+
+  .rv { border: 1px solid var(--line); border-radius: 9px; padding: 11px 12px; }
+  .rv__top { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--ink-dim); }
+  .rv__stars { color: #e8a317; letter-spacing: 1px; }
+  .rv__src { margin-left: auto; border: 1px solid var(--line); border-radius: 99px; padding: 1px 7px; }
+  .rv__text { font-size: 13px; margin: 6px 0 0; }
+
+  .news { display: flex; flex-direction: column; }
+  .news a { display: flex; gap: 9px; align-items: baseline; padding: 8px 2px; border-top: 1px solid var(--line); color: inherit; text-decoration: none; }
+  .news a:first-child { border-top: 0; }
+  .news b { flex: none; font-size: 10.5px; color: var(--teal); min-width: 5.6em; }
+  .news span { font-size: 12.5px; min-width: 0; }
+
+  .stock { border: 1px solid var(--line); border-radius: 9px; padding: 12px; }
+  .stock__bar { height: 9px; border-radius: 99px; background: var(--line); overflow: hidden; margin: 8px 0 6px; }
+  .stock__fill { height: 100%; width: 68%; background: var(--pink); border-radius: 99px; }
+  .stock__n { font-size: 12px; color: var(--ink-dim); font-variant-numeric: tabular-nums; }
+  .stock__n b { color: var(--pink); font-size: 15px; }
+
+  .warn {
+    border-left: 3px solid var(--pink); padding: 2px 0 2px 11px;
+    font-size: 13px; line-height: 1.6;
+  }
+
+  .ages { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: center; }
+  .age b { display: block; font-size: 15px; margin-top: 6px; }
+  .age span { font-size: 11.5px; color: var(--ink-dim); }
+
+  .cert { border: 1px solid var(--line); border-radius: 9px; padding: 12px; font-size: 12.5px; }
+  .cert dl { margin: 8px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; font-size: 11.5px; }
+  .cert dt { color: var(--ink-dim); white-space: nowrap; }
+  .cert dd { margin: 0; font-family: var(--font-mono); font-size: 11px; }
+
+  /* 플로팅 바 */
+  .fbar {
+    display: grid; grid-template-columns: 1.35fr 1fr; gap: 8px;
+    background: var(--ink); border-radius: 12px; padding: 9px;
+  }
+  .fbtn {
+    border-radius: 9px; padding: 11px 8px; text-align: center;
+    font-size: 13.5px; font-weight: 700; line-height: 1.25;
+  }
+  .fbtn--buy { background: var(--pink); color: #fff; }
+  .fbtn--rv { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.4); }
+  .fbtn small { display: block; font-weight: 400; font-size: 10.5px; opacity: .78; }
+
+  /* ── 메모 ── */
+  .note { padding-top: 4px; }
+  .note h3 {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-dim); margin: 0 0 9px; font-weight: 500;
+  }
+  .note ul { margin: 0; padding-left: 17px; }
+  .note li { margin-bottom: 7px; font-size: 13.5px; }
+  .note li:last-child { margin-bottom: 0; }
+  .note b { font-weight: 700; }
+  .ask {
+    margin-top: 11px; border: 1px solid var(--line); border-left: 3px solid var(--teal);
+    border-radius: 0 9px 9px 0; padding: 9px 12px; background: var(--card);
+    font-size: 13px;
+  }
+  .ask b { display: block; font-size: 11px; font-family: var(--font-mono); color: var(--teal);
+           letter-spacing: .1em; text-transform: uppercase; margin-bottom: 3px; font-weight: 500; }
+
+  .foot {
+    margin-top: 54px; padding-top: 20px; border-top: 1px solid var(--line);
+    font-size: 13px; color: var(--ink-dim); max-width: 70ch;
+  }
+  .foot b { color: var(--ink); }
+  a { color: inherit; }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <header class="lede">
+    <p class="kicker">start.sensoria.kr · 인스타그램 광고 착지</p>
+    <h1>비지북 3종 세트 랜딩 프레임</h1>
+    <p>인스타그램에서 들어온 사람을 여덟 블록으로 설득해 <strong>sensoria.kr 비공개 패키지</strong>로 보내는 한 장짜리 페이지입니다. 인덱스도 다른 상품도 없습니다.</p>
+    <p>아래는 <strong>구조와 확정된 문구</strong>입니다. 점선 칸이 디자이너께 부탁드릴 자리이고, 숫자는 전부 실제 기록에서 가져왔습니다.</p>
+
+    <div class="facts">
+      <div class="fact"><b>144,000원</b><span>정가 207,000원 · 30%</span></div>
+      <div class="fact"><b>3종</b><span>프린세스 · 오션 · 정글</span></div>
+      <div class="fact"><b>8블록</b><span>+ 플로팅 바</span></div>
+      <div class="fact"><b>390px</b><span>모바일 기준 폭</span></div>
+    </div>
+  </header>
+
+  <div class="legend">
+    <span><i class="l-real"></i>확정된 문구 — 그대로 들어갑니다</span>
+    <span><i class="l-slot"></i>디자이너 제작물 — 이 자리에 들어갑니다</span>
+  </div>
+
+  <!-- 1 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>01</b> 테마별 제품샷</div>
+      <div class="screen__body">
+        <p class="eyebrow">조이캣 비지북</p>
+        <h2 class="h h--big">아이 손끝에서 시작되는<br />감각놀이</h2>
+        <div class="themes">
+          <div>
+            <div class="slot slot--tall"><em>제품컷</em>프린세스</div>
+            <p class="theme__name t-pink">프린세스 &amp; 유니콘</p>
+          </div>
+          <div>
+            <div class="slot slot--tall"><em>제품컷</em>오션</div>
+            <p class="theme__name t-teal">언더더씨 &amp; 오션</p>
+          </div>
+          <div>
+            <div class="slot slot--tall"><em>제품컷</em>정글</div>
+            <p class="theme__name t-green">사파리 &amp; 정글</p>
+          </div>
+        </div>
+        <div class="price">
+          <s>207,000원</s><b>144,000원</b>
+        </div>
+        <p class="ship">3종 세트 · 무료배송</p>
+      </div>
+    </div>
+    <div class="note">
+      <h3>이 자리에서 막는 이탈</h3>
+      <ul>
+        <li>무슨 제품인지 <b>3초 안에</b> 안 보이면 나갑니다. 그래서 글보다 제품이 먼저입니다.</li>
+        <li>세 테마를 한눈에 놓는 게 핵심입니다. <b>세 개를 한꺼번에 산다</b>는 걸 여기서 이해시켜야 뒤가 쉬워집니다.</li>
+        <li>가격을 첫 화면에 둡니다. 인스타에서 넘어온 사람은 값을 모르면 스크롤 전에 나갑니다.</li>
+      </ul>
+      <div class="ask"><b>부탁</b>제품컷은 세 장이 <b>같은 각도·같은 조명</b>이어야 합니다. 하나만 톤이 다르면 그 테마가 덜 좋아 보입니다.</div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>02</b> 내 아이를 위한 특별한 선물</div>
+      <div class="screen__body">
+        <h2 class="h">사 준 장난감은 많은데,<br />아이가 먼저 찾는 건 몇 개인가요</h2>
+        <div class="slot slot--wide"><em>감성컷</em>아이와 부모가 함께 있는 장면</div>
+        <p class="p">비지북은 버튼을 누르면 소리가 나는 장난감이 아닙니다. 지퍼를 올리고, 끈을 꿰고, 단추를 채우는 동안 아이가 스스로 몰두합니다.</p>
+        <p class="p p--ink">그 시간이 부모에게도 쉬는 시간이 됩니다.</p>
+      </div>
+    </div>
+    <div class="note">
+      <h3>톤</h3>
+      <ul>
+        <li>여기가 감정을 건드리는 자리입니다. 스펙은 한 줄도 넣지 않습니다.</li>
+        <li><b>발달·지능 단정은 쓰지 않습니다.</b> 「머리가 좋아진다」 「발달이 빨라진다」는 근거가 필요한 표현입니다. 대신 아이가 무엇을 하는지를 그대로 적었습니다.</li>
+        <li>사진은 제품보다 <b>표정</b>이 주인공이어야 합니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>03</b> 아이가 노는 영상</div>
+      <div class="screen__body">
+        <h2 class="h">말로 설명할 필요가 없는 장면</h2>
+        <div class="row2">
+          <div class="slot slot--video"><em>세로 영상</em>몰입하는 장면</div>
+          <div class="slot slot--video"><em>세로 영상</em>혼자 해내는 장면</div>
+        </div>
+        <p class="p">소리를 켜지 않아도 보입니다.</p>
+      </div>
+    </div>
+    <div class="note">
+      <h3>이 페이지에서 제일 센 자리</h3>
+      <ul>
+        <li><b>소리 없이 전달되게</b> 만듭니다. 인스타에서 넘어오는 사람은 거의 음소거 상태입니다.</li>
+        <li>길게 하나보다 <b>짧게 여럿</b>이 낫습니다. 장면마다 아이 나이가 다르면 그 자체가 7번 블록의 근거가 됩니다.</li>
+        <li>자동재생은 음소거로만 걸립니다.</li>
+      </ul>
+      <div class="ask"><b>확인 필요</b>아이 얼굴이 나오는 영상은 <b>보호자 동의가 있는 것만</b> 씁니다.</div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>04</b> 패키지 · 제품 사진</div>
+      <div class="screen__body">
+        <h2 class="h">박스를 여는 순간부터<br />선물입니다</h2>
+        <div class="row4">
+          <div class="slot slot--wide"><em>패키지</em>박스 외관</div>
+          <div class="slot slot--wide"><em>패키지</em>열었을 때</div>
+          <div class="slot slot--wide"><em>제품</em>펼친 모습</div>
+          <div class="slot slot--wide"><em>디테일</em>바느질 · 펠트 단면</div>
+        </div>
+        <p class="p">세 권이 한 상자에 담겨 그대로 전달됩니다.</p>
+      </div>
+    </div>
+    <div class="note">
+      <h3>순서</h3>
+      <ul>
+        <li>박스 외관 → 열었을 때 → 펼친 모습 → 디테일. <b>받는 사람이 겪는 순서</b> 그대로입니다.</li>
+        <li>디테일컷에 <b>바느질 마감</b>이 보여야 합니다. 품질을 말로 주장하는 대신 여기서 보여줍니다.</li>
+        <li>선물용이라 <b>포장 상태</b>가 중요합니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>05</b> 리뷰 · 와디즈 · 언론</div>
+      <div class="screen__body">
+        <h2 class="h">먼저 써 본 사람들</h2>
+        <div class="stats">
+          <div class="stat"><b>406건</b><span>쿠팡 구매평<br />프린세스 단품 기준</span></div>
+          <div class="stat"><b>4.96점</b><span>평균 별점<br />5점 97%</span></div>
+          <div class="stat"><b>4,939%</b><span>와디즈 달성<br />357명 참여</span></div>
+        </div>
+
+        <div class="rv">
+          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src">쿠팡</span></div>
+          <p class="rv__text">실제 구매평 본문이 들어갑니다. 189건 중에서 고릅니다.</p>
+        </div>
+        <div class="rv">
+          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src">쿠팡</span></div>
+          <p class="rv__text">사진 있는 후기를 먼저 올립니다.</p>
+        </div>
+
+        <p class="p">네이버 블로그 후기 9편</p>
+        <div class="row3">
+          <div class="slot slot--wide"><em>썸네일</em></div>
+          <div class="slot slot--wide"><em>썸네일</em></div>
+          <div class="slot slot--wide"><em>썸네일</em></div>
+        </div>
+
+        <div class="news">
+          <a href="https://www.gokorea.kr/news/articleView.html?idxno=873458" target="_blank" rel="noopener noreferrer"><b>고코리아</b><span>조이캣, 몬테소리 교육 원칙 반영한 감각놀이 완구 '비지북' 선봬</span></a>
+          <a href="https://www.gosiweek.com/article/1065580674842325" target="_blank" rel="noopener noreferrer"><b>고시위크</b><span>조이캣 비지북, 쿠팡 촉감발달완구 카테고리 2위 진입</span></a>
+          <a href="https://www.ksilbo.co.kr/news/articleView.html?idxno=1063634" target="_blank" rel="noopener noreferrer"><b>경상일보</b><span>조이캣 비지북, 오펜하임토이포트폴리오 플래티넘 수상</span></a>
+          <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90553" target="_blank" rel="noopener noreferrer"><b>한국목재신문</b><span>글로벌 완구 브랜드 조이캣, 한국 시장 진출</span></a>
+          <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90531" target="_blank" rel="noopener noreferrer"><b>한국목재신문</b><span>조이캣, 교육완구 기부로 아시아 아동 지원 확대</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      <h3>숫자는 전부 실측입니다</h3>
+      <ul>
+        <li>구매평 <b>406건 · 평균 4.96점</b>. 5점 394 / 4점 10 / 3점 1 / 2점 1이라 「전부 5점」은 사실이 아닙니다. 평균을 쓰는 쪽이 더 세고 정확합니다.</li>
+        <li><b>406건은 전부 프린세스 단품</b>입니다. 오션·정글 리뷰는 없습니다. 세 테마 전부로 읽히지 않게 「프린세스 단품 기준」을 붙입니다.</li>
+        <li>본문이 있는 건 189건입니다. 카드로 까는 건 189건이고, 평균과 총건수는 406건 전부로 셉니다.</li>
+        <li>언론 5건은 <b>보도자료 송출분</b>입니다. 매체명과 제목을 그대로 적고 원문으로 링크합니다.</li>
+        <li>블로그 9편은 대가 지급이 없어 협찬 배지 없이 그대로 싣습니다.</li>
+      </ul>
+      <div class="ask"><b>부탁</b>매체 로고가 필요하면 제가 받아 정리해 드립니다. 로고 없이 매체명만으로도 충분합니다.</div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>06</b> 할인 · 비공개 · 재고</div>
+      <div class="screen__body">
+        <h2 class="h h--big">이 페이지에서만<br />63,000원 아낍니다</h2>
+        <div class="price"><s>207,000원</s><b>144,000원</b></div>
+        <p class="ship">무료배송</p>
+
+        <div class="warn">
+          이 주소는 광고를 보고 오신 분께만 열려 있습니다.<br />
+          창을 닫으면 다시 찾기 어렵습니다.
+        </div>
+
+        <div class="stock">
+          <p class="p">준비한 수량</p>
+          <div class="stock__bar"><div class="stock__fill"></div></div>
+          <p class="stock__n">100개 중 <b>68개</b> 남음</p>
+        </div>
+
+        <p class="p">주문이 들어오는 대로 줄어듭니다.</p>
+      </div>
+    </div>
+    <div class="note">
+      <h3>지킬 수 있는 말만 씁니다</h3>
+      <ul>
+        <li>재고 숫자는 <b>실제 재고에서 끌어옵니다.</b> 고정해 두거나 임의로 줄이면 기만입니다. 디자이너는 막대와 숫자 자리만 잡아 주시면 값은 제가 붙입니다.</li>
+        <li>「다시 못 들어온다」는 <b>판매가 끝나면 정말 주소를 닫는</b> 전제에서만 씁니다.</li>
+        <li>날짜 마감은 넣지 않기로 했습니다. 재고 하나만 걸면 저절로 지켜집니다.</li>
+        <li>68개는 보여드리는 예시 값입니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>07</b> 연령대별 안내</div>
+      <div class="screen__body">
+        <p class="eyebrow">함께 시작해, 스스로 노는 비지북</p>
+        <h2 class="h h--big">18개월부터 5세까지</h2>
+        <p class="p">아이의 발달 단계에 맞춰요</p>
+        <div class="ages">
+          <div class="age">
+            <div class="slot slot--wide"><em>사진</em>부모와 함께</div>
+            <b>18개월~2세</b><span>부모님과 함께</span>
+          </div>
+          <div class="age">
+            <div class="slot slot--wide"><em>사진</em>혼자 노는 모습</div>
+            <b>3~5세</b><span>곁에서 지켜보기</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      <h3>와디즈 원안 그대로</h3>
+      <ul>
+        <li>문구는 와디즈에서 쓰시던 것을 그대로 가져왔습니다. 구성만 다시 잡으면 됩니다.</li>
+        <li>유아 교구에서 가장 흔한 이탈 이유가 <b>「우리 애한텐 안 맞겠는데」</b>입니다. 이 블록이 그걸 막습니다.</li>
+        <li>나이는 <b>제품 개발 기준</b>이지 의학·교육학 근거가 아닙니다. 효과 단정은 넣지 않습니다.</li>
+      </ul>
+      <div class="ask"><b>주의</b>KC 성적서에는 사용연령이 <b>36개월 기준</b>으로 적혀 있습니다. 8번 블록과 이 블록을 한 화면에 나란히 두지 않습니다.</div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>08</b> 안전성 인증</div>
+      <div class="screen__body">
+        <h2 class="h">세 테마 모두<br />어린이제품 안전기준 합격</h2>
+        <div class="slot slot--logo"><em>KC 마크</em></div>
+        <div class="cert">
+          FITI시험연구원 검사 결과 <b>합격</b> — 어린이제품 공통안전기준 · 안전확인 부속서 6
+          <dl>
+            <dt>안전확인신고</dt><dd>CB065R3205-26001A</dd>
+            <dt>유효기간</dt><dd>2031. 02. 08</dd>
+            <dt>성적서</dt><dd>H111-26-00501 · 02852 · 03418</dd>
+          </dl>
+        </div>
+        <p class="p">입에 닿아도 괜찮은 소재로, 세 권 모두 같은 기준을 통과했습니다.</p>
+      </div>
+    </div>
+    <div class="note">
+      <h3>마무리 블록</h3>
+      <ul>
+        <li>중심 문구는 <b>「세 테마 모두 합격」</b>입니다. 세트로 사는 사람에게는 이게 가장 중요합니다.</li>
+        <li>광고에 쓸 번호는 <b>안전확인신고확인증번호</b>입니다. 성적서 번호는 근거로 작게만 병기합니다.</li>
+        <li>FITI 성적서 사용은 허락을 받아 두었습니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 플로팅 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>—</b> 플로팅 바 <span style="margin-left:auto">모든 블록 위에 고정</span></div>
+      <div class="screen__body">
+        <div class="fbar">
+          <div class="fbtn fbtn--buy">구매하러 가기<small>144,000원 · 무료배송</small></div>
+          <div class="fbtn fbtn--rv">리뷰 확인하기<small>406건 · 4.96점</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      <h3>동작</h3>
+      <ul>
+        <li>첫 화면의 CTA가 <b>화면에서 사라질 때</b> 올라옵니다. 노션에서 정하신 규칙 그대로입니다.</li>
+        <li>왼쪽은 비공개 패키지로, 오른쪽은 별도 리뷰 페이지로 갑니다.</li>
+        <li>리뷰 페이지에서는 오른쪽 버튼이 <b>상세페이지로 돌아가기</b>로 바뀌고, 돌아오면 보던 자리에 그대로 섭니다.</li>
+        <li>루딕스·SHL 랜딩과 같은 구조라 동작은 제가 그대로 가져옵니다. <b>색과 비율만</b> 주시면 됩니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="foot">
+    이 프레임은 <b>구조와 문구</b>까지입니다. 실제 랜딩은 이 뼈대에 받은 이미지를 끼워 제가 만듭니다.
+    점선 칸의 이미지는 <b>블록당 한 장</b>으로, 폭 1080px 이상으로 주시면 비율은 제가 맞춥니다.
+    제목·본문·가격·버튼은 전부 HTML 글자로 들어가니 <b>이미지 안에 글자를 넣지 말아 주세요</b> — 문구는 광고 돌리면서 자주 고치게 됩니다.
+  </p>
+
+</div>
+
+</body>
+</html>
