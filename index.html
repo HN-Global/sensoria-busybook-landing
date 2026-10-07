@@ -200,6 +200,7 @@
     background: var(--ink); border-radius: 12px; padding: 9px;
   }
   .fbtn {
+    display: block; text-decoration: none;
     border-radius: 9px; padding: 11px 8px; text-align: center;
     font-size: 13.5px; font-weight: 700; line-height: 1.25;
   }
@@ -513,7 +514,8 @@
       <div class="screen__tab"><b>—</b> 플로팅 바 <span style="margin-left:auto">모든 블록 위에 고정</span></div>
       <div class="screen__body">
         <div class="fbar">
-          <div class="fbtn fbtn--buy" data-cta="buy">구매하러 가기<small>144,000원 · 무료배송</small></div>
+          <a class="fbtn fbtn--buy" data-cta="buy" target="_blank" rel="noopener"
+             href="https://sensoria.kr/shop_view?idx=28">구매하러 가기<small>144,000원 · 무료배송</small></a>
           <div class="fbtn fbtn--rv">리뷰 확인하기<small>406건 · 4.96점</small></div>
         </div>
       </div>
@@ -522,7 +524,7 @@
       <h3>동작</h3>
       <ul>
         <li>첫 화면의 CTA가 <b>화면에서 사라질 때</b> 올라옵니다. 노션에서 정하신 규칙 그대로입니다.</li>
-        <li>왼쪽은 비공개 패키지로, 오른쪽은 별도 리뷰 페이지로 갑니다.</li>
+        <li>왼쪽은 비공개 패키지로, 오른쪽은 별도 리뷰 페이지로 갑니다. 구매 버튼에는 <b>UTM 을 붙이지 않습니다</b> — 붙이면 GA4 가 세션 중간에 새 캠페인으로 보고 세션을 끊어, 랜딩에서 구매까지의 연결이 끊깁니다.</li>
         <li>리뷰 페이지에서는 오른쪽 버튼이 <b>상세페이지로 돌아가기</b>로 바뀌고, 돌아오면 보던 자리에 그대로 섭니다.</li>
         <li>루딕스·SHL 랜딩과 같은 구조라 동작은 제가 그대로 가져옵니다. <b>색과 비율만</b> 주시면 됩니다.</li>
       </ul>
