@@ -1,0 +1,7 @@
+# start.sensoria.kr - 조이캣 비지북 3종 세트 랜딩
+# 크롤링은 막지 않는다. 막으면 로봇이 페이지를 못 읽어서
+# <meta name="robots"> 의 noindex 도 못 본다. 색인 여부는 그 메타로 정한다.
+User-agent: *
+Allow: /
+
+Sitemap: https://start.sensoria.kr/sitemap.xml
