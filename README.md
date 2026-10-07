@@ -10,7 +10,14 @@
 
 ### 1. 받아오기
 
-처음 한 번만:
+처음 한 번만. 먼저 누가 고쳤는지 기록될 이름을 등록합니다 (이거 안 하면 커밋이 거부됩니다).
+
+```bash
+git config --global user.name "정주혜"
+git config --global user.email "깃허브에_등록한_이메일"
+```
+
+그다음 내려받습니다.
 
 ```bash
 git clone https://github.com/HN-Global/sensoria-busybook-landing.git
