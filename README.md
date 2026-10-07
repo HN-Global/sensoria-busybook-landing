@@ -96,6 +96,21 @@ git push
 
 ---
 
+## 건드리지 말아 주세요
+
+`index.html` 맨 아래 **계측 코드 한 덩어리**와 `<head>` 안의 아래 줄들은 손대지 말아 주세요. 지우면 광고 성과를 아예 못 보게 됩니다.
+
+| 줄 | 무엇 |
+|---|---|
+| `robots` = `noindex, follow` | **일부러 닫아 둔 것.** 지금은 설계도라 검색에 걸리면 안 됩니다. 실제 랜딩으로 바뀔 때 엽니다 |
+| `google-site-verification` / `naver-site-verification` | 검색엔진 소유확인. 지우면 다시 등록해야 합니다 |
+| `canonical`, `og:` 들 | 링크 공유될 때 보이는 제목·그림 |
+| 맨 아래 `<script>` 한 덩어리 | GA4 · Clarity · 메타 픽셀 |
+
+루트의 `robots.txt`, `sitemap.xml`, `rss.xml`, `favicon.ico`, `icon-512.png`, `apple-touch-icon.png`, `og.jpg` 도 지우지 말아 주세요.
+
+---
+
 ## 막혔을 때
 
 - `git push` 가 거절당하면 → `git pull` 한 번 하고 다시 `git push`
