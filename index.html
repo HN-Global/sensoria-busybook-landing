@@ -587,13 +587,14 @@
   else window.addEventListener('load', start);
 
   // ── 구매 버튼 ──────────────────────────────────────────────────────
-  // 표준 이벤트(InitiateCheckout 등)를 쓰지 않는다. 자사몰이 진짜 결제
+  // 이름은 루딕스·SHL 과 똑같이 쓴다. 세 랜딩을 한 퍼널로 보려면 같아야 한다.
+  // 표준 이벤트(InitiateCheckout 등)는 쓰지 않는다. 자사몰이 진짜 결제
   // 이벤트를 쏘고 있어서, 섞이면 광고 최적화가 엉뚱한 걸 배운다.
   document.addEventListener('click', function (e) {
     var el = e.target.closest && e.target.closest('[data-cta="buy"]');
     if (!el) return;
-    if (window.fbq) fbq('trackCustom', 'LandingCTA');
-    if (window.gtag) gtag('event', 'landing_cta_buy');
+    if (window.fbq) fbq('trackCustom', 'ClickBuyNow');
+    if (window.gtag) gtag('event', 'click_buy_now');
   });
 })();
 </script>
