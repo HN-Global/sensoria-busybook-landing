@@ -549,6 +549,22 @@
   var CL  = 'ytykxcqdr0';            // Clarity '조이캣 랜딩'
   var PX  = '2177455709866933';      // 센소리아 픽셀 (자사몰과 공용)
 
+  // 이 랜딩이 파는 것. item_id 는 자사몰이 보내는 값과 같아야 한다 —
+  // 아임웹이 상품 idx 를 문자열로 보내므로 여기서도 문자열 '28' 이다.
+  // 숫자 28 로 보내면 GA 에서 다른 상품처럼 갈라진다.
+  var P = {
+    id:    '28',
+    name:  '조이캣 비지북 3종 세트 (프린세스·오션·정글)',
+    price: 144000
+  };
+  function gaItems() {
+    return [{ item_id: P.id, item_name: P.name, price: P.price }];
+  }
+  function pxItem() {
+    return { content_name: P.name, content_ids: [P.id],
+             content_type: 'product', value: P.price, currency: 'KRW' };
+  }
+
   function start() {
     // ── GA4 ──────────────────────────────────────────────────────────
     window.dataLayer = window.dataLayer || [];
@@ -580,7 +596,13 @@
     })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', PX);
     fbq('track', 'PageView');
-    fbq('track', 'ViewContent');
+
+    // 상품 조회 — 랜딩 진입 시 1회. 루딕스·SHL 과 같은 모양으로 보낸다.
+    // 자사몰 상품페이지에서도 view_item 이 나가 같은 사람이 두 번 쏘지만,
+    // 지표 쪽에서 hostName 으로 갈라 본다(start.* = 랜딩).
+    gtag('event', 'view_item',
+         { currency: 'KRW', value: P.price, items: gaItems() });
+    fbq('track', 'ViewContent', pxItem());
   }
 
   if (document.readyState === 'complete') start();
@@ -593,8 +615,9 @@
   document.addEventListener('click', function (e) {
     var el = e.target.closest && e.target.closest('[data-cta="buy"]');
     if (!el) return;
-    if (window.fbq) fbq('trackCustom', 'ClickBuyNow');
-    if (window.gtag) gtag('event', 'click_buy_now');
+    if (window.fbq) fbq('trackCustom', 'ClickBuyNow', pxItem());
+    if (window.gtag) gtag('event', 'click_buy_now',
+      { currency: 'KRW', value: P.price, items: gaItems() });
   });
 })();
 </script>
