@@ -212,6 +212,9 @@
 
   /* ── 09 인증 ── */
   .certs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .certs--one { grid-template-columns: minmax(0, 190px); }
+  .cert__thumbimg { display: block; aspect-ratio: 3 / 4; overflow: hidden; background: #fff; }
+  .cert__thumbimg img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
   .cert__card {
     border: 1px solid var(--line); border-radius: 10px; background: #fff;
     padding: 0; cursor: pointer; overflow: hidden; text-align: left;
@@ -816,43 +819,36 @@
     <div class="screen">
       <div class="screen__tab"><b>09</b> 안전성 인증</div>
       <div class="screen__body">
-        <h2 class="h">KC 안전확인 신고 완료</h2>
+        <h2 class="h">세 테마 모두<br />KC 안전확인 신고 완료</h2>
         <div class="slot slot--logo"><em>KC 마크</em></div>
-        <div class="certs">
-          <button class="cert__card" type="button" data-cert="/frame/certs/kc-busybook.jpg" data-certtitle="안전확인 신고확인증 · BUSY BOOK">
-            <span class="cert__thumb">신고확인증<br />이미지</span>
-            <span class="cert__cap">BUSY BOOK<small>H111-26-00501</small></span>
-          </button>
-          <button class="cert__card" type="button" data-cert="/frame/certs/kc-jungle-ocean.jpg" data-certtitle="안전확인 신고확인증 · JUNGLE · OCEAN">
-            <span class="cert__thumb">신고확인증<br />이미지</span>
-            <span class="cert__cap">JUNGLE · OCEAN<small>H111-26-03418</small></span>
-          </button>
-          <button class="cert__card" type="button" data-cert="/frame/certs/kc-report.jpg" data-certtitle="FITI시험연구원 시험성적서">
-            <span class="cert__thumb">시험성적서<br />이미지</span>
-            <span class="cert__cap">FITI 성적서<small>공개 범위 확인</small></span>
+        <div class="certs certs--one">
+          <button class="cert__card" type="button" data-cert="/frame/certs/kc-notice.jpg" data-certtitle="안전확인 변경신고 확인증">
+            <span class="cert__thumbimg"><img src="/frame/certs/kc-notice.jpg" alt="안전확인 변경신고 확인증" width="1240" height="1754" loading="lazy" /></span>
+            <span class="cert__cap">안전확인 변경신고 확인증<small>눌러서 크게 보기</small></span>
           </button>
         </div>
-        <p class="seqcap">누르면 전체화면으로 크게 볼 수 있습니다</p>
         <div class="cert">
-          어린이제품 공통안전기준 · 안전확인 부속서 6
+          완구 (부속서 6) · 영·유아용 완구 (3세 미만)
           <dl>
-            <dt>안전확인신고</dt><dd>CB065R3205-26001A</dd>
+            <dt>신고확인증</dt><dd>CB065R3205-26001A</dd>
             <dt>유효기간</dt><dd>2031. 02. 08</dd>
+            <dt>검사기관</dt><dd>FITI시험연구원</dd>
+            <dt>성적서</dt><dd>H111-26-00501 · 02852 · 03418</dd>
           </dl>
         </div>
-        <p class="p">3세 미만 영유아용 완구 기준으로 FITI시험연구원 검사를 거쳤습니다.</p>
+        <p class="p">프린세스·오션·정글 세 테마가 같은 신고 아래 각각 검사를 거쳤습니다.</p>
       </div>
     </div>
     <div class="note">
-      <h3>보여주는 방식</h3>
+      <h3>서류를 읽고 맞춘 것</h3>
       <ul>
-        <li>번호만 적으면 안 믿습니다. <b>서류 자체를 띄우고</b>, 누르면 전체화면으로 크게 볼 수 있게 했습니다.</li>
-        <li>광고에 쓸 번호는 <b>안전확인신고확인증번호</b>입니다. 성적서 번호는 작게만 병기합니다.</li>
-        <li>FITI 성적서 사용은 허락을 받아 두었습니다.</li>
+        <li>성적서 PDF 네 개를 열어 봤습니다. <b>세 성적서 모두 모델명이 BUSY BOOK 하나</b>이고, 02852(DINOSAUR·FARM)와 03418(JUNGLE·OCEAN)은 용도가 <b>「동일모델추가 H111-26-00501」</b> 입니다. 한 신고 아래 테마별 시료를 추가로 검사한 것이라 <b>「세 테마 모두」를 되살렸습니다.</b></li>
+        <li>신고확인증번호는 <b>CB065R3205-26001A</b> 가 맞습니다. 끝에 A 가 있습니다. 유효기간 2031. 2. 8, 업체명 에이치엔글로벌.</li>
+        <li>번호만 적으면 안 믿습니다. <b>신고확인증을 띄우고</b>, 누르면 전체화면으로 크게 볼 수 있게 했습니다.</li>
       </ul>
-      <div class="ask"><b>필요한 것</b>지금 있는 건 <b>PDF 스캔본</b>이라 그대로는 못 올립니다. <b>이미지(JPG/PNG)로 변환</b>해 주시거나, 제가 변환해도 됩니다. 파일을 <code>frame/certs/</code> 에 넣으면 바로 보입니다.</div>
-      <div class="ask"><b>판단 필요</b>시험성적서 <b>전문을 공개할지</b>는 생각해 볼 일입니다. 보통은 <b>신고확인증만</b> 공개하고 성적서는 번호만 적습니다. 성적서에는 시험 조건과 내부 정보가 같이 들어 있습니다.</div>
-      <div class="ask"><b>진행 중</b>성적서 PDF 세 개를 찾았습니다. 파일명 기준 <b>00501 = BUSY BOOK</b>, <b>02852 = DINOSAUR·FARM</b>, <b>03418 = JUNGLE·OCEAN</b>. 우리 세 테마는 00501 과 03418 로 덮이는 것으로 보입니다. 표지 모델명을 눈으로 확인해 주시면 <b>「세 테마 모두」</b>를 되살리겠습니다.</div>
+      <div class="ask"><b>중요</b>성적서 본문에 이렇게 적혀 있습니다 &mdash; <b>「이 성적서는 FITI와 사전 서면 동의 없이 홍보, 선전, 광고 및 소송 용도로 사용될 수 없으며」</b>. 그래서 <b>성적서 이미지는 올리지 않고 번호만</b> 적었습니다. 신고확인증은 정부 서식이라 이런 제한이 없습니다. 전에 「허락받았다」고 하셨는데, 문서가 요구하는 건 <b>사전 서면 동의</b>입니다. 서면으로 받아 두셨으면 성적서도 올릴 수 있습니다.</div>
+      <div class="ask"><b>확인 필요</b>신고확인증에 <b>제조국명 중국</b>, 제조업체명(GUANGZHOU SHOUJIA)이 그대로 적혀 있습니다. 이 이미지를 공개하면 같이 보입니다. 위키·브랜드 자료에서는 「기획·설계」까지만 적어 오셨는데, <b>여기서는 드러나도 괜찮은지</b> 판단해 주세요. 가리면 서류의 신뢰도가 떨어지니 <b>가리는 건 권하지 않습니다.</b></div>
+      <div class="ask"><b>연령</b>신고 구분이 <b>영·유아용 완구(3세 미만)</b>로 명시돼 있습니다. 08 블록의 <b>「18개월~7세」</b> 표기와 어긋납니다. 둘을 한 화면에 나란히 두지 않더라도, 같은 페이지에 있으면 지적받을 수 있습니다.</div>
     
     </div>
   </section>
