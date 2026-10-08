@@ -79,11 +79,21 @@
   .lede p { margin: 0 0 14px; color: var(--ink-dim); }
   .lede strong { color: var(--ink); font-weight: 700; }
 
-  .facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
-  .fact {
-    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-    padding: 10px 14px; min-width: 0;
+  .price { margin: 22px 0 10px; display: flex; align-items: baseline; gap: 11px; flex-wrap: wrap; }
+  .price b { font-family: var(--font-display); font-size: 36px; color: var(--pink); line-height: 1; }
+  .price s { color: var(--ink-dim); font-size: 15px; }
+  .price span {
+    font-size: 12px; font-weight: 600; color: var(--ink);
+    border: 1.5px solid var(--ink); border-radius: 5px; padding: 2px 8px;
   }
+  .themes { margin: 0 0 20px; display: flex; gap: 7px; flex-wrap: wrap; }
+  .themes i {
+    font-style: normal; font-size: 12.5px; font-weight: 600; color: #fff;
+    border-radius: 20px; padding: 3px 12px;
+  }
+  .themes .t-pink { background: var(--pink); }
+  .themes .t-teal { background: var(--teal); }
+  .themes .t-green { background: var(--green); }
   .fact b { display: block; font-size: 18px; font-variant-numeric: tabular-nums; }
   .fact span { font-size: 12px; color: var(--ink-dim); }
 
@@ -643,16 +653,14 @@
 <div class="wrap">
 
   <header class="lede">
-    <p class="kicker">내부 검토용 · 실제 랜딩은 start.sensoria.kr</p>
+    <p class="kicker">내부 검토용</p>
     <h1>비지북 3종 세트 랜딩 프레임</h1>
     <p>인스타그램 광고에서 들어온 사람을 <strong>sensoria.kr 비공개 패키지</strong>로 보내는 한 장짜리 페이지입니다.</p>
 
-    <div class="facts">
-      <div class="fact"><b>144,000원</b><span>정가 207,000원 · 30%</span></div>
-      <div class="fact"><b>3종</b><span>프린세스 · 오션 · 정글</span></div>
-      <div class="fact"><b>9블록</b><span>+ 플로팅 바</span></div>
-      <div class="fact"><b>390px</b><span>모바일 기준 폭</span></div>
-    </div>
+    <p class="price"><b>144,000원</b> <s>207,000원</s> <span>무료배송</span></p>
+    <p class="themes">
+      <i class="t-pink">프린세스</i><i class="t-teal">오션</i><i class="t-green">정글</i>
+    </p>
     <div class="demos">
       <a class="demo" href="/video-demo/" target="_blank" rel="noopener">영상 카드 데모</a>
       <a class="demo" href="/scroll-demo/" target="_blank" rel="noopener">스크롤 연동 데모</a>
