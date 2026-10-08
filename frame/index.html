@@ -494,6 +494,36 @@
   }
   .cw__cap small { display: block; font-family: var(--font-mono); font-size: 7.5px; color: var(--ink-dim); margin-top: 1px; word-break: break-all; }
 
+
+  /* ── 돋보기 비교 ──
+     같은 자리를 옛날 판과 요즘 판에서 각각 확대한다.
+     배율(--k)은 스크롤 위치에서 받아 1 에서 --z 까지 올라간다. */
+  .lens__set { display: grid; gap: 13px; margin-top: 4px; }
+  .lens__row { --k: 1; }
+  .lens__t {
+    margin: 0 0 5px; font-size: 12px; font-weight: 700;
+    display: flex; align-items: baseline; gap: 7px;
+  }
+  .lens__t span { font-size: 10.5px; font-weight: 400; color: var(--ink-dim); }
+  .lens__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+  .lens { margin: 0; position: relative; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+  .lens--new { border-color: var(--teal); }
+  .lens__img {
+    display: block; aspect-ratio: 1 / 1;
+    background-repeat: no-repeat;
+    background-position: var(--fx) var(--fy);
+    background-size: calc(var(--k) * 190%) auto;
+    transition: background-size .12s linear;
+  }
+  .lens figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 4px 7px;
+    font-size: 9.5px; color: #fff; background: rgba(0,0,0,.55);
+  }
+  .lens--new figcaption { background: rgba(45,127,140,.88); }
+  .lens__row::after {
+    content: "×" counter(none); display: none;
+  }
+
   /* ── 메모 ── */
   .note { padding-top: 4px; }
 
@@ -618,17 +648,17 @@
       <div class="screen__body">
         <h2 class="h">한 번 펼치면<br />손에서 안 놓더라고요</h2>
         <div class="vpick">
-          <button class="vpick__card" type="button" data-video="/frame/videos/play-together.mp4" data-title="같이 노는 장면" aria-label="같이 노는 장면 전체화면 재생">
-            <video class="vpick__prev" data-src="/frame/videos/play-together-preview.mp4" poster="/frame/videos/play-together-poster.jpg" muted loop playsinline preload="none"></video>
+          <button class="vpick__card" type="button" data-video="/frame/videos/play-princess.mp4" data-title="공주" aria-label="공주 비지북 영상 전체화면 재생">
+            <video class="vpick__prev" data-src="/frame/videos/play-princess-preview.mp4" poster="/frame/videos/play-princess-poster.jpg" muted loop playsinline preload="none"></video>
             <span class="vpick__badge"><i></i>0:20</span>
             <span class="vpick__play" aria-hidden="true"></span>
-            <span class="vpick__label">같이 노는 장면<small>한 권에 손이 모입니다</small></span>
+            <span class="vpick__label">공주<small>손이 여기저기서 들어와요</small></span>
           </button>
-          <button class="vpick__card" type="button" data-video="/frame/videos/play-alone.mp4" data-title="혼자 해내는 장면" aria-label="혼자 해내는 장면 전체화면 재생">
-            <video class="vpick__prev" data-src="/frame/videos/play-alone-preview.mp4" poster="/frame/videos/play-alone-poster.jpg" muted loop playsinline preload="none"></video>
+          <button class="vpick__card" type="button" data-video="/frame/videos/play-farm.mp4" data-title="농장" aria-label="농장 비지북 영상 전체화면 재생">
+            <video class="vpick__prev" data-src="/frame/videos/play-farm-preview.mp4" poster="/frame/videos/play-farm-poster.jpg" muted loop playsinline preload="none"></video>
             <span class="vpick__badge"><i></i>0:20</span>
             <span class="vpick__play" aria-hidden="true"></span>
-            <span class="vpick__label">혼자 해내는 장면<small>말을 걸지 않아도 됩니다</small></span>
+            <span class="vpick__label">농장<small>한 권에 다 달라붙어요</small></span>
           </button>
         </div>
         <p class="p">공주든 농장이든, 한 번 열면 다 뗐다 붙였다 해봐야 직성이 풀려요.</p>
@@ -739,15 +769,61 @@
 
             <p class="cmp__h">둘 · 그림</p>
             <p class="cmp__sum2">같은 조이캣도<br /><b>다시 그려서 내놓았습니다</b></p>
-            <figure class="shot">
-              <video src="/frame/design-compare.mp4" autoplay muted loop playsinline></video>
-              <figcaption>왼쪽은 예전 판, 오른쪽이 <b>이번 세트에 들어간 판</b>입니다</figcaption>
-            </figure>
-            <div class="cmp__pair">
-              <p class="cmp__old">예전</p>
-              <p class="cmp__new">지금</p>
+            <div class="lens__set" data-lensset>
+            <div class="lens__row" data-lens style="--z:1.70">
+              <p class="lens__t">표지<span>한눈에 들어오는 인상이 다릅니다</span></p>
+              <div class="lens__pair">
+                <figure class="lens">
+                  <span class="lens__img" style="background-image:url(/frame/photos/cmp/cover-old.jpg);--fx:50%;--fy:44%"></span>
+                  <figcaption>옛날 디자인</figcaption>
+                </figure>
+                <figure class="lens lens--new">
+                  <span class="lens__img" style="background-image:url(/frame/photos/cmp/cover-new.jpg);--fx:50%;--fy:44%"></span>
+                  <figcaption>요즘 디자인</figcaption>
+                </figure>
+              </div>
             </div>
-            <p class="seqcap">표정과 색, 파츠 모양을 처음부터 다시 다듬었습니다.</p>
+            <div class="lens__row" data-lens style="--z:2.90">
+              <p class="lens__t">등장인물<span>납작한 그림과 그늘이 들어간 그림</span></p>
+              <div class="lens__pair">
+                <figure class="lens">
+                  <span class="lens__img" style="background-image:url(/frame/photos/cmp/cover-old.jpg);--fx:34%;--fy:62%"></span>
+                  <figcaption>옛날 디자인</figcaption>
+                </figure>
+                <figure class="lens lens--new">
+                  <span class="lens__img" style="background-image:url(/frame/photos/cmp/cover-new.jpg);--fx:34%;--fy:52%"></span>
+                  <figcaption>요즘 디자인</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="lens__row" data-lens style="--z:2.70">
+              <p class="lens__t">펠트 조각<span>조각 하나하나의 모양과 색 수</span></p>
+              <div class="lens__pair">
+                <figure class="lens">
+                  <span class="lens__img" style="background-image:url(/frame/photos/cmp/veg-old.jpg);--fx:74%;--fy:56%"></span>
+                  <figcaption>옛날 디자인</figcaption>
+                </figure>
+                <figure class="lens lens--new">
+                  <span class="lens__img" style="background-image:url(/frame/photos/cmp/veg-new.jpg);--fx:26%;--fy:58%"></span>
+                  <figcaption>요즘 디자인</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="lens__row" data-lens style="--z:2.60">
+              <p class="lens__t">바느질 마감<span>테두리 박음질과 조각 가장자리</span></p>
+              <div class="lens__pair">
+                <figure class="lens">
+                  <span class="lens__img" style="background-image:url(/frame/photos/cmp/barn-old.jpg);--fx:22%;--fy:64%"></span>
+                  <figcaption>옛날 디자인</figcaption>
+                </figure>
+                <figure class="lens lens--new">
+                  <span class="lens__img" style="background-image:url(/frame/photos/cmp/barn-new.jpg);--fx:72%;--fy:62%"></span>
+                  <figcaption>요즘 디자인</figcaption>
+                </figure>
+              </div>
+            </div>
+            </div>
+            <p class="seqcap">스크롤을 내리면 같은 자리끼리 확대됩니다</p>
           </div>
 
           <p class="cmp__kick">테마만 다른 게 아니라<br />그림의 완성도도 다릅니다</p>
@@ -765,6 +841,7 @@
       
       
       <div class="demos">
+        <button class="demo demo--play" type="button" data-play="lens">돋보기 다시 보기</button>
         <a class="demo" href="/scroll-demo/" target="_blank" rel="noopener">스크롤 연동 데모 <span>차트가 어떻게 도는지</span></a>
       </div>
     </div>
@@ -1343,6 +1420,50 @@
   } else if (seq) {
     seq.__paint(1);
   }
+})();
+</script>
+<script>
+/* 돋보기 - 스크롤을 내리면 같은 자리끼리 배율이 올라간다. */
+(function () {
+  'use strict';
+  var rows = document.querySelectorAll('[data-lens]');
+  if (!rows.length) return;
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function zoom(el, k) {
+    var z = parseFloat(el.style.getPropertyValue('--z')) || 2;
+    el.style.setProperty('--k', (1 + (z - 1) * k).toFixed(3));
+  }
+  function draw() {
+    ticking = false;
+    if (busy) return;
+    var h = window.innerHeight;
+    for (var i = 0; i < rows.length; i++) {
+      var r = rows[i].getBoundingClientRect();
+      zoom(rows[i], Math.min(Math.max((h - r.top - 90) / (h * 0.55), 0), 1));
+    }
+  }
+  var ticking = false, busy = false;
+  function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(draw); }
+
+  if (calm) { for (var i = 0; i < rows.length; i++) zoom(rows[i], 1); return; }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  draw();
+
+  var btn = document.querySelector('[data-play="lens"]');
+  if (btn) btn.addEventListener('click', function () {
+    busy = true;
+    var t0 = 0;
+    (function step(ts) {
+      if (!t0) t0 = ts;
+      var k = Math.min((ts - t0) / 1600, 1), e = 1 - Math.pow(1 - k, 3);
+      for (var i = 0; i < rows.length; i++) {
+        zoom(rows[i], Math.min(Math.max(e * 1.7 - i * 0.22, 0), 1));
+      }
+      if (k < 1) requestAnimationFrame(step); else busy = false;
+    })(performance.now());
+  });
 })();
 </script>
 </body>
