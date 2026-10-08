@@ -341,7 +341,7 @@
   .fbtn--rv { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.4); }
   .fbtn small { display: block; font-weight: 400; font-size: 10.5px; opacity: .78; }
 
-  /* ── 02 블록: 흔한 것 쳐내고 우리 보여주기 ──
+  /* ── 04 블록(차트): 흔한 것 쳐내고 우리 보여주기 ──
      스크롤해서 보이면 한 번 돈다. 차트 -> 쳐내기 -> 비교 순서가
      곧 설득의 순서다. 움직임을 끄고 쓰는 사람에겐 결과만 바로 보인다. */
   .cmp { display: flex; flex-direction: column; gap: 12px; }
@@ -520,7 +520,7 @@
     <div class="note">
       <h3>이 자리에서 막는 이탈</h3>
       <ul>
-        <li><b>여기서 가격을 말하지 않습니다.</b> 이미 들어온 사람을 값으로 돌려보낼 이유가 없습니다. 가격은 마지막 07 에서 한 번만 말합니다.</li>
+        <li><b>여기서 가격을 말하지 않습니다.</b> 이미 들어온 사람을 값으로 돌려보낼 이유가 없습니다. 가격은 마지막 09 에서 한 번만 말합니다.</li>
         <li>01 영상이 6종을 보여주고 왔으니 <b>여기서 「그중 세 권」으로 받아</b> 줍니다.</li>
         <li>무슨 제품인지 <b>3초 안에</b> 안 보이면 나갑니다. 그래서 글보다 제품이 먼저입니다.</li>
         <li>세 테마를 한눈에 놓는 게 핵심입니다. <b>세 개를 한꺼번에 산다</b>는 걸 여기서 이해시켜야 뒤가 쉬워집니다.</li>
@@ -534,7 +534,49 @@
   <!-- 3 -->
   <section class="block">
     <div class="screen">
-      <div class="screen__tab"><b>03</b> 왜 또 하나를 사야 하나</div>
+      <div class="screen__tab"><b>03</b> 아이가 노는 영상<span style="margin-left:auto">전 04</span></div>
+      <div class="screen__body">
+        <h2 class="h">지퍼를 올리고, 단추를 끼우고<br />다 끝내면 엄마를 쳐다봅니다</h2>
+        <div class="vpick">
+          <button class="vpick__card" type="button" data-video="/frame/videos/play-together.mp4" data-title="같이 노는 장면" aria-label="같이 노는 장면 전체화면 재생">
+            <video class="vpick__prev" data-src="/frame/videos/play-together-preview.mp4" poster="/frame/videos/play-together-poster.jpg" muted loop playsinline preload="none"></video>
+            <span class="vpick__badge"><i></i>0:20</span>
+            <span class="vpick__play" aria-hidden="true"></span>
+            <span class="vpick__label">같이 노는 장면<small>한 권에 손이 모입니다</small></span>
+          </button>
+          <button class="vpick__card" type="button" data-video="/frame/videos/play-alone.mp4" data-title="혼자 해내는 장면" aria-label="혼자 해내는 장면 전체화면 재생">
+            <video class="vpick__prev" data-src="/frame/videos/play-alone-preview.mp4" poster="/frame/videos/play-alone-poster.jpg" muted loop playsinline preload="none"></video>
+            <span class="vpick__badge"><i></i>0:20</span>
+            <span class="vpick__play" aria-hidden="true"></span>
+            <span class="vpick__label">혼자 해내는 장면<small>말을 걸지 않아도 됩니다</small></span>
+          </button>
+        </div>
+        <p class="seqcap">카드를 누르면 전체화면으로 재생됩니다</p>
+        <p class="p">화면 대신 손으로 노는 시간입니다.</p>
+      </div>
+    </div>
+    <div class="note">
+      <h3>어떻게 움직이나</h3>
+      <ul>
+        <li>루딕스 가이드 에디션(<b>start.rudix.biz/pads/guide-edition</b>)에 쓴 방식 그대로입니다. 카드가 화면에 들어오면 <b>미리보기가 소리 없이 돌고</b>, 누르면 전체 영상이 열립니다.</li>
+        <li>미리보기는 <b>화면에 들어올 때만 받습니다.</b> 영상이 여러 블록에 들어가는 페이지라 처음부터 다 받으면 첫 화면이 죽습니다. 전체 영상은 눌러야 받습니다.</li>
+        <li>움직이는 걸 보려면 <b><a href="/video-demo/">/video-demo/</a></b> 를 열어 보세요.</li>
+      </ul>
+      <h3>지금 들어간 영상</h3>
+      <ul>
+        <li>원본 폴더: <b>OneDrive / 조이캣 비지북(랜딩) / 1. 원본 / 아이들이 재밌게 갖고 노는 영상</b></li>
+        <li>세 개 중 <b>두 개</b>를 썼습니다. 제가 앞뒤 20초만 잘라 웹 크기로 줄인 <b>임시본</b>입니다. 자르는 지점은 보시고 정하시면 됩니다.</li>
+        <li><b>농장 책이 나오는 영상은 뺐습니다.</b> 바로 다음 04 에서 「농장은 흔하다」고 하는데 여기서 우리 농장 책을 보여주면 앞뒤가 안 맞습니다.</li>
+      </ul>
+      <div class="ask"><b>디자이너께</b>위 폴더의 영상으로 이 섹션을 구성해 주세요. <b>간단한 편집이 필요합니다</b> &mdash; 어느 구간을 쓸지, 몇 초로 자를지. 손이 모자라면 말씀 주세요, 제가 잘라 드리겠습니다.</div>
+    
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>04</b> 왜 또 하나를 사야 하나<span style="margin-left:auto">전 03</span></div>
       <div class="screen__body">
         <h2 class="h">국내 비지북은<br />아직 농장과 동물에 머물러 있습니다</h2>
 
@@ -614,48 +656,6 @@
     </div>
   </section>
 
-  <!-- 4 -->
-  <section class="block">
-    <div class="screen">
-      <div class="screen__tab"><b>04</b> 아이가 노는 영상</div>
-      <div class="screen__body">
-        <h2 class="h">지퍼를 올리고, 단추를 끼우고<br />다 끝내면 엄마를 쳐다봅니다</h2>
-        <div class="vpick">
-          <button class="vpick__card" type="button" data-video="/frame/videos/play-together.mp4" data-title="같이 노는 장면" aria-label="같이 노는 장면 전체화면 재생">
-            <video class="vpick__prev" data-src="/frame/videos/play-together-preview.mp4" poster="/frame/videos/play-together-poster.jpg" muted loop playsinline preload="none"></video>
-            <span class="vpick__badge"><i></i>0:20</span>
-            <span class="vpick__play" aria-hidden="true"></span>
-            <span class="vpick__label">같이 노는 장면<small>한 권에 손이 모입니다</small></span>
-          </button>
-          <button class="vpick__card" type="button" data-video="/frame/videos/play-alone.mp4" data-title="혼자 해내는 장면" aria-label="혼자 해내는 장면 전체화면 재생">
-            <video class="vpick__prev" data-src="/frame/videos/play-alone-preview.mp4" poster="/frame/videos/play-alone-poster.jpg" muted loop playsinline preload="none"></video>
-            <span class="vpick__badge"><i></i>0:20</span>
-            <span class="vpick__play" aria-hidden="true"></span>
-            <span class="vpick__label">혼자 해내는 장면<small>말을 걸지 않아도 됩니다</small></span>
-          </button>
-        </div>
-        <p class="seqcap">카드를 누르면 전체화면으로 재생됩니다</p>
-        <p class="p">화면 대신 손으로 노는 시간입니다.</p>
-      </div>
-    </div>
-    <div class="note">
-      <h3>어떻게 움직이나</h3>
-      <ul>
-        <li>루딕스 가이드 에디션(<b>start.rudix.biz/pads/guide-edition</b>)에 쓴 방식 그대로입니다. 카드가 화면에 들어오면 <b>미리보기가 소리 없이 돌고</b>, 누르면 전체 영상이 열립니다.</li>
-        <li>미리보기는 <b>화면에 들어올 때만 받습니다.</b> 영상이 여러 블록에 들어가는 페이지라 처음부터 다 받으면 첫 화면이 죽습니다. 전체 영상은 눌러야 받습니다.</li>
-        <li>움직이는 걸 보려면 <b><a href="/video-demo/">/video-demo/</a></b> 를 열어 보세요.</li>
-      </ul>
-      <h3>지금 들어간 영상</h3>
-      <ul>
-        <li>원본 폴더: <b>OneDrive / 조이캣 비지북(랜딩) / 1. 원본 / 아이들이 재밌게 갖고 노는 영상</b></li>
-        <li>세 개 중 <b>두 개</b>를 썼습니다. 제가 앞뒤 20초만 잘라 웹 크기로 줄인 <b>임시본</b>입니다. 자르는 지점은 보시고 정하시면 됩니다.</li>
-        <li><b>농장 책이 나오는 영상은 뺐습니다.</b> 03 에서 「농장은 흔하다」고 해 놓고 04 에서 우리 농장 책을 보여주면 앞뒤가 안 맞습니다.</li>
-      </ul>
-      <div class="ask"><b>디자이너께</b>위 폴더의 영상으로 이 섹션을 구성해 주세요. <b>간단한 편집이 필요합니다</b> &mdash; 어느 구간을 쓸지, 몇 초로 자를지. 손이 모자라면 말씀 주세요, 제가 잘라 드리겠습니다.</div>
-    
-    </div>
-  </section>
-
   <!-- 5 -->
   <section class="block">
     <div class="screen">
@@ -688,7 +688,83 @@
   <!-- 6 -->
   <section class="block">
     <div class="screen">
-      <div class="screen__tab"><b>06</b> 리뷰 · 와디즈 · 언론</div>
+      <div class="screen__tab"><b>06</b> 연령대별 안내<span style="margin-left:auto">전 08</span></div>
+      <div class="screen__body">
+        <p class="eyebrow">함께 시작해, 스스로 노는 비지북</p>
+        <h2 class="h h--big">18개월부터 7세까지</h2>
+        <p class="p">나이에 따라 노는 방법이 달라져요</p>
+        <div class="steps" data-steps>
+          <div class="step">
+            <div class="slot"><em>사진</em>손을 잡고</div>
+            <b>18개월~3세</b><span>부모님과 함께</span>
+          </div>
+          <div class="steps__arw" aria-hidden="true">&rarr;</div>
+          <div class="step">
+            <div class="slot"><em>사진</em>옆에서 보며</div>
+            <b>4~5세</b><span>곁에서 지켜보기</span>
+          </div>
+          <div class="steps__arw" aria-hidden="true">&rarr;</div>
+          <div class="step">
+            <div class="slot"><em>사진</em>혼자 앉아</div>
+            <b>6~7세</b><span>아이 스스로</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      <h3>움직임</h3>
+      <ul>
+        <li>스크롤하면 <b>세 칸이 왼쪽부터 하나씩</b> 올라옵니다. 화살표를 따라가며 「우리 애는 여기쯤」을 찾게 됩니다.</li>
+        <li>같은 제품을 <b>오래 쓴다</b>는 게 이 자리의 전부입니다. 한 번 사서 몇 해를 쓴다는 계산이 서야 144,000원이 싸 보입니다.</li>
+      </ul>
+      <div class="ask"><b>골라 주세요</b>두 가지를 <b><a href="/frame/08-demo/">여섯 가지 화면으로 만들어 놨습니다 &rarr;</a></b> 나이를 어디까지 적을지 세 안, 칸에 뭘 넣을지 세 안입니다. 와디즈 보정 사진 149장을 전부 열어 봤는데 <b>아이가 나온 컷은 전부 같은 아이 한 명</b>입니다(같은 옷, 같은 날). 그래서 <b>실사로 세 연령대는 지금 사진으로 못 만듭니다.</b> 오늘 올릴 수 있는 조합은 <b>「상한을 안 적고 처음엔/익숙해지면/나중엔 으로 나누기」+「지금 있는 실사」</b> 하나뿐입니다. KC 신고 구분이 <b>3세 미만</b>이라 7세를 적으시려면 해외 패키지나 아마존 페이지의 사용연령 표기 한 장이 필요합니다.</div>
+    
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>07</b> 안전성 인증<span style="margin-left:auto">전 09</span></div>
+      <div class="screen__body">
+        <h2 class="h">세 테마 모두<br />KC 안전확인 신고 완료</h2>
+        <div class="slot slot--logo"><em>KC 마크</em></div>
+        <div class="certs certs--one">
+          <button class="cert__card" type="button" data-cert="/frame/certs/kc-notice.jpg" data-certtitle="안전확인 변경신고 확인증">
+            <span class="cert__thumbimg"><img src="/frame/certs/kc-notice.jpg" alt="안전확인 변경신고 확인증" width="1240" height="1754" loading="lazy" /></span>
+            <span class="cert__cap">안전확인 변경신고 확인증<small>눌러서 크게 보기</small></span>
+          </button>
+        </div>
+        <div class="cert">
+          완구 (부속서 6) · 영·유아용 완구 (3세 미만)
+          <dl>
+            <dt>신고확인증</dt><dd>CB065R3205-26001A</dd>
+            <dt>유효기간</dt><dd>2031. 02. 08</dd>
+            <dt>검사기관</dt><dd>FITI시험연구원</dd>
+            <dt>성적서</dt><dd>H111-26-00501 · 02852 · 03418</dd>
+          </dl>
+        </div>
+        <p class="p">프린세스·오션·정글 세 테마가 같은 신고 아래 각각 검사를 거쳤습니다.</p>
+      </div>
+    </div>
+    <div class="note">
+      <h3>서류를 읽고 맞춘 것</h3>
+      <ul>
+        <li>성적서 PDF 네 개를 열어 봤습니다. <b>세 성적서 모두 모델명이 BUSY BOOK 하나</b>이고, 02852(DINOSAUR·FARM)와 03418(JUNGLE·OCEAN)은 용도가 <b>「동일모델추가 H111-26-00501」</b> 입니다. 한 신고 아래 테마별 시료를 추가로 검사한 것이라 <b>「세 테마 모두」를 되살렸습니다.</b></li>
+        <li>신고확인증번호는 <b>CB065R3205-26001A</b> 가 맞습니다. 끝에 A 가 있습니다. 유효기간 2031. 2. 8, 업체명 에이치엔글로벌.</li>
+        <li>번호만 적으면 안 믿습니다. <b>신고확인증을 띄우고</b>, 누르면 전체화면으로 크게 볼 수 있게 했습니다.</li>
+      </ul>
+      <div class="ask"><b>중요</b>성적서 본문에 이렇게 적혀 있습니다 &mdash; <b>「이 성적서는 FITI와 사전 서면 동의 없이 홍보, 선전, 광고 및 소송 용도로 사용될 수 없으며」</b>. 그래서 <b>성적서 이미지는 올리지 않고 번호만</b> 적었습니다. 신고확인증은 정부 서식이라 이런 제한이 없습니다. 전에 「허락받았다」고 하셨는데, 문서가 요구하는 건 <b>사전 서면 동의</b>입니다. 서면으로 받아 두셨으면 성적서도 올릴 수 있습니다.</div>
+      <div class="ask"><b>확인 필요</b>신고확인증에 <b>제조국명 중국</b>, 제조업체명(GUANGZHOU SHOUJIA)이 그대로 적혀 있습니다. 이 이미지를 공개하면 같이 보입니다. 위키·브랜드 자료에서는 「기획·설계」까지만 적어 오셨는데, <b>여기서는 드러나도 괜찮은지</b> 판단해 주세요. 가리면 서류의 신뢰도가 떨어지니 <b>가리는 건 권하지 않습니다.</b></div>
+    
+      <div class="ask ask--ok"><b>확인 끝</b>2차 검토에서 「번호 끝의 A 가 맞는지 확인하라」고 했는데, <b>PDF 원본을 직접 열어 맞췄습니다.</b> 신고확인증에 <b>CB065R3205-26001A</b> 로 찍혀 있습니다. A 가 맞습니다.</div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>08</b> 리뷰 · 와디즈 · 언론<span style="margin-left:auto">전 06</span></div>
       <div class="screen__body">
         <h2 class="h">쿠팡 리뷰 406건이<br />먼저 답해 두었습니다</h2>
         <div class="capshot">
@@ -739,10 +815,10 @@
     </div>
   </section>
 
-  <!-- 7 -->
+  <!-- 9 -->
   <section class="block">
     <div class="screen">
-      <div class="screen__tab"><b>07</b> 할인 · 비공개 · 재고</div>
+      <div class="screen__tab"><b>09</b> 할인 · 비공개 · 재고<span style="margin-left:auto">전 07</span></div>
       <div class="screen__body" data-deal>
         <h2 class="h h--big">이 가격은<br />이 페이지에만 있습니다</h2>
 
@@ -787,83 +863,6 @@
       <div class="ask"><b>지웠습니다</b>「지금 이 페이지를 보고 있는 사람」 줄을 화면에서 <b>뺐습니다.</b> 「연결 대기」로 비워 두니 빈칸이 오히려 없는 숫자처럼 보였습니다. 실제 접속자를 세는 걸 붙이고 나서 다시 넣겠습니다.</div>
     </div>
   </section>
-
-  <!-- 8 -->
-  <section class="block">
-    <div class="screen">
-      <div class="screen__tab"><b>08</b> 연령대별 안내</div>
-      <div class="screen__body">
-        <p class="eyebrow">함께 시작해, 스스로 노는 비지북</p>
-        <h2 class="h h--big">18개월부터 7세까지</h2>
-        <p class="p">나이에 따라 노는 방법이 달라져요</p>
-        <div class="steps" data-steps>
-          <div class="step">
-            <div class="slot"><em>사진</em>손을 잡고</div>
-            <b>18개월~3세</b><span>부모님과 함께</span>
-          </div>
-          <div class="steps__arw" aria-hidden="true">&rarr;</div>
-          <div class="step">
-            <div class="slot"><em>사진</em>옆에서 보며</div>
-            <b>4~5세</b><span>곁에서 지켜보기</span>
-          </div>
-          <div class="steps__arw" aria-hidden="true">&rarr;</div>
-          <div class="step">
-            <div class="slot"><em>사진</em>혼자 앉아</div>
-            <b>6~7세</b><span>아이 스스로</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="note">
-      <h3>움직임</h3>
-      <ul>
-        <li>스크롤하면 <b>세 칸이 왼쪽부터 하나씩</b> 올라옵니다. 화살표를 따라가며 「우리 애는 여기쯤」을 찾게 됩니다.</li>
-        <li>같은 제품을 <b>오래 쓴다</b>는 게 이 자리의 전부입니다. 한 번 사서 몇 해를 쓴다는 계산이 서야 144,000원이 싸 보입니다.</li>
-      </ul>
-      <div class="ask"><b>골라 주세요</b>두 가지를 <b><a href="/frame/08-demo/">여섯 가지 화면으로 만들어 놨습니다 &rarr;</a></b> 나이를 어디까지 적을지 세 안, 칸에 뭘 넣을지 세 안입니다. 와디즈 보정 사진 149장을 전부 열어 봤는데 <b>아이가 나온 컷은 전부 같은 아이 한 명</b>입니다(같은 옷, 같은 날). 그래서 <b>실사로 세 연령대는 지금 사진으로 못 만듭니다.</b> 오늘 올릴 수 있는 조합은 <b>「상한을 안 적고 처음엔/익숙해지면/나중엔 으로 나누기」+「지금 있는 실사」</b> 하나뿐입니다. KC 신고 구분이 <b>3세 미만</b>이라 7세를 적으시려면 해외 패키지나 아마존 페이지의 사용연령 표기 한 장이 필요합니다.</div>
-    
-    </div>
-  </section>
-
-  <!-- 9 -->
-  <section class="block">
-    <div class="screen">
-      <div class="screen__tab"><b>09</b> 안전성 인증</div>
-      <div class="screen__body">
-        <h2 class="h">세 테마 모두<br />KC 안전확인 신고 완료</h2>
-        <div class="slot slot--logo"><em>KC 마크</em></div>
-        <div class="certs certs--one">
-          <button class="cert__card" type="button" data-cert="/frame/certs/kc-notice.jpg" data-certtitle="안전확인 변경신고 확인증">
-            <span class="cert__thumbimg"><img src="/frame/certs/kc-notice.jpg" alt="안전확인 변경신고 확인증" width="1240" height="1754" loading="lazy" /></span>
-            <span class="cert__cap">안전확인 변경신고 확인증<small>눌러서 크게 보기</small></span>
-          </button>
-        </div>
-        <div class="cert">
-          완구 (부속서 6) · 영·유아용 완구 (3세 미만)
-          <dl>
-            <dt>신고확인증</dt><dd>CB065R3205-26001A</dd>
-            <dt>유효기간</dt><dd>2031. 02. 08</dd>
-            <dt>검사기관</dt><dd>FITI시험연구원</dd>
-            <dt>성적서</dt><dd>H111-26-00501 · 02852 · 03418</dd>
-          </dl>
-        </div>
-        <p class="p">프린세스·오션·정글 세 테마가 같은 신고 아래 각각 검사를 거쳤습니다.</p>
-      </div>
-    </div>
-    <div class="note">
-      <h3>서류를 읽고 맞춘 것</h3>
-      <ul>
-        <li>성적서 PDF 네 개를 열어 봤습니다. <b>세 성적서 모두 모델명이 BUSY BOOK 하나</b>이고, 02852(DINOSAUR·FARM)와 03418(JUNGLE·OCEAN)은 용도가 <b>「동일모델추가 H111-26-00501」</b> 입니다. 한 신고 아래 테마별 시료를 추가로 검사한 것이라 <b>「세 테마 모두」를 되살렸습니다.</b></li>
-        <li>신고확인증번호는 <b>CB065R3205-26001A</b> 가 맞습니다. 끝에 A 가 있습니다. 유효기간 2031. 2. 8, 업체명 에이치엔글로벌.</li>
-        <li>번호만 적으면 안 믿습니다. <b>신고확인증을 띄우고</b>, 누르면 전체화면으로 크게 볼 수 있게 했습니다.</li>
-      </ul>
-      <div class="ask"><b>중요</b>성적서 본문에 이렇게 적혀 있습니다 &mdash; <b>「이 성적서는 FITI와 사전 서면 동의 없이 홍보, 선전, 광고 및 소송 용도로 사용될 수 없으며」</b>. 그래서 <b>성적서 이미지는 올리지 않고 번호만</b> 적었습니다. 신고확인증은 정부 서식이라 이런 제한이 없습니다. 전에 「허락받았다」고 하셨는데, 문서가 요구하는 건 <b>사전 서면 동의</b>입니다. 서면으로 받아 두셨으면 성적서도 올릴 수 있습니다.</div>
-      <div class="ask"><b>확인 필요</b>신고확인증에 <b>제조국명 중국</b>, 제조업체명(GUANGZHOU SHOUJIA)이 그대로 적혀 있습니다. 이 이미지를 공개하면 같이 보입니다. 위키·브랜드 자료에서는 「기획·설계」까지만 적어 오셨는데, <b>여기서는 드러나도 괜찮은지</b> 판단해 주세요. 가리면 서류의 신뢰도가 떨어지니 <b>가리는 건 권하지 않습니다.</b></div>
-    
-      <div class="ask ask--ok"><b>확인 끝</b>2차 검토에서 「번호 끝의 A 가 맞는지 확인하라」고 했는데, <b>PDF 원본을 직접 열어 맞췄습니다.</b> 신고확인증에 <b>CB065R3205-26001A</b> 로 찍혀 있습니다. A 가 맞습니다.</div>
-    </div>
-  </section>
-
   <!-- 플로팅 -->
   <section class="block">
     <div class="screen">
@@ -885,7 +884,7 @@
         <li>리뷰 페이지에서는 오른쪽 버튼이 <b>상세페이지로 돌아가기</b>로 바뀌고, 돌아오면 보던 자리에 그대로 섭니다.</li>
         <li>루딕스·SHL 랜딩과 같은 구조라 동작은 제가 그대로 가져옵니다. <b>색과 비율만</b> 주시면 됩니다.</li>
       </ul>
-      <div class="ask"><b>순서 제안</b>문구 검토에서 블록 순서를 <b>01 &rarr; 02 &rarr; 04 &rarr; 03 &rarr; 05 &rarr; 08 &rarr; 09 &rarr; 06 &rarr; 07</b> 로 바꾸자고 합니다. 04(노는 영상)를 당기는 건 인스타 유입이 글보다 <b>장면에 먼저 붙잡히기</b> 때문이고, 08·09를 07 앞으로 보내는 건 <b>「우리 애가 써도 되나」를 결제 버튼 전에 끝내기</b> 위해서입니다. 06을 07 바로 앞에 두면 리뷰를 본 직후 가격을 보게 됩니다. <b>한 마디만 주시면 바꿔 두겠습니다.</b></div>
+      <div class="ask ask--ok"><b>순서 바꿨습니다</b>사장님 승인(10/8)으로 <b>01 &rarr; 02 &rarr; 04 &rarr; 03 &rarr; 05 &rarr; 08 &rarr; 09 &rarr; 06 &rarr; 07</b> 순으로 다시 놓았습니다. 번호는 <b>읽는 순서대로 다시 매겼고</b>, 자리를 옮긴 블록은 탭 오른쪽에 <b>옛 번호</b>를 적어 뒀습니다. 04(노는 영상)를 당긴 건 인스타 유입이 글보다 <b>장면에 먼저 붙잡히기</b> 때문이고, 연령·인증을 가격 앞으로 보낸 건 <b>「우리 애가 써도 되나」를 결제 버튼 전에 끝내기</b> 위해서입니다. 리뷰는 가격 바로 앞에 둬서 <b>리뷰를 본 직후 가격을 보게</b> 했습니다.</div>
     </div>
   </section>
 
@@ -897,7 +896,7 @@
 </div>
 
 <script>
-/* 02 블록 애니메이션. 화면에 들어오면 한 번 돈다.
+/* 04 블록(차트) 애니메이션. 화면에 들어오면 한 번 돈다.
    단계마다 클래스를 올리고 모양은 CSS 가 맡는다 - JS 에서 스타일을
    직접 건드리면 나중에 디자인만 고치려 해도 이 파일을 열어야 한다. */
 (function () {
