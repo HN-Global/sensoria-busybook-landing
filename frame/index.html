@@ -152,37 +152,63 @@
   /* ── 05 박스 열림 시퀀스 ──
      세 장을 겹쳐 두고 스크롤 진행도(--q)로 갈아 끼운다.
      박스 -> 책 닫힘 -> 책 펼침. */
-  /* 박스가 뒤로 눕고 그 뒤에서 책이 올라와 펼쳐진다.
-     책(z2)이 박스(z3) 뒤에 있어 아랫부분이 가려지는 게 핵심이다. */
-  .boxseq {
-    position: relative; aspect-ratio: 1 / 1; border-radius: 10px; overflow: hidden;
-    border: 1px solid var(--line); perspective: 800px; display: grid; place-items: center;
-    background: radial-gradient(60% 50% at 50% 62%, rgba(217,86,107,.10), transparent 70%), var(--card);
+  /* ── 선물 상자 까기 ──
+     누끼 없이 네모로 자른 사진을 카드처럼 겹친다.
+     상자(z4)가 앞, 책 세 권(z2)이 뒤. 상자가 누우면서 책이 솟는다. */
+  .gift {
+    position: relative; aspect-ratio: 1 / 1; border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--line); perspective: 900px; display: grid; place-items: center;
+    background:
+      radial-gradient(58% 48% at 50% 58%, rgba(217,86,107,.13), transparent 72%),
+      linear-gradient(180deg, #fbf8f4, #f1ece4);
   }
-  .boxseq > span { position: absolute; }
-  .boxseq img { width: 100%; height: auto; display: block; filter: drop-shadow(0 14px 22px rgba(0,0,0,.2)); }
-  .bs__glow {
-    width: 56%; height: 26%; bottom: 30%; border-radius: 50%; z-index: 1; filter: blur(6px);
-    background: radial-gradient(ellipse at center, rgba(255,214,122,.95), rgba(255,214,122,0) 70%);
-    opacity: calc(clamp(0, (var(--q) - .18) / .22, 1) * (1 - clamp(0, (var(--q) - .72) / .2, 1)));
+  .gift > span { position: absolute; }
+  .gift img {
+    width: 100%; height: auto; display: block; border-radius: 9px;
+    box-shadow: 0 14px 26px rgba(70,55,45,.22);
   }
-  .bs__book {
-    width: 50%; z-index: 2; --r: clamp(0, (var(--q) - .32) / .36, 1);
-    transform: translateY(calc(62px - 128px * var(--r))) scale(calc(.62 + .38 * var(--r))) rotate(calc(-7deg + 7deg * var(--r)));
-    opacity: calc(clamp(0, (var(--q) - .3) / .1, 1) - clamp(0, (var(--q) - .72) / .14, 1));
+
+  .gift__glow {
+    width: 62%; height: 30%; top: 36%; border-radius: 50%; z-index: 1; filter: blur(14px);
+    background: radial-gradient(ellipse at center, rgba(255,222,150,1), rgba(255,222,150,0) 70%);
+    opacity: calc(clamp(0, (var(--q) - .14) / .18, 1) * (1 - clamp(0, (var(--q) - .62) / .26, 1)));
+    transform: scale(calc(.6 + .9 * clamp(0, (var(--q) - .14) / .3, 1)));
   }
-  .bs__box {
-    width: 62%; z-index: 3; --o: clamp(0, (var(--q) - .16) / .3, 1); transform-origin: 50% 100%;
-    transform: translateY(calc(36px + 22px * var(--o))) scale(calc(1 + .07 * clamp(0, var(--q) / .2, 1))) rotateX(calc(14deg * var(--o)));
-    opacity: calc(1 - clamp(0, (var(--q) - .62) / .22, 1));
+
+  .gift__sparks { inset: 0; z-index: 5; pointer-events: none; }
+  .gift__sparks i {
+    position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; margin: -4.5px;
+    border-radius: 50%; background: radial-gradient(circle, #fff 0 30%, #ffcf5e 70%, rgba(255,207,94,0) 72%);
+    --b: clamp(0, (var(--q) - .18 - var(--t)) / .34, 1);
+    transform: rotate(var(--a)) translateY(calc(-1 * var(--d) * var(--b))) rotate(calc(-1 * var(--a))) scale(calc(.4 + 1.1 * var(--b)));
+    opacity: calc(var(--b) * (1 - var(--b)) * 3.4);
   }
-  .bs__spread {
-    width: 84%; z-index: 4; --s: clamp(0, (var(--q) - .68) / .3, 1);
-    transform: scale(calc(.78 + .22 * var(--s))); opacity: var(--s);
+
+  .gift__page {
+    width: 76%; z-index: 2;
+    --r: clamp(0, (var(--q) - .26 - var(--n) * .07) / .34, 1);
+    transform:
+      translateX(calc((var(--n) - 2) * 15% * var(--r)))
+      translateY(calc(56px - 104px * var(--r)))
+      rotate(calc((var(--n) - 2) * 11deg * var(--r)))
+      scale(calc(.64 + .36 * var(--r)));
+    opacity: clamp(0, (var(--q) - .24 - var(--n) * .07) / .13, 1);
   }
-  .boxseq__step { position: absolute; left: 10px; bottom: 9px; z-index: 6; display: flex; gap: 5px; }
-  .boxseq__step i { width: 16px; height: 3px; border-radius: 2px; background: rgba(120,110,100,.22); display: block; }
-  .boxseq__step i.on { background: var(--pink); }
+
+  .gift__box {
+    width: 84%; z-index: 4; transform-origin: 50% 100%;
+    --o: clamp(0, (var(--q) - .12) / .3, 1);
+    transform:
+      translateY(calc(26px + 34px * var(--o)))
+      scale(calc(1 + .06 * clamp(0, var(--q) / .16, 1)))
+      rotateX(calc(26deg * var(--o)));
+    opacity: calc(1 - clamp(0, (var(--q) - .46) / .26, 1));
+    filter: blur(calc(3px * clamp(0, (var(--q) - .46) / .26, 1)));
+  }
+
+  .gift__steps { left: 13px; bottom: 12px; z-index: 6; display: flex; gap: 5px; }
+  .gift__steps i { width: 19px; height: 3px; border-radius: 2px; background: rgba(120,110,100,.22); display: block; }
+  .gift__steps i.on { background: var(--pink); }
   .seqcap { margin: 6px 0 0; font-size: 11px; color: var(--ink-dim); }
 
   /* ── 06 뉴스 쌓임 ── */
@@ -853,12 +879,14 @@
       <div class="screen__tab"><b>06</b> 패키지 · 제품 사진<span style="margin-left:auto">전 05</span></div>
       <div class="screen__body">
         <h2 class="h">그대로 건네도<br />포장이 필요 없어요</h2>
-        <div class="boxseq" data-boxseq style="--q:0">
-          <span class="bs__glow" aria-hidden="true"></span>
-          <span class="bs__book"><img src="/frame/photos/box/book-closed.png" alt="프린세스 비지북" width="364" height="408" loading="lazy" /></span>
-          <span class="bs__box"><img src="/frame/photos/box/box-princess.png" alt="프린세스 패키지 상자" width="349" height="376" loading="lazy" /></span>
-          <span class="bs__spread"><img src="/frame/photos/box/book-open.png" alt="프린세스 비지북 펼친 모습" width="745" height="362" loading="lazy" /></span>
-          <span class="boxseq__step" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <div class="gift" data-gift style="--q:0">
+          <span class="gift__glow" aria-hidden="true"></span>
+          <span class="gift__sparks" aria-hidden="true"><i style="--a:18deg;--d:44%;--t:0.00"></i><i style="--a:52deg;--d:58%;--t:0.08"></i><i style="--a:95deg;--d:40%;--t:0.04"></i><i style="--a:128deg;--d:62%;--t:0.12"></i><i style="--a:160deg;--d:46%;--t:0.02"></i><i style="--a:205deg;--d:56%;--t:0.10"></i><i style="--a:238deg;--d:38%;--t:0.06"></i><i style="--a:270deg;--d:60%;--t:0.14"></i><i style="--a:300deg;--d:44%;--t:0.03"></i><i style="--a:335deg;--d:52%;--t:0.09"></i><i style="--a:8deg;--d:66%;--t:0.16"></i><i style="--a:75deg;--d:30%;--t:0.18"></i></span>
+          <span class="gift__page" style="--n:1"><img src="/frame/photos/box/r-p1.jpg" alt="프린세스 펼친 모습" width="760" height="570" loading="lazy" /></span>
+          <span class="gift__page" style="--n:2"><img src="/frame/photos/box/r-p2.jpg" alt="오션 펼친 모습" width="760" height="570" loading="lazy" /></span>
+          <span class="gift__page" style="--n:3"><img src="/frame/photos/box/r-p3.jpg" alt="정글 펼친 모습" width="760" height="570" loading="lazy" /></span>
+          <span class="gift__box"><img src="/frame/photos/box/r-boxes.jpg" alt="비지북 3종 패키지" width="760" height="570" loading="lazy" /></span>
+          <span class="gift__steps" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         </div>
         <div class="slot slot--wide"><em>디테일</em>바느질 · 펠트 단면</div>
         <p class="p">세 권이 상자 하나에 들어 있어요. 돌 선물, 두 돌 선물, 조카 선물로 그냥 들고 가시면 됩니다.</p>
@@ -1341,22 +1369,6 @@
   'use strict';
   var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* 05 박스 - 단계 표시와 캡션을 같이 움직인다 */
-  var seq = document.querySelector('[data-boxseq]');
-  var seqCap = document.querySelector('[data-boxcap]');
-  var seqDots = seq ? seq.querySelectorAll('.boxseq__step i') : [];
-  var CAPS = ['상자째 도착합니다', '상자를 엽니다', '책이 나옵니다', '펼치면 속장입니다'];
-  if (seq) {
-    var paint = function (q) {
-      seq.style.setProperty('--q', q.toFixed(3));
-      var i = q < 0.2 ? 0 : q < 0.45 ? 1 : q < 0.72 ? 2 : 3;
-      if (seqCap) seqCap.textContent = CAPS[i];
-      for (var k = 0; k < seqDots.length; k++) seqDots[k].classList.toggle('on', k <= i);
-    };
-    seq.__paint = paint;
-    paint(0);
-  }
-
   function progress(el, lead) {
     var r = el.getBoundingClientRect(), h = window.innerHeight;
     return Math.min(Math.max((h - r.top - (lead || 0)) / (h * 0.75), 0), 1);
@@ -1364,7 +1376,6 @@
 
   /* 각 버튼이 무엇을 돌리는지 */
   var JOBS = {
-    box: function (k) { if (seq && seq.__paint) seq.__paint(k); },
     steps: function (k) {
       document.querySelectorAll('[data-steps] .step').forEach(function (el, i) {
         el.style.setProperty('--s', Math.min(Math.max(k * 1.6 - i * 0.28, 0), 1).toFixed(3));
@@ -1409,17 +1420,6 @@
     });
   });
 
-  /* 박스만 스크롤도 따라간다 (나머지는 각자 제 스크립트가 있다) */
-  if (seq && !calm) {
-    var ticking = false;
-    function draw() { ticking = false; if (!busy.box) seq.__paint(progress(seq, 40)); }
-    window.addEventListener('scroll', function () {
-      if (ticking) return; ticking = true; requestAnimationFrame(draw);
-    }, { passive: true });
-    draw();
-  } else if (seq) {
-    seq.__paint(1);
-  }
 })();
 </script>
 <script>
@@ -1464,6 +1464,53 @@
       if (k < 1) requestAnimationFrame(step); else busy = false;
     })(performance.now());
   });
+})();
+</script>
+<script>
+/* 선물 상자 - 스크롤 위치를 0~1 로 바꿔 --q 에 넣는다. 다시 보기도 같은 걸 돌린다. */
+(function () {
+  'use strict';
+  var box = document.querySelector('[data-gift]');
+  if (!box) return;
+  var cap = document.querySelector('[data-giftcap]');
+  var dots = box.querySelectorAll('.gift__steps i');
+  var CAPS = ['상자째 도착합니다', '상자를 엽니다', '세 권이 나옵니다', '펼치면 이렇게 생겼어요'];
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var playing = false, ticking = false;
+
+  function paint(q) {
+    box.style.setProperty('--q', q.toFixed(3));
+    var i = q < 0.18 ? 0 : q < 0.42 ? 1 : q < 0.72 ? 2 : 3;
+    if (cap) cap.textContent = CAPS[i];
+    for (var k = 0; k < dots.length; k++) dots[k].classList.toggle('on', k <= i);
+  }
+  function fromScroll() {
+    ticking = false;
+    if (playing) return;
+    var r = box.getBoundingClientRect(), h = window.innerHeight;
+    paint(Math.min(Math.max((h - r.top - 60) / (h * 0.78), 0), 1));
+  }
+  function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(fromScroll); }
+
+  function replay() {
+    if (calm) { paint(1); return; }
+    playing = true;
+    var t0 = 0;
+    (function step(ts) {
+      if (!t0) t0 = ts;
+      var k = Math.min((ts - t0) / 2600, 1);
+      paint(1 - Math.pow(1 - k, 3));
+      if (k < 1) requestAnimationFrame(step);
+      else { playing = false; fromScroll(); }
+    })(performance.now());
+  }
+  var btn = document.querySelector('[data-play="box"], [data-replay]');
+  if (btn) btn.addEventListener('click', replay);
+
+  if (calm) { paint(1); return; }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  fromScroll();
 })();
 </script>
 </body>
