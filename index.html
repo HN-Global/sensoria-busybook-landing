@@ -209,6 +209,95 @@
   .fbtn--rv { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.4); }
   .fbtn small { display: block; font-weight: 400; font-size: 10.5px; opacity: .78; }
 
+  /* ── 02 블록: 흔한 것 쳐내고 우리 보여주기 ──
+     스크롤해서 보이면 한 번 돈다. 차트 -> 쳐내기 -> 비교 순서가
+     곧 설득의 순서다. 움직임을 끄고 쓰는 사람에겐 결과만 바로 보인다. */
+  .cmp { display: flex; flex-direction: column; gap: 12px; }
+  .cmp__cap {
+    margin: 0; font-size: 11px; color: var(--ink-dim);
+    font-family: var(--font-mono); letter-spacing: -.01em;
+  }
+  .cmp__rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+  .cmp__row {
+    display: grid; grid-template-columns: 62px 1fr 26px;
+    align-items: center; gap: 9px;
+    transition: opacity .45s ease, filter .45s ease;
+  }
+  .cmp__lab { font-size: 12px; color: var(--ink); white-space: nowrap; }
+  .cmp__bar {
+    position: relative; height: 16px; border-radius: 999px;
+    background: #ece7df; overflow: hidden;
+  }
+  .cmp__bar > i {
+    position: absolute; inset: 0 auto 0 0; width: 0;
+    border-radius: 999px; background: var(--c);
+    transition: width .9s cubic-bezier(.22,.9,.3,1), background .45s ease;
+  }
+  .cmp__n {
+    font-family: var(--font-mono); font-size: 13px; color: var(--ink);
+    text-align: right; font-weight: 500;
+  }
+  /* 쳐낸 줄 */
+  .cmp__row[data-cut].is-cut { opacity: .4; }
+  .cmp__row[data-cut].is-cut .cmp__bar > i { background: #b4ada3; }
+  .cmp__row[data-cut].is-cut .cmp__lab { text-decoration: line-through; color: var(--ink-dim); }
+
+  .cmp__sum {
+    margin: 2px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--ink);
+    opacity: 0; transform: translateY(6px);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  .cmp__sum b { color: var(--pink); }
+
+  .cmp__vs {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity .55s ease, transform .55s ease;
+  }
+  .cmp__side { display: flex; flex-direction: column; gap: 6px; }
+  .cmp__sideCap {
+    margin: 0; font-size: 11px; letter-spacing: .02em;
+    color: var(--ink-dim); text-align: center;
+  }
+  .cmp__side--ours .cmp__sideCap { color: var(--ink); font-weight: 700; }
+  .cmp__rival {
+    aspect-ratio: 1 / 1; border-radius: 10px; border: 1px dashed var(--line);
+    background: #efeae2; display: grid; place-content: center; gap: 2px;
+    text-align: center; font-size: 11px; color: var(--slot); padding: 8px;
+    filter: grayscale(1); opacity: .75;
+  }
+  .cmp__rival em { display: block; font-style: normal; font-size: 10px; letter-spacing: .04em; }
+  .cmp__ours { display: grid; gap: 6px; }
+  .cmp__box {
+    aspect-ratio: 16 / 7; border-radius: 8px; border: 1px dashed var(--c);
+    background: #fff; display: grid; place-content: center; gap: 1px;
+    text-align: center; font-size: 11px; color: var(--c); font-weight: 700;
+  }
+  .cmp__box em { display: block; font-style: normal; font-size: 9px; opacity: .7; font-weight: 400; }
+  .cmp__kick {
+    margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--ink); font-weight: 700;
+    opacity: 0; transform: translateY(6px);
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  .cmp__replay {
+    align-self: flex-start; margin-top: 2px;
+    border: 1px solid var(--line); background: #fff; color: var(--ink-dim);
+    border-radius: 999px; padding: 5px 12px; font: inherit; font-size: 11px;
+    cursor: pointer;
+  }
+  .cmp__replay:hover { color: var(--ink); border-color: var(--ink-dim); }
+
+  /* 재생 상태 */
+  .cmp.is-on .cmp__bar > i { width: var(--w); }
+  .cmp.is-step2 .cmp__row[data-cut] { }
+  .cmp.is-step3 .cmp__sum { opacity: 1; transform: none; }
+  .cmp.is-step4 .cmp__vs,
+  .cmp.is-step4 .cmp__kick { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cmp__bar > i, .cmp__sum, .cmp__vs, .cmp__kick, .cmp__row { transition: none; }
+  }
+
   /* ── 메모 ── */
   .note { padding-top: 4px; }
   .note h3 {
@@ -299,21 +388,76 @@
   <!-- 2 -->
   <section class="block">
     <div class="screen">
-      <div class="screen__tab"><b>02</b> 내 아이를 위한 특별한 선물</div>
+      <div class="screen__tab"><b>02</b> 왜 또 하나를 사야 하나</div>
       <div class="screen__body">
-        <h2 class="h">사 준 장난감은 많은데,<br />아이가 먼저 찾는 건 몇 개인가요</h2>
-        <div class="slot slot--wide"><em>감성컷</em>아이와 부모가 함께 있는 장면</div>
-        <p class="p">비지북은 버튼을 누르면 소리가 나는 장난감이 아닙니다. 지퍼를 올리고, 끈을 꿰고, 단추를 채우는 동안 아이가 스스로 몰두합니다.</p>
-        <p class="p p--ink">그 시간이 부모에게도 쉬는 시간이 됩니다.</p>
+        <h2 class="h">국내 비지북은<br />거의 같은 이야기를 합니다</h2>
+
+        <div class="cmp" data-cmp>
+          <p class="cmp__cap">쿠팡 비지북 판매량 Top 20 · 테마 구성</p>
+
+          <ul class="cmp__rows">
+            <li class="cmp__row" data-cut style="--w:35%; --c:#e0879a">
+              <span class="cmp__lab">농장 · 동물</span>
+              <span class="cmp__bar"><i></i></span>
+              <b class="cmp__n" data-to="7">0</b>
+            </li>
+            <li class="cmp__row" data-cut style="--w:40%; --c:#7bb292">
+              <span class="cmp__lab">단순 동작</span>
+              <span class="cmp__bar"><i></i></span>
+              <b class="cmp__n" data-to="8">0</b>
+            </li>
+            <li class="cmp__row" style="--w:10%; --c:#e3b668">
+              <span class="cmp__lab">탈것</span>
+              <span class="cmp__bar"><i></i></span>
+              <b class="cmp__n" data-to="2">0</b>
+            </li>
+            <li class="cmp__row" style="--w:15%; --c:#8fa3d8">
+              <span class="cmp__lab">그 외</span>
+              <span class="cmp__bar"><i></i></span>
+              <b class="cmp__n" data-to="3">0</b>
+            </li>
+          </ul>
+
+          <p class="cmp__sum"><b>스무 개 중 열다섯 개</b>가<br />농장·동물이거나 단순 동작입니다</p>
+
+          <div class="cmp__vs">
+            <div class="cmp__side">
+              <p class="cmp__sideCap">흔한 구성</p>
+              <div class="cmp__rival"><em>타사 제품</em>농장 테마</div>
+            </div>
+            <div class="cmp__side cmp__side--ours">
+              <p class="cmp__sideCap">조이캣</p>
+              <div class="cmp__ours">
+                <div class="cmp__box" style="--c:var(--pink)"><em>움짤</em>프린세스</div>
+                <div class="cmp__box" style="--c:var(--teal)"><em>움짤</em>오션</div>
+                <div class="cmp__box" style="--c:var(--green)"><em>움짤</em>정글</div>
+              </div>
+            </div>
+          </div>
+
+          <p class="cmp__kick">세 권이 전부 다른 세계입니다</p>
+          <button class="cmp__replay" type="button">다시 보기</button>
+        </div>
       </div>
     </div>
     <div class="note">
-      <h3>톤</h3>
+      <h3>이 자리에서 막는 이탈</h3>
       <ul>
-        <li>여기가 감정을 건드리는 자리입니다. 스펙은 한 줄도 넣지 않습니다.</li>
-        <li><b>발달·지능 단정은 쓰지 않습니다.</b> 「머리가 좋아진다」 「발달이 빨라진다」는 근거가 필요한 표현입니다. 대신 아이가 무엇을 하는지를 그대로 적었습니다.</li>
-        <li>사진은 제품보다 <b>표정</b>이 주인공이어야 합니다.</li>
+        <li><b>「이미 비슷한 거 있는데」</b>를 끊는 자리입니다. 1번에서 제품을 봤으니, 여기서는 <b>왜 또 사야 하는지</b>에 답합니다.</li>
+        <li>우리 자랑을 먼저 하지 않습니다. <b>시장이 어떤지 숫자로 먼저</b> 보여주고, 그 위에 우리를 놓습니다.</li>
+        <li>차트가 그려지고 &rarr; 흔한 둘이 꺼지고 &rarr; 좌우 비교가 올라옵니다. 이 순서가 곧 설득의 순서입니다.</li>
       </ul>
+      <h3>움직임</h3>
+      <ul>
+        <li>스크롤해서 화면에 들어오면 <b>한 번</b> 돕니다. 계속 반복하면 읽는 걸 방해합니다. <b>다시 보기</b> 버튼을 뒀습니다.</li>
+        <li>기기에서 <b>움직임 줄이기</b>를 켠 사람에게는 애니메이션 없이 결과만 바로 보입니다.</li>
+      </ul>
+      <h3>숫자 출처</h3>
+      <ul>
+        <li>쿠팡 비지북 판매량 상위 20개 기준. <b>기준을 화면에 적어 둡니다</b> &mdash; 출처 없는 비교 수치는 표시광고법에서 문제가 됩니다.</li>
+        <li>집계 시점이 바뀌면 숫자도 바뀝니다. 광고 돌리기 전에 <b>다시 세고 날짜를 적는</b> 게 안전합니다.</li>
+      </ul>
+      <div class="ask"><b>확인 필요</b>왼쪽 칸에 타사 제품 사진이 들어갑니다. 남의 상품 사진을 그대로 쓰는 건 <b>사진 저작권</b>이 걸리고, 비교광고는 <b>객관적 근거가 있어야</b> 합니다. 테마 분포 숫자는 근거가 되지만 <b>사진 자체의 권리는 별개</b>입니다. 그대로 갈지, 카테고리를 그린 일러스트로 바꿀지 정해 주세요.</div>
     </div>
   </section>
 
@@ -619,6 +763,75 @@
     if (window.gtag) gtag('event', 'click_buy_now',
       { currency: 'KRW', value: P.price, items: gaItems() });
   });
+})();
+</script>
+<script>
+/* 02 블록 애니메이션. 화면에 들어오면 한 번 돈다.
+   단계마다 클래스를 올리고 모양은 CSS 가 맡는다 - JS 에서 스타일을
+   직접 건드리면 나중에 디자인만 고치려 해도 이 파일을 열어야 한다. */
+(function () {
+  'use strict';
+  var root = document.querySelector('[data-cmp]');
+  if (!root) return;
+
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nums = root.querySelectorAll('.cmp__n');
+  var cuts = root.querySelectorAll('.cmp__row[data-cut]');
+  var timers = [];
+
+  function clearTimers() {
+    for (var i = 0; i < timers.length; i++) clearTimeout(timers[i]);
+    timers = [];
+  }
+  function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+
+  function countUp(el, to, ms) {
+    var t0 = 0;
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var k = Math.min((ts - t0) / ms, 1);
+      el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+      if (k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function reset() {
+    clearTimers();
+    root.className = 'cmp';
+    for (var i = 0; i < cuts.length; i++) cuts[i].classList.remove('is-cut');
+    for (var j = 0; j < nums.length; j++) nums[j].textContent = '0';
+  }
+
+  function play() {
+    reset();
+    if (calm) {
+      root.classList.add('is-on', 'is-step3', 'is-step4');
+      for (var i = 0; i < cuts.length; i++) cuts[i].classList.add('is-cut');
+      for (var j = 0; j < nums.length; j++) nums[j].textContent = nums[j].dataset.to;
+      return;
+    }
+    root.classList.add('is-on');
+    for (var k = 0; k < nums.length; k++) {
+      (function (el) { countUp(el, +el.dataset.to, 900); })(nums[k]);
+    }
+    at(1500, function () {
+      for (var i = 0; i < cuts.length; i++) cuts[i].classList.add('is-cut');
+    });
+    at(2100, function () { root.classList.add('is-step3'); });
+    at(2900, function () { root.classList.add('is-step4'); });
+  }
+
+  var btn = root.querySelector('.cmp__replay');
+  if (btn) btn.addEventListener('click', play);
+
+  if (!('IntersectionObserver' in window)) { play(); return; }
+  var io = new IntersectionObserver(function (es) {
+    for (var i = 0; i < es.length; i++) {
+      if (es[i].isIntersecting) { io.disconnect(); play(); }
+    }
+  }, { threshold: 0.35 });
+  io.observe(root);
 })();
 </script>
 </body>
