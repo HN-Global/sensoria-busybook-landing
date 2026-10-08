@@ -550,6 +550,26 @@
     content: "×" counter(none); display: none;
   }
 
+
+  /* ── 리뷰 ── */
+  .rv__h {
+    margin: 18px 0 7px; font-size: 12px; font-weight: 700; color: var(--ink);
+    display: flex; align-items: center; gap: 7px;
+  }
+  .rv__h::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .rv__h:first-of-type { margin-top: 12px; }
+  .slot--shot { aspect-ratio: auto; min-height: 104px; }
+  .rv__pic {
+    margin-left: auto; font-size: 9.5px; color: var(--teal);
+    border: 1px solid var(--teal); border-radius: 999px; padding: 1px 7px;
+  }
+  .rv--intl { border-style: dashed; }
+  .rv__src--intl { color: var(--teal); }
+  .rv__orig {
+    margin: 5px 0 0; font-size: 10.5px; color: var(--slot); font-style: italic;
+    padding-top: 5px; border-top: 1px dotted var(--line);
+  }
+
   /* ── 메모 ── */
   .note { padding-top: 4px; }
 
@@ -709,34 +729,54 @@
       <div class="screen__tab"><b>04</b> 리뷰 · 와디즈 · 언론<span style="margin-left:auto">전 06</span></div>
       <div class="screen__body">
         <h2 class="h">저만 좋다고 하는 게<br />아니더라고요</h2>
-        <div class="capshot">
-          <div class="slot slot--wide"><em>캡처</em>쿠팡 상품 리뷰 406 · 최고 96%</div>
-          <div class="slot slot--wide"><em>캡처</em>와디즈 4,939% 달성 · 24,697,000원 · 357명</div>
-        </div>
-        <p class="seqcap">캡처 화면 그대로 옮겼습니다. 쿠팡 리뷰는 <b>프린세스 단품 기준</b>입니다.</p>
 
-        <div class="rv">
-          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src">쿠팡</span></div>
-          <p class="rv__text">(실제 구매평 본문)</p>
-        </div>
-        <div class="rv">
-          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src">쿠팡</span></div>
-          <p class="rv__text">(사진 있는 구매평 본문)</p>
-        </div>
-
-        <p class="p">네이버 블로그 후기 9편</p>
-        <div class="row3">
-          <div class="slot slot--wide"><em>썸네일</em></div>
-          <div class="slot slot--wide"><em>썸네일</em></div>
-          <div class="slot slot--wide"><em>썸네일</em></div>
-        </div>
-
+        <p class="rv__h">기사부터 보고 가실게요</p>
         <div class="news news--anim" data-news>
           <a href="https://www.gokorea.kr/news/articleView.html?idxno=873458" target="_blank" rel="noopener noreferrer"><b>고코리아</b><span>조이캣, 몬테소리 교육 원칙 반영한 감각놀이 완구 '비지북' 선봬</span></a>
           <a href="https://www.gosiweek.com/article/1065580674842325" target="_blank" rel="noopener noreferrer"><b>고시위크</b><span>조이캣 비지북, 쿠팡 촉감발달완구 카테고리 2위 진입</span></a>
           <a href="https://www.ksilbo.co.kr/news/articleView.html?idxno=1063634" target="_blank" rel="noopener noreferrer"><b>경상일보</b><span>조이캣 비지북, 오펜하임토이포트폴리오 플래티넘 수상</span></a>
           <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90553" target="_blank" rel="noopener noreferrer"><b>한국목재신문</b><span>글로벌 완구 브랜드 조이캣, 한국 시장 진출</span></a>
           <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90531" target="_blank" rel="noopener noreferrer"><b>한국목재신문</b><span>조이캣, 교육완구 기부로 아시아 아동 지원 확대</span></a>
+        </div>
+
+        <p class="rv__h">숫자는 화면 그대로 보여드려요</p>
+        <div class="capshot">
+          <div class="slot slot--shot"><em>캡처</em>쿠팡 상품 페이지<br />별점 옆 <b>406</b> · 최고 96%</div>
+          <div class="slot slot--shot"><em>캡처</em>와디즈 펀딩 종료 화면<br /><b>4,939% 달성</b> · 24,697,000원 · 357명</div>
+        </div>
+        <p class="seqcap">옮겨 적지 않고 <b>화면을 그대로</b> 보여드려요. 쿠팡 리뷰는 프린세스 단품 기준이에요.</p>
+
+        <p class="rv__h">먼저 써 보신 분들</p>
+        <div class="rv">
+          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src">쿠팡</span></div>
+          <p class="rv__text">(실제 구매평 본문)</p>
+        </div>
+        <div class="rv">
+          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src">쿠팡</span><span class="rv__pic">사진 있음</span></div>
+          <p class="rv__text">(사진 있는 구매평 본문)</p>
+        </div>
+        <div class="rv">
+          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src">와디즈</span></div>
+          <p class="rv__text">(와디즈 서포터 후기 본문)</p>
+        </div>
+
+        <p class="rv__h">해외에서도 같은 말을 해요</p>
+        <div class="rv rv--intl">
+          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src rv__src--intl">🇺🇸 Amazon</span></div>
+          <p class="rv__text">(해외 구매평 번역)</p>
+          <p class="rv__orig">(original review text)</p>
+        </div>
+        <div class="rv rv--intl">
+          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src rv__src--intl">🇺🇸 Amazon</span></div>
+          <p class="rv__text">(해외 구매평 번역)</p>
+          <p class="rv__orig">(original review text)</p>
+        </div>
+
+        <p class="rv__h">블로그 후기 9편</p>
+        <div class="row3">
+          <div class="slot slot--wide"><em>썸네일</em></div>
+          <div class="slot slot--wide"><em>썸네일</em></div>
+          <div class="slot slot--wide"><em>썸네일</em></div>
         </div>
       </div>
     </div>
@@ -745,12 +785,16 @@
         <div class="brief__row"><div class="brief__k">의도</div><div class="brief__v"><p>남들도 샀고 좋았다는 걸 <b>우리 말이 아닌 남의 말로</b> 보여주는 자리예요. 결제 직전에 놓습니다.</p></div></div>
         <div class="brief__row"><div class="brief__k">내용</div><div class="brief__v"><p><b>뉴스 기사를 맨 위에</b> 깔고, 그 아래 쿠팡·와디즈 실제 화면 캡처, 그 아래 국내 구매평과 번역한 해외 구매평.</p></div></div>
       </div>
-      <div class="ask"><b>필요한 것</b>쿠팡 리뷰 화면, 와디즈 달성 화면 <b>캡처 파일</b>.</div>
-      <div class="ask"><b>주의</b>캡처에 <b>다른 사람 얼굴이나 아이디</b>가 들어가면 가립니다. 리뷰 작성자 닉네임도 마찬가지입니다.</div>
+      
+      
     
       <div class="demos">
         <button class="demo demo--play" type="button" data-play="news">다시 보기</button>
       </div>
+      <div class="ask"><b>필요한 것</b><b>쿠팡 상품 페이지 캡처</b>(별점 옆 406과 「최고 96%」가 한 화면에), <b>와디즈 종료 화면 캡처</b>(4,939% · 357명 · 성공 배지).</div>
+      <div class="ask"><b>필요한 것</b>구매평 본문 <b>국내 3개</b>, <b>해외 2개</b>. 해외는 원문도 같이 주시면 번역을 아래 작게 붙입니다. <b>지어내지 않습니다.</b></div>
+      <div class="ask"><b>주의</b>캡처에 다른 사람 얼굴이나 아이디가 보이면 가립니다.</div>
+      <div class="ask"><b>거르기</b>후기를 고를 때 <b>「무독성」「세탁해도」「색이 안 바래요」</b> 같은 말이 든 건 빼야 합니다. 고객이 쓴 글이어도 페이지에 올리면 우리 주장이 됩니다.</div>
     </div>
   </section>
 
