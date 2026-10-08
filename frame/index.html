@@ -81,6 +81,15 @@
 
   .themeNames { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; font-weight: 700; }
 
+  .shot { margin: 0; }
+  .shot img, .shot video { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); background: #fff; }
+  .shot figcaption { margin-top: 6px; font-size: 11px; color: var(--ink-dim); }
+  .cmp__h { margin: 10px 0 0; font-size: 11px; letter-spacing: .06em; color: var(--ink-dim); font-weight: 700; }
+  .cmp__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cmp__pair p { margin: 0; font-size: 11.5px; text-align: center; }
+  .cmp__old { color: var(--ink-dim); }
+  .cmp__new { color: var(--pink); font-weight: 700; }
+
   /* ── 블록 ── */
   .block { display: grid; grid-template-columns: 390px minmax(0, 1fr); gap: 26px; margin-top: 44px; align-items: start; }
   @media (max-width: 820px) { .block { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
@@ -228,7 +237,7 @@
   .cmp__sum b { color: var(--pink); }
 
   .cmp__vs {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start;
+    display: grid; gap: 8px;
     opacity: 0; transform: translateY(10px);
     transition: opacity .55s ease, transform .55s ease;
   }
@@ -263,6 +272,8 @@
     cursor: pointer;
   }
   .cmp__replay:hover { color: var(--ink); border-color: var(--ink-dim); }
+  .cmp__sum2 { margin: 0; font-size: 13px; line-height: 1.55; color: var(--ink); }
+  .cmp__sum2 b { color: var(--pink); }
   .cmp__acts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
   .cmp__acts .cmp__replay { margin-top: 0; }
   .cmp__demo { text-decoration: none; }
@@ -328,19 +339,17 @@
     <div class="screen">
       <div class="screen__tab"><b>01</b> 브랜드 영상</div>
       <div class="screen__body">
-        <div class="slot slot--wide"><em>브랜드 영상</em>1분 · 자동재생 · 음소거</div>
+        <figure class="shot"><img src="/frame/conti-outro.png" alt="브랜드 영상 콘티 마지막 컷" width="317" height="185" loading="lazy" /><figcaption>콘티 12컷 중 마지막 · 실제 영상으로 교체됩니다</figcaption></figure>
         <h2 class="h">식당에서도, 차 안에서도<br />아이가 혼자 노는 시간</h2>
       </div>
     </div>
     <div class="note">
-      <h3>무엇이 들어오나</h3>
+      <h3>한 가지만 챙기면 됩니다</h3>
       <ul>
-        <li>정부 지원사업으로 제작하는 <b>1분짜리 브랜드 영상</b>입니다. 콘티는 씨에스랩 제작본(12컷, 컷당 5초)이 있습니다.</li>
-        <li>콘티 흐름 &mdash; 보자마자 손이 가는 장면 &rarr; 보고 만지고 움직이는 조작 &rarr; 라인업 &rarr; 디테일 &rarr; 안전인증·펀딩 성과 &rarr; 사용 연령 &rarr; 마무리 로고.</li>
-        <li>맨 위라 <b>소리 없이 재생</b>됩니다. 자막이 없으면 무슨 영상인지 모릅니다.</li>
+        <li>이 영상은 <b>비지북 6종 전체</b>를 알리는 브랜드 영상입니다. 그런데 이 페이지는 <b>3종 세트</b>를 할인가로 파는 자리입니다.</li>
+        <li>그대로 두면 <b>「여섯 개 있다더니 왜 세 개만 파나」</b>가 생깁니다. 바로 아래 02 에서 <b>「그중 세 권을 묶었습니다」</b>로 받아 주면 풀립니다.</li>
       </ul>
-      <div class="ask"><b>확인 필요</b>콘티는 <b>「총 6가지 라인업」</b>을 말하는데 이 랜딩은 <b>3종 세트</b>를 팝니다. 6종을 먼저 보여주고 바로 아래에서 3종을 팔면 「나머지 셋은 왜 없지」가 생깁니다. 영상에서 6종 컷을 빼거나, 바로 아래 02 에서 <b>「이 중 세 권을 묶었습니다」</b>로 이어받아야 합니다.</div>
-      <div class="ask"><b>확인 필요</b>콘티의 <b>「5개국 안전인증」 「와디즈 4,883%」</b>는 근거 자료가 있어야 쓸 수 있습니다. 인증서와 펀딩 기록을 확인하고 가야 합니다.</div>
+    
     </div>
   </section>
 
@@ -357,15 +366,14 @@
           <span class="t-teal">언더더씨 &amp; 오션</span>
           <span class="t-green">사파리 &amp; 정글</span>
         </div>
-        <div class="price">
-          <s>207,000원</s><b>144,000원</b>
-        </div>
-        <p class="ship">3종 세트 · 무료배송</p>
+        <p class="p p--ink">여섯 권 중 세 권을 묶었습니다.</p>
       </div>
     </div>
     <div class="note">
       <h3>이 자리에서 막는 이탈</h3>
       <ul>
+        <li><b>여기서 가격을 말하지 않습니다.</b> 이미 들어온 사람을 값으로 돌려보낼 이유가 없습니다. 가격은 마지막 07 에서 한 번만 말합니다.</li>
+        <li>01 영상이 6종을 보여주고 왔으니 <b>여기서 「그중 세 권」으로 받아</b> 줍니다.</li>
         <li>무슨 제품인지 <b>3초 안에</b> 안 보이면 나갑니다. 그래서 글보다 제품이 먼저입니다.</li>
         <li>세 테마를 한눈에 놓는 게 핵심입니다. <b>세 개를 한꺼번에 산다</b>는 걸 여기서 이해시켜야 뒤가 쉬워집니다.</li>
         <li>가격을 첫 화면에 둡니다. 인스타에서 넘어온 사람은 값을 모르면 스크롤 전에 나갑니다.</li>
@@ -380,7 +388,7 @@
     <div class="screen">
       <div class="screen__tab"><b>03</b> 왜 또 하나를 사야 하나</div>
       <div class="screen__body">
-        <h2 class="h">국내 비지북은<br />거의 같은 이야기를 합니다</h2>
+        <h2 class="h">국내 비지북은<br />아직 농장과 동물에 머물러 있습니다</h2>
 
         <div class="cmp" data-cmp>
           <p class="cmp__cap">쿠팡 비지북 판매량 Top 20 · 테마 구성 · 2026년 10월</p>
@@ -411,17 +419,21 @@
           <p class="cmp__sum"><b>스무 개 중 열다섯 개</b>가<br />농장·동물이거나 단순 동작입니다</p>
 
           <div class="cmp__vs">
-            <div class="cmp__side">
-              <p class="cmp__sideCap">흔한 구성</p>
-              <div class="cmp__rival"><em>타사 제품</em>농장 테마</div>
-            </div>
-            <div class="cmp__side cmp__side--ours">
-              <p class="cmp__sideCap">조이캣</p>
-              <div class="cmp__box cmp__box--ours"><em>제품컷</em>3종 한 장</div>
+            <p class="cmp__h">하나 · 테마</p>
+            <p class="cmp__sum2">흔한 쪽은 농장과 동물에 머물러 있습니다.<br />조이캣은 <b>공주의 방 · 바닷속 · 정글</b>입니다.</p>
+
+            <p class="cmp__h">둘 · 그림</p>
+            <figure class="shot">
+              <video src="/frame/design-compare.mp4" autoplay muted loop playsinline></video>
+              <figcaption>왼쪽이 예전 디자인, 오른쪽이 지금 디자인 — 둘 다 조이캣 제품입니다</figcaption>
+            </figure>
+            <div class="cmp__pair">
+              <p class="cmp__old">예전</p>
+              <p class="cmp__new">지금</p>
             </div>
           </div>
 
-          <p class="cmp__kick">공주의 방, 바닷속, 정글<br />펼칠 때마다 다른 이야기가 시작됩니다</p>
+          <p class="cmp__kick">같은 테마라도<br />그림의 완성도가 다릅니다</p>
           <div class="cmp__acts">
             <button class="cmp__replay" type="button">다시 보기</button>
             <a class="cmp__replay cmp__demo" href="/scroll-demo/">스크롤 연동 예시 &rarr;</a>
@@ -430,11 +442,12 @@
       </div>
     </div>
     <div class="note">
-      <h3>이 자리에서 막는 이탈</h3>
+      <h3>이 자리에서 하려는 말</h3>
       <ul>
-        <li><b>「이미 비슷한 거 있는데」</b>를 끊는 자리입니다. 1번에서 제품을 봤으니, 여기서는 <b>왜 또 사야 하는지</b>에 답합니다.</li>
-        <li>우리 자랑을 먼저 하지 않습니다. <b>시장이 어떤지 숫자로 먼저</b> 보여주고, 그 위에 우리를 놓습니다.</li>
-        <li>차트가 그려지고 &rarr; 흔한 둘이 꺼지고 &rarr; 좌우 비교가 올라옵니다. 이 순서가 곧 설득의 순서입니다.</li>
+        <li>근본은 <b>「우리 게 압도적으로 좋다」</b>입니다. 그걸 두 가지로 나눠 보여줍니다.</li>
+        <li><b>하나, 테마.</b> 시장은 농장·동물과 단순 동작에 머물러 있는데 우리는 공주의 방·바닷속·정글입니다. 창의적인 영역에서 앞서 있다는 걸 <b>숫자로</b> 보여줍니다.</li>
+        <li><b>둘, 그림.</b> 같은 테마라도 디자인 완성도가 다릅니다. 이건 말로 못 하니 <b>두 장을 나란히 놓아</b> 보는 사람이 스스로 판단하게 합니다.</li>
+        <li>내 자랑을 먼저 하면 광고로 들립니다. <b>시장이 어떤지 보여준 뒤에</b> 우리를 놓으면 같은 말이 근거가 됩니다.</li>
       </ul>
       <h3>움직임</h3>
       <ul>
@@ -446,7 +459,7 @@
         <li>쿠팡 비지북 판매량 상위 20개 기준. <b>기준을 화면에 적어 둡니다</b> &mdash; 출처 없는 비교 수치는 표시광고법에서 문제가 됩니다.</li>
         <li>집계 시점이 바뀌면 숫자도 바뀝니다. 광고 돌리기 전에 <b>다시 세고 날짜를 적는</b> 게 안전합니다.</li>
       </ul>
-      <div class="ask"><b>확인 필요</b>왼쪽 칸에 타사 제품 사진이 들어갑니다. 남의 상품 사진을 그대로 쓰는 건 <b>사진 저작권</b>이 걸리고, 비교광고는 <b>객관적 근거가 있어야</b> 합니다. 테마 분포 숫자는 근거가 되지만 <b>사진 자체의 권리는 별개</b>입니다. 그대로 갈지, 카테고리를 그린 일러스트로 바꿀지 정해 주세요.</div>
+      <div class="ask"><b>해결됨</b>비교 영상은 <b>왼쪽도 오른쪽도 우리 제품</b>입니다(예전 디자인 / 지금 디자인). 타사 사진을 쓸 때 걸리던 <b>저작권과 비교광고 문제가 없어졌습니다.</b></div>
     </div>
   </section>
 
@@ -613,7 +626,7 @@
         <li>나이는 <b>제품 개발 기준</b>이지 의학·교육학 근거가 아닙니다. 효과 단정은 넣지 않습니다.</li>
       </ul>
       <div class="ask"><b>주의</b>KC 성적서에는 사용연령이 <b>36개월 기준</b>으로 적혀 있습니다. 09 블록과 이 블록을 한 화면에 나란히 두지 않습니다.</div>
-      <div class="ask"><b>확인 필요</b>지금 자료로 확인되는 신고확인증은 <b>프린세스 한 권</b>뿐입니다(모델명 BUSY BOOK, 제품설명서 사진도 프린세스 표지). 오션과 정글이 같은 신고에 포함되는지, 별도 신고가 있는지 확인되기 전까지 <b>「세 테마 모두」 「세 권 모두」를 쓰지 않습니다.</b> 그래서 뺐습니다.</div>
+      <div class="ask"><b>진행 중</b>성적서 PDF 세 개를 찾았습니다. 파일명 기준으로 <b>H111-26-00501 = BUSY BOOK</b>, <b>02852 = DINOSAUR·FARM</b>, <b>03418 = JUNGLE·OCEAN</b> 입니다. 우리 세 테마(프린세스·오션·정글)는 00501 과 03418 로 덮이는 것으로 보입니다. 다만 <b>스캔본이라 내용을 못 읽었습니다</b> — 표지의 모델명을 눈으로 확인해 주시면 「세 테마 모두」를 되살리겠습니다.</div>
       <div class="ask"><b>확인 필요</b>번호가 문서와 다릅니다. 문서상 신고확인증은 <b>CB065R3205-26001</b>(끝에 A 없음)이고, 확인되는 성적서는 <b>H111-26-00501</b> 하나입니다. 02852·03418 이 나머지 두 테마 성적서라면 위 문제가 같이 풀립니다. <b>원본을 주시면 맞춰 넣겠습니다.</b></div>
     </div>
   </section>
