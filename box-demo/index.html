@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<title>박스 열림 — 05 블록</title>
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500&display=swap" />
+<style>
+  :root {
+    --paper: #f4f1ec; --card: #fff; --ink: #241f1a; --ink-dim: #6d6459;
+    --line: #ddd6cb; --pink: #d9566b; --teal: #2d7f8c; --slot: #b9ae9d;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #191612; --card: #231f1a; --ink: #f0ebe3; --ink-dim: #a79d90;
+      --line: #3b352e; --pink: #e8808f; --teal: #5fb2bc; --slot: #6b6256;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #191612; --card: #231f1a; --ink: #f0ebe3; --ink-dim: #a79d90;
+    --line: #3b352e; --pink: #e8808f; --teal: #5fb2bc; --slot: #6b6256;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: "Noto Sans KR", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased; line-height: 1.6;
+  }
+  .wrap { max-width: 430px; margin-inline: auto; padding-inline: 16px; }
+
+  header { padding-block: 40px 6px; }
+  h1 {
+    margin: 0 0 8px; font-family: "Gowun Dodum", "Noto Sans KR", sans-serif;
+    font-size: 24px; line-height: 1.32; letter-spacing: -.02em; text-wrap: balance;
+  }
+  .lede { margin: 0; font-size: 13.5px; color: var(--ink-dim); }
+
+  /* ── 무대 ──
+     박스는 앞(z2), 책은 뒤(z1). 책이 위로 올라오면 아랫부분이 박스에
+     가려져 "박스에서 나온다" 로 읽힌다. 펼친 책은 맨 앞(z3)에서 받는다. */
+  .stage {
+    position: relative; margin-top: 26px;
+    aspect-ratio: 1 / 1; perspective: 900px;
+    display: grid; place-items: center;
+    background:
+      radial-gradient(60% 50% at 50% 62%, rgba(217,86,107,.10), transparent 70%),
+      var(--card);
+    border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+  }
+  .stage > * { position: absolute; }
+
+  /* 상자 안에서 새어 나오는 빛 */
+  .glow {
+    width: 56%; height: 26%; bottom: 30%; border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(255,214,122,.95), rgba(255,214,122,0) 70%);
+    opacity: calc(clamp(0, (var(--q) - .18) / .22, 1) * (1 - clamp(0, (var(--q) - .72) / .2, 1)));
+    filter: blur(6px); z-index: 1;
+  }
+
+  .book {
+    width: 50%; z-index: 2;
+    /* 0.35 부터 박스 뒤에서 솟아오른다 */
+    --r: clamp(0, (var(--q) - .32) / .36, 1);
+    transform:
+      translateY(calc(74px - 150px * var(--r)))
+      scale(calc(.62 + .38 * var(--r)))
+      rotate(calc(-7deg + 7deg * var(--r)));
+    opacity: calc(clamp(0, (var(--q) - .3) / .1, 1) - clamp(0, (var(--q) - .72) / .14, 1));
+  }
+
+  .box {
+    width: 62%; z-index: 3;
+    --o: clamp(0, (var(--q) - .16) / .3, 1);
+    transform:
+      translateY(calc(42px + 26px * var(--o)))
+      scale(calc(1 + .07 * clamp(0, var(--q) / .2, 1)))
+      rotateX(calc(14deg * var(--o)));
+    transform-origin: 50% 100%;
+    opacity: calc(1 - clamp(0, (var(--q) - .62) / .22, 1));
+  }
+
+  .spread {
+    width: 84%; z-index: 4;
+    --s: clamp(0, (var(--q) - .68) / .3, 1);
+    transform: scale(calc(.78 + .22 * var(--s)));
+    opacity: var(--s);
+  }
+
+  .stage img { width: 100%; height: auto; display: block; filter: drop-shadow(0 16px 26px rgba(0,0,0,.2)); }
+
+  .steps { display: flex; gap: 5px; position: absolute; left: 14px; bottom: 13px; z-index: 6; }
+  .steps i { width: 22px; height: 3px; border-radius: 2px; background: rgba(120,110,100,.22); display: block; }
+  .steps i.on { background: var(--pink); }
+
+  .cap { margin: 10px 0 0; font-size: 12px; color: var(--ink-dim); min-height: 1.6em; }
+
+  .acts { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .btn {
+    border: 1px solid var(--teal); background: var(--card); color: var(--teal);
+    border-radius: 999px; padding: 7px 15px; font: inherit; font-size: 12.5px; font-weight: 700;
+    cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn:hover { background: var(--teal); color: #fff; }
+
+  .scroller { height: 150vh; }
+
+  .copy { padding-block: 26px 0; }
+  .copy h2 {
+    margin: 0 0 6px; font-family: "Gowun Dodum", "Noto Sans KR", sans-serif;
+    font-size: 23px; line-height: 1.38; letter-spacing: -.02em;
+  }
+  .copy p { margin: 0; font-size: 13.5px; color: var(--ink-dim); }
+
+  .brief { display: grid; gap: 11px; margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .brief__row { display: grid; grid-template-columns: 48px minmax(0,1fr); gap: 11px; align-items: start; }
+  .brief__k { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--teal); padding-top: 3px; }
+  .brief__v { font-size: 13.5px; }
+  .brief__v p { margin: 0 0 6px; }
+  .brief__v p:last-child { margin: 0; }
+
+  footer { padding-block: 26px 70px; font-size: 13px; color: var(--ink-dim); }
+  footer a { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <h1>박스 열림 — 05 블록</h1>
+  <p class="lede">스크롤을 내리면 상자가 뒤로 눕고, 그 뒤에서 책이 올라와 펼쳐집니다. 올리면 되감깁니다. 프린세스 한 권으로만 만들었습니다.</p>
+</header>
+
+<div class="stage" data-stage style="--q:0">
+  <span class="glow" aria-hidden="true"></span>
+  <span class="book"><img src="/frame/photos/box/book-closed.png" alt="프린세스 비지북" width="364" height="408" /></span>
+  <span class="box"><img src="/frame/photos/box/box-princess.png" alt="프린세스 패키지 상자" width="349" height="376" /></span>
+  <span class="spread"><img src="/frame/photos/box/book-open.png" alt="프린세스 비지북 펼친 모습" width="745" height="362" /></span>
+  <span class="steps" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+</div>
+<p class="cap" data-cap></p>
+
+<div class="acts">
+  <button class="btn" type="button" data-replay>다시 보기</button>
+  <a class="btn" href="/frame/">기획 프레임으로</a>
+</div>
+
+<div class="copy">
+  <h2>박스를 여는 순간부터<br />선물입니다</h2>
+  <p>세 권이 한 상자에 담겨 그대로 전달됩니다. 돌, 두 돌, 조카 선물로 따로 포장할 것 없이.</p>
+</div>
+
+<div class="brief">
+  <div class="brief__row"><div class="brief__k">의도</div><div class="brief__v">
+    <p>상자째 선물할 수 있다는 걸 <b>글이 아니라 장면으로</b> 보여주는 자리입니다. 받는 사람이 상자를 여는 순간을 미리 겪게 합니다.</p>
+  </div></div>
+  <div class="brief__row"><div class="brief__k">내용</div><div class="brief__v">
+    <p>상자 &rarr; 책 &rarr; 펼친 속장. 네 단계로 넘어갑니다.</p>
+    <p>사진은 와디즈 보정본에서 배경을 지워 쓴 것입니다. <b>상자를 실제로 여는 컷이 없어</b> 상자가 뒤로 눕는 걸로 대신했습니다. 중간 컷이 있으면 훨씬 자연스러워집니다.</p>
+  </div></div>
+</div>
+
+<div class="scroller" aria-hidden="true"></div>
+
+<footer>
+  <p><a href="/frame/">&larr; 기획 프레임으로</a></p>
+</footer>
+</div>
+
+<script>
+/* 스크롤 위치를 0~1 로 바꿔 --q 에 넣는다. 모양은 CSS 가 맡는다.
+   다시 보기를 누르면 잠깐 스크롤을 끊고 0 에서 1 까지 직접 돌린다. */
+(function () {
+  'use strict';
+  var stage = document.querySelector('[data-stage]');
+  var cap = document.querySelector('[data-cap]');
+  var dots = stage.querySelectorAll('.steps i');
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var CAPS = ['상자째 도착합니다', '상자를 엽니다', '책이 나옵니다', '펼치면 속장입니다'];
+  var playing = false, ticking = false;
+
+  function paint(q) {
+    stage.style.setProperty('--q', q.toFixed(3));
+    var i = q < 0.2 ? 0 : q < 0.45 ? 1 : q < 0.72 ? 2 : 3;
+    cap.textContent = CAPS[i];
+    for (var k = 0; k < dots.length; k++) dots[k].classList.toggle('on', k <= i);
+  }
+
+  function fromScroll() {
+    ticking = false;
+    if (playing) return;
+    var r = stage.getBoundingClientRect();
+    var h = window.innerHeight;
+    paint(Math.min(Math.max((h - r.top - 60) / (h * 0.75), 0), 1));
+  }
+  function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(fromScroll); }
+
+  function replay() {
+    if (calm) { paint(1); return; }
+    playing = true;
+    var t0 = 0, dur = 2200;
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var k = Math.min((ts - t0) / dur, 1);
+      paint(1 - Math.pow(1 - k, 3));
+      if (k < 1) requestAnimationFrame(step);
+      else { playing = false; fromScroll(); }
+    }
+    requestAnimationFrame(step);
+  }
+
+  document.querySelector('[data-replay]').addEventListener('click', replay);
+
+  if (calm) { paint(1); return; }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  fromScroll();
+  /* 처음 들어오면 한 번 돌려 보여준다 */
+  setTimeout(replay, 400);
+})();
+</script>
+</body>
+</html>
