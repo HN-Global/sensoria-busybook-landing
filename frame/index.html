@@ -195,7 +195,7 @@
 
 
   /* ── 07 가격 떨어뜨리기 · 도장 · 재고 ── */
-  .drop { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .drop { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
   .drop__was { font-size: 16px; color: var(--ink-dim); text-decoration: line-through; opacity: calc(1 - var(--d, 0) * .55); }
   .drop__now { font-family: var(--font-mono); font-size: 32px; font-weight: 700; color: var(--pink); font-variant-numeric: tabular-nums; }
   .drop__off {
@@ -204,7 +204,7 @@
     opacity: var(--d, 0); transform: scale(calc(.8 + .2 * var(--d, 0)));
   }
   .stamp {
-    display: inline-grid; place-content: center; margin-top: 10px;
+    display: inline-grid; place-content: center;
     border: 2.5px solid var(--teal); color: var(--teal);
     border-radius: 7px; padding: 7px 14px;
     font-size: 15px; font-weight: 800; letter-spacing: .06em;
@@ -229,7 +229,8 @@
   /* ── 08 연령 3단계 ── */
   .steps { display: grid; grid-template-columns: 1fr 14px 1fr 14px 1fr; align-items: start; gap: 4px; }
   .step { display: flex; flex-direction: column; gap: 6px; opacity: var(--s, 0); transform: translateY(calc(10px * (1 - var(--s, 0)))); }
-  .step .slot { aspect-ratio: 1 / 1; border-radius: 12px; }
+  .step figure { margin: 0; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; background: #efeae2; }
+  .step figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .step b { font-size: 12.5px; color: var(--ink); text-align: center; }
   .step span { font-size: 11px; color: var(--ink-dim); text-align: center; }
   .steps__arw { align-self: center; margin-top: -26px; color: var(--slot); font-size: 15px; text-align: center; }
@@ -365,7 +366,7 @@
   .fbtn--rv { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.4); }
   .fbtn small { display: block; font-weight: 400; font-size: 10.5px; opacity: .78; }
 
-  /* ── 04 블록(차트): 흔한 것 쳐내고 우리 보여주기 ──
+  /* ── 05 블록(차트): 흔한 것 쳐내고 우리 보여주기 ──
      스크롤해서 보이면 한 번 돈다. 차트 -> 쳐내기 -> 비교 순서가
      곧 설득의 순서다. 움직임을 끄고 쓰는 사람에겐 결과만 바로 보인다. */
   .cmp { display: flex; flex-direction: column; gap: 12px; }
@@ -460,6 +461,39 @@
 
   .shot--wide img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
 
+
+  /* ── 인증 벽 ── */
+  .cw__tally {
+    display: flex; align-items: baseline; gap: 8px; margin: 2px 0 14px;
+    padding: 9px 13px; border-radius: 10px; background: var(--card); border: 1px solid var(--line);
+  }
+  .cw__tally b { font-family: var(--font-mono); font-size: 21px; color: var(--pink); }
+  .cw__tally span { font-size: 11.5px; color: var(--ink-dim); }
+  .cw__grp { margin-bottom: 15px; }
+  .cw__grp:last-of-type { margin-bottom: 4px; }
+  .cw__h {
+    margin: 0 0 2px; font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .cw__h b {
+    margin-left: auto; font-family: var(--font-mono); font-size: 10.5px;
+    color: var(--teal); font-weight: 500;
+  }
+  .cw__flag { font-size: 15px; line-height: 1; }
+  .cw__sub { margin: 0 0 7px; font-size: 10.5px; color: var(--ink-dim); line-height: 1.45; }
+  .cw__row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .cw__card {
+    padding: 0; border: 1px solid var(--line); border-radius: 7px; background: #fff;
+    overflow: hidden; cursor: pointer; text-align: left; display: flex; flex-direction: column;
+  }
+  .cw__card:hover { border-color: var(--teal); }
+  .cw__card img { width: 100%; height: auto; display: block; aspect-ratio: 109 / 154; object-fit: cover; object-position: top center; }
+  .cw__cap {
+    padding: 4px 5px 5px; font-size: 8.5px; line-height: 1.3; color: var(--ink);
+    background: var(--card);
+  }
+  .cw__cap small { display: block; font-family: var(--font-mono); font-size: 7.5px; color: var(--ink-dim); margin-top: 1px; word-break: break-all; }
+
   /* ── 메모 ── */
   .note { padding-top: 4px; }
 
@@ -529,9 +563,8 @@
       <div class="fact"><b>390px</b><span>모바일 기준 폭</span></div>
     </div>
     <div class="demos">
-      <a class="demo" href="/video-demo/">영상 카드 데모</a>
-      <a class="demo" href="/scroll-demo/">스크롤 연동 데모</a>
-      <a class="demo" href="/frame/08-demo/">연령 블록 여섯 안</a>
+      <a class="demo" href="/video-demo/" target="_blank" rel="noopener">영상 카드 데모</a>
+      <a class="demo" href="/scroll-demo/" target="_blank" rel="noopener">스크롤 연동 데모</a>
     </div>
   </header>
 
@@ -541,18 +574,13 @@
     <div class="screen">
       <div class="screen__tab"><b>01</b> 브랜드 영상</div>
       <div class="screen__body">
-        <figure class="shot shot--wide"><img src="/frame/conti-outro.png" alt="브랜드 영상 콘티 마지막 컷" width="317" height="185" loading="lazy" /><figcaption>가로로 긴 영상이 이 자리에 들어갑니다</figcaption></figure>
+        <figure class="shot shot--wide"><img src="/frame/conti-outro.png" alt="브랜드 영상 콘티 마지막 컷" width="317" height="185" loading="lazy" /></figure>
       </div>
     </div>
     <div class="note">
       <div class="brief">
-        <div class="brief__row"><div class="brief__k">의도</div><div class="brief__v">
-          <p>잘 만든 영상 하나로 <b>브랜드가 근본 있어 보이게</b> 만드는 자리입니다. 처음 보는 브랜드에 144,000원을 쓰게 하려면, 첫 화면에서 <b>제대로 하는 곳이구나</b> 싶어야 합니다.</p>
-        </div></div>
-        <div class="brief__row"><div class="brief__k">내용</div><div class="brief__v">
-          <p>외주 업체에 맡긴 <b>브랜드·제품 홍보 영상</b>을 그대로 띄웁니다. <b>가로로 긴 영상</b>이니 그에 맞춰 잡아 주세요.</p>
-          <p>글은 넣지 않습니다. 영상만 둡니다.</p>
-        </div></div>
+        <div class="brief__row"><div class="brief__k">의도</div><div class="brief__v"><p>잘 만든 영상 하나로 <b>브랜드가 근본 있어 보이게</b> 만드는 자리예요. 처음 보는 브랜드에 144,000원을 쓰게 하려면 첫 화면에서 제대로 하는 곳이구나 싶어야 합니다.</p></div></div>
+        <div class="brief__row"><div class="brief__k">내용</div><div class="brief__v"><p>외주 업체에 맡긴 <b>브랜드·제품 홍보 영상</b>을 그대로 띄웁니다. <b>가로로 긴 영상</b>이라 그에 맞춰 잡아 주세요.</p></div></div>
       </div>
     </div>
   </section>
@@ -564,26 +592,22 @@
       <div class="screen__body">
         <p class="eyebrow">미국 아마존 1위 · 국내 공식 수입원</p>
         <h2 class="h h--big">공주의 방, 바닷속, 정글<br />세 개의 세계를 한 상자에</h2>
-        <div class="slot slot--wide"><em>움짤</em>세 제품이 한 장에</div>
+        <div class="slot slot--wide"><em>움짤</em>세 권이 한 화면에 쭉</div>
         <div class="themeNames">
           <span class="t-pink">프린세스 &amp; 유니콘</span>
           <span class="t-teal">언더더씨 &amp; 오션</span>
           <span class="t-green">사파리 &amp; 정글</span>
         </div>
-        <p class="p p--ink">여섯 테마 중 서로 겹치지 않는 세 권으로 골랐습니다.</p>
+        <p class="p p--ink">여섯 테마 중에 겹치는 데 없이 세 권만 골라 묶었어요.</p>
       </div>
     </div>
     <div class="note">
-      <h3>이 자리에서 막는 이탈</h3>
-      <ul>
-        <li><b>여기서 가격을 말하지 않습니다.</b> 이미 들어온 사람을 값으로 돌려보낼 이유가 없습니다. 가격은 마지막 09 에서 한 번만 말합니다.</li>
-        <li>01 영상이 6종을 보여주고 왔으니 <b>여기서 「그중 세 권」으로 받아</b> 줍니다.</li>
-        <li>무슨 제품인지 <b>3초 안에</b> 안 보이면 나갑니다. 그래서 글보다 제품이 먼저입니다.</li>
-        <li>세 테마를 한눈에 놓는 게 핵심입니다. <b>세 개를 한꺼번에 산다</b>는 걸 여기서 이해시켜야 뒤가 쉬워집니다.</li>
-        <li>가격을 첫 화면에 둡니다. 인스타에서 넘어온 사람은 값을 모르면 스크롤 전에 나갑니다.</li>
-      </ul>
-      <div class="ask"><b>배치</b>준비된 움짤이 전부 <b>가로로 긴 모양</b>입니다. 세 개를 옆으로 늘어놓으면 하나가 손톱만 해져서 제품이 안 보입니다. <b>세로로 쌓거나, 세 제품이 한 장에 담긴 것 하나</b>로 가야 합니다. 이 섹션은 길어져도 괜찮습니다.</div>
-      <div class="ask"><b>대안</b>자체 제작이 어려우면 <b>와디즈 상세 맨 위의 3종 소개 영상</b>을 그대로 반복 재생해도 됩니다.</div>
+      <div class="brief">
+        <div class="brief__row"><div class="brief__k">의도</div><div class="brief__v"><p>들어오자마자 <b>뭘 파는지 한눈에</b> 보여서 그냥 나가지 않게 붙잡는 자리예요. 여기서 못 잡으면 뒤에 뭘 깔아도 안 봅니다.</p></div></div>
+        <div class="brief__row"><div class="brief__k">내용</div><div class="brief__v"><p><b>움짤</b>로 세 권을 한 화면에 쭉 보여줍니다. 글은 거들기만 해요.</p></div></div>
+      </div>
+      <div class="ask"><b>배치</b>가지고 계신 움짤이 전부 <b>가로로 넓은 모양</b>이에요. 휴대폰 화면에 셋을 나란히 놓으면 <b>하나하나가 너무 작아져서</b> 책이 안 보입니다. <b>위아래로 쌓거나</b>, 세 권이 한 장에 같이 담긴 움짤 하나로 가야 해요. 이 자리는 길어져도 괜찮습니다.</div>
+      <div class="ask"><b>대안</b>새로 만들기 어려우면 <b>와디즈 상세 맨 위에 있는 3종 움짤</b>을 그대로 반복 재생해도 됩니다.</div>
     </div>
   </section>
 
@@ -592,7 +616,7 @@
     <div class="screen">
       <div class="screen__tab"><b>03</b> 아이가 노는 영상<span style="margin-left:auto">전 04</span></div>
       <div class="screen__body">
-        <h2 class="h">지퍼를 올리고, 단추를 끼우고<br />다 끝내면 엄마를 쳐다봅니다</h2>
+        <h2 class="h">한 번 펼치면<br />손에서 안 놓더라고요</h2>
         <div class="vpick">
           <button class="vpick__card" type="button" data-video="/frame/videos/play-together.mp4" data-title="같이 노는 장면" aria-label="같이 노는 장면 전체화면 재생">
             <video class="vpick__prev" data-src="/frame/videos/play-together-preview.mp4" poster="/frame/videos/play-together-poster.jpg" muted loop playsinline preload="none"></video>
@@ -607,26 +631,18 @@
             <span class="vpick__label">혼자 해내는 장면<small>말을 걸지 않아도 됩니다</small></span>
           </button>
         </div>
-        <p class="seqcap">카드를 누르면 전체화면으로 재생됩니다</p>
-        <p class="p">화면 대신 손으로 노는 시간입니다.</p>
+        <p class="p">공주든 농장이든, 한 번 열면 다 뗐다 붙였다 해봐야 직성이 풀려요.</p>
       </div>
     </div>
     <div class="note">
-      <h3>어떻게 움직이나</h3>
-      <ul>
-        <li>루딕스 가이드 에디션(<b>start.rudix.biz/pads/guide-edition</b>)에 쓴 방식 그대로입니다. 카드가 화면에 들어오면 <b>미리보기가 소리 없이 돌고</b>, 누르면 전체 영상이 열립니다.</li>
-        <li>미리보기는 <b>화면에 들어올 때만 받습니다.</b> 영상이 여러 블록에 들어가는 페이지라 처음부터 다 받으면 첫 화면이 죽습니다. 전체 영상은 눌러야 받습니다.</li>
-      </ul>
-      <h3>지금 들어간 영상</h3>
-      <ul>
-        <li>원본 폴더: <b>OneDrive / 조이캣 비지북(랜딩) / 1. 원본 / 아이들이 재밌게 갖고 노는 영상</b></li>
-        <li>원본 세 개 중 <b>두 개</b>, 20초로 자른 임시본입니다. 자르는 지점은 정해 주세요.</li>
-        <li><b>농장 책이 나오는 영상은 쓰지 않습니다.</b> 바로 다음 04 에서 「농장은 흔하다」고 하는데 여기서 우리 농장 책이 나오면 앞뒤가 안 맞습니다.</li>
-      </ul>
+      <div class="brief">
+        <div class="brief__row"><div class="brief__k">의도</div><div class="brief__v"><p><b>아이들이 이거에 환장한다</b>는 걸 영상으로 바로 보여주는 자리예요. 설명이 아니라 장면으로 납득시킵니다.</p></div></div>
+        <div class="brief__row"><div class="brief__k">내용</div><div class="brief__v"><p>아이가 노는 영상 <b>두 편</b>. 하나는 <b>공주</b>, 하나는 <b>농장</b>입니다. 눌러서 전체화면으로 봅니다.</p></div></div>
+      </div>
       <div class="ask"><b>디자이너께</b>위 폴더의 영상으로 구성해 주세요. 어느 구간을 몇 초로 쓸지 편집이 필요합니다.</div>
     
       <div class="demos">
-        <a class="demo" href="/video-demo/">영상 카드 데모 <span>실제 크기로 열어 보기</span></a>
+        <a class="demo" href="/video-demo/" target="_blank" rel="noopener">영상 카드 데모 <span>실제 크기로 열어 보기</span></a>
       </div>
     </div>
   </section>
@@ -634,9 +650,60 @@
   <!-- 4 -->
   <section class="block">
     <div class="screen">
-      <div class="screen__tab"><b>04</b> 왜 또 하나를 사야 하나<span style="margin-left:auto">전 03</span></div>
+      <div class="screen__tab"><b>04</b> 리뷰 · 와디즈 · 언론<span style="margin-left:auto">전 06</span></div>
       <div class="screen__body">
-        <h2 class="h">국내 비지북은<br />아직 농장과 동물에 머물러 있습니다</h2>
+        <h2 class="h">저만 좋다고 하는 게<br />아니더라고요</h2>
+        <div class="capshot">
+          <div class="slot slot--wide"><em>캡처</em>쿠팡 상품 리뷰 406 · 최고 96%</div>
+          <div class="slot slot--wide"><em>캡처</em>와디즈 4,939% 달성 · 24,697,000원 · 357명</div>
+        </div>
+        <p class="seqcap">캡처 화면 그대로 옮겼습니다. 쿠팡 리뷰는 <b>프린세스 단품 기준</b>입니다.</p>
+
+        <div class="rv">
+          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src">쿠팡</span></div>
+          <p class="rv__text">(실제 구매평 본문)</p>
+        </div>
+        <div class="rv">
+          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src">쿠팡</span></div>
+          <p class="rv__text">(사진 있는 구매평 본문)</p>
+        </div>
+
+        <p class="p">네이버 블로그 후기 9편</p>
+        <div class="row3">
+          <div class="slot slot--wide"><em>썸네일</em></div>
+          <div class="slot slot--wide"><em>썸네일</em></div>
+          <div class="slot slot--wide"><em>썸네일</em></div>
+        </div>
+
+        <div class="news news--anim" data-news>
+          <a href="https://www.gokorea.kr/news/articleView.html?idxno=873458" target="_blank" rel="noopener noreferrer"><b>고코리아</b><span>조이캣, 몬테소리 교육 원칙 반영한 감각놀이 완구 '비지북' 선봬</span></a>
+          <a href="https://www.gosiweek.com/article/1065580674842325" target="_blank" rel="noopener noreferrer"><b>고시위크</b><span>조이캣 비지북, 쿠팡 촉감발달완구 카테고리 2위 진입</span></a>
+          <a href="https://www.ksilbo.co.kr/news/articleView.html?idxno=1063634" target="_blank" rel="noopener noreferrer"><b>경상일보</b><span>조이캣 비지북, 오펜하임토이포트폴리오 플래티넘 수상</span></a>
+          <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90553" target="_blank" rel="noopener noreferrer"><b>한국목재신문</b><span>글로벌 완구 브랜드 조이캣, 한국 시장 진출</span></a>
+          <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90531" target="_blank" rel="noopener noreferrer"><b>한국목재신문</b><span>조이캣, 교육완구 기부로 아시아 아동 지원 확대</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      <div class="brief">
+        <div class="brief__row"><div class="brief__k">의도</div><div class="brief__v"><p>남들도 샀고 좋았다는 걸 <b>우리 말이 아닌 남의 말로</b> 보여주는 자리예요. 결제 직전에 놓습니다.</p></div></div>
+        <div class="brief__row"><div class="brief__k">내용</div><div class="brief__v"><p><b>뉴스 기사를 맨 위에</b> 깔고, 그 아래 쿠팡·와디즈 실제 화면 캡처, 그 아래 국내 구매평과 번역한 해외 구매평.</p></div></div>
+      </div>
+      <div class="ask"><b>필요한 것</b>쿠팡 리뷰 화면, 와디즈 달성 화면 <b>캡처 파일</b>.</div>
+      <div class="ask"><b>주의</b>캡처에 <b>다른 사람 얼굴이나 아이디</b>가 들어가면 가립니다. 리뷰 작성자 닉네임도 마찬가지입니다.</div>
+    
+      <div class="demos">
+        <button class="demo demo--play" type="button" data-play="news">다시 보기</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="block">
+    <div class="screen">
+      <div class="screen__tab"><b>05</b> 왜 또 하나를 사야 하나<span style="margin-left:auto">전 03</span></div>
+      <div class="screen__body">
+        <h2 class="h">같은 비지북인데<br />왜 이렇게 달라 보일까요</h2>
 
         <div class="cmp" data-cmp>
           <p class="cmp__cap">쿠팡 비지북 판매량 Top 20 · 테마 구성 · 2026년 10월</p>
@@ -691,61 +758,14 @@
       </div>
     </div>
     <div class="note">
-      <h3>이 자리에서 하려는 말</h3>
-      <ul>
-        <li>근본은 <b>「우리 게 압도적으로 좋다」</b>입니다. 그걸 두 가지로 나눠 보여줍니다.</li>
-        <li><b>하나, 테마.</b> 시장은 농장·동물과 단순 동작에 머물러 있는데 우리는 공주의 방·바닷속·정글입니다. 창의적인 영역에서 앞서 있다는 걸 <b>숫자로</b> 보여줍니다.</li>
-        <li><b>둘, 그림.</b> 같은 테마라도 디자인 완성도가 다릅니다. 이건 말로 못 하니 <b>두 장을 나란히 놓아</b> 보는 사람이 스스로 판단하게 합니다.</li>
-        <li>내 자랑을 먼저 하면 광고로 들립니다. <b>시장이 어떤지 보여준 뒤에</b> 우리를 놓으면 같은 말이 근거가 됩니다.</li>
-      </ul>
-      <h3>움직임</h3>
-      <ul>
-        <li>스크롤해서 화면에 들어오면 <b>한 번</b> 돕니다. 계속 반복하면 읽는 걸 방해합니다. <b>다시 보기</b> 버튼을 뒀습니다.</li>
-        <li>기기에서 <b>움직임 줄이기</b>를 켠 사람에게는 애니메이션 없이 결과만 바로 보입니다.</li>
-      </ul>
-      <h3>숫자 출처</h3>
-      <ul>
-        <li>쿠팡 비지북 판매량 상위 20개 기준. <b>출처를 화면에 적어 둡니다.</b></li>
-        <li>집계 시점이 바뀌면 숫자도 바뀝니다. 광고 돌리기 전에 <b>다시 세고 날짜를 적는</b> 게 안전합니다.</li>
-      </ul>
+      <div class="brief">
+        <div class="brief__row"><div class="brief__k">의도</div><div class="brief__v"><p>조이캣 비지북이 <b>다른 데 것보다 압도적으로 낫다</b>는 걸 보여주는 자리예요. 테마도 그림도 우리가 위라는 걸 눈으로 확인시킵니다.</p></div></div>
+        <div class="brief__row"><div class="brief__k">내용</div><div class="brief__v"><p>두 가지입니다. <b>하나 · 테마</b> — 흔한 건 농장·동물에 몰려 있고 우리는 공주의 방·바닷속·정글. <b>둘 · 그림</b> — 옛날 디자인과 요즘 디자인을 <b>돋보기로 확대해</b> 마감까지 비교합니다.</p></div></div>
+      </div>
       
       
       <div class="demos">
-        <a class="demo" href="/scroll-demo/">스크롤 연동 데모 <span>차트가 어떻게 도는지</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5 -->
-  <section class="block">
-    <div class="screen">
-      <div class="screen__tab"><b>05</b> 패키지 · 제품 사진</div>
-      <div class="screen__body">
-        <h2 class="h">박스를 여는 순간부터<br />선물입니다</h2>
-        <div class="boxseq" data-boxseq style="--q:0">
-          <span class="bs__glow" aria-hidden="true"></span>
-          <span class="bs__book"><img src="/frame/photos/box/book-closed.png" alt="프린세스 비지북" width="364" height="408" loading="lazy" /></span>
-          <span class="bs__box"><img src="/frame/photos/box/box-princess.png" alt="프린세스 패키지 상자" width="349" height="376" loading="lazy" /></span>
-          <span class="bs__spread"><img src="/frame/photos/box/book-open.png" alt="프린세스 비지북 펼친 모습" width="745" height="362" loading="lazy" /></span>
-          <span class="boxseq__step" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        </div>
-        <p class="seqcap" data-boxcap>상자째 도착합니다</p>
-        <div class="slot slot--wide"><em>디테일</em>바느질 · 펠트 단면</div>
-        <p class="p">세 권이 한 상자에 담겨 그대로 전달됩니다. 돌, 두 돌, 조카 선물로 따로 포장할 것 없이.</p>
-      </div>
-    </div>
-    <div class="note">
-      <h3>움직임</h3>
-      <ul>
-        <li>스크롤을 내리면 <b>박스 &rarr; 책 &rarr; 펼친 속장</b> 순으로 갈아 끼워집니다. 올리면 되감깁니다.</li>
-        <li><b>공주 한 권</b>으로만 돌아갑니다. 세 권으로 늘릴 수 있습니다.</li>
-        <li>사진은 와디즈 보정본에서 가져왔습니다 &mdash; 패키지 전체, 공주 책 닫힘, 공주 책 펼침.</li>
-      </ul>
-      <div class="ask"><b>있으면 더 좋은 컷</b><b>박스를 실제로 여는 중간 컷.</b> 지금은 상자가 뒤로 눕는 걸로 대신하고 있습니다.</div>
-    
-      <div class="demos">
-        <button class="demo demo--play" type="button" data-play="box">다시 보기</button>
-        <a class="demo" href="/box-demo/">박스 열림 데모</a>
+        <a class="demo" href="/scroll-demo/" target="_blank" rel="noopener">스크롤 연동 데모 <span>차트가 어떻게 도는지</span></a>
       </div>
     </div>
   </section>
@@ -753,42 +773,30 @@
   <!-- 6 -->
   <section class="block">
     <div class="screen">
-      <div class="screen__tab"><b>06</b> 연령대별 안내<span style="margin-left:auto">전 08</span></div>
+      <div class="screen__tab"><b>06</b> 패키지 · 제품 사진<span style="margin-left:auto">전 05</span></div>
       <div class="screen__body">
-        <p class="eyebrow">함께 시작해, 스스로 노는 비지북</p>
-        <h2 class="h h--big">18개월부터 7세까지</h2>
-        <p class="p">나이에 따라 노는 방법이 달라져요</p>
-        <div class="steps" data-steps>
-          <div class="step">
-            <div class="slot"><em>사진</em>손을 잡고</div>
-            <b>18개월~3세</b><span>부모님과 함께</span>
-          </div>
-          <div class="steps__arw" aria-hidden="true">&rarr;</div>
-          <div class="step">
-            <div class="slot"><em>사진</em>옆에서 보며</div>
-            <b>4~5세</b><span>곁에서 지켜보기</span>
-          </div>
-          <div class="steps__arw" aria-hidden="true">&rarr;</div>
-          <div class="step">
-            <div class="slot"><em>사진</em>혼자 앉아</div>
-            <b>6~7세</b><span>아이 스스로</span>
-          </div>
+        <h2 class="h">그대로 건네도<br />포장이 필요 없어요</h2>
+        <div class="boxseq" data-boxseq style="--q:0">
+          <span class="bs__glow" aria-hidden="true"></span>
+          <span class="bs__book"><img src="/frame/photos/box/book-closed.png" alt="프린세스 비지북" width="364" height="408" loading="lazy" /></span>
+          <span class="bs__box"><img src="/frame/photos/box/box-princess.png" alt="프린세스 패키지 상자" width="349" height="376" loading="lazy" /></span>
+          <span class="bs__spread"><img src="/frame/photos/box/book-open.png" alt="프린세스 비지북 펼친 모습" width="745" height="362" loading="lazy" /></span>
+          <span class="boxseq__step" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         </div>
+        <div class="slot slot--wide"><em>디테일</em>바느질 · 펠트 단면</div>
+        <p class="p">세 권이 상자 하나에 들어 있어요. 돌 선물, 두 돌 선물, 조카 선물로 그냥 들고 가시면 됩니다.</p>
       </div>
     </div>
     <div class="note">
-      <h3>움직임</h3>
-      <ul>
-        <li>스크롤하면 <b>세 칸이 왼쪽부터 하나씩</b> 올라옵니다. 화살표를 따라가며 「우리 애는 여기쯤」을 찾게 됩니다.</li>
-        <li>같은 제품을 <b>오래 쓴다</b>는 게 이 자리의 전부입니다. 한 번 사서 몇 해를 쓴다는 계산이 서야 144,000원이 싸 보입니다.</li>
-      </ul>
-      <div class="ask"><b>골라 주세요</b>와디즈 사진 149장에 <b>아이는 한 명뿐</b>입니다(같은 옷, 같은 날). 실사로 세 연령대는 못 만듭니다. KC 신고 구분이 <b>3세 미만</b>이라 7세를 쓰려면 해외 표기 근거가 필요합니다. 여섯 안은 아래 버튼에서.</div>
+      <div class="brief">
+        <div class="brief__row"><div class="brief__k">의도</div><div class="brief__v"><p><b>선물용으로 완전히 최적화됐다</b>는 게 이 자리의 전부예요. 따로 포장할 일이 없다는 걸 장면으로 보여줍니다.</p></div></div>
+        <div class="brief__row"><div class="brief__k">내용</div><div class="brief__v"><p>상자가 열리고 책이 나와 펼쳐지는 <b>애니메이션</b>. 선물 상자를 까는 느낌으로 갑니다.</p></div></div>
+      </div>
+      <div class="ask"><b>있으면 더 좋은 컷</b><b>박스를 실제로 여는 중간 컷.</b> 지금은 상자가 뒤로 눕는 걸로 대신하고 있습니다.</div>
     
       <div class="demos">
-        <a class="demo" href="/frame/08-demo/">연령 블록 여섯 안 <span>골라 주실 것</span></a>
-      </div>
-      <div class="demos">
-        <button class="demo demo--play" type="button" data-play="steps">다시 보기</button>
+        <button class="demo demo--play" type="button" data-play="box">다시 보기</button>
+        <a class="demo" href="/box-demo/" target="_blank" rel="noopener">박스 열림 데모</a>
       </div>
     </div>
   </section>
@@ -796,95 +804,111 @@
   <!-- 7 -->
   <section class="block">
     <div class="screen">
-      <div class="screen__tab"><b>07</b> 안전성 인증<span style="margin-left:auto">전 09</span></div>
+      <div class="screen__tab"><b>07</b> 연령대별 안내<span style="margin-left:auto">전 08</span></div>
       <div class="screen__body">
-        <h2 class="h">세 테마 모두<br />KC 안전확인 신고 완료</h2>
-        <div class="slot slot--logo"><em>KC 마크</em></div>
-        <div class="certs certs--one">
-          <button class="cert__card" type="button" data-cert="/frame/certs/kc-notice.jpg" data-certtitle="안전확인 변경신고 확인증">
-            <span class="cert__thumbimg"><img src="/frame/certs/kc-notice.jpg" alt="안전확인 변경신고 확인증" width="1240" height="1754" loading="lazy" /></span>
-            <span class="cert__cap">안전확인 변경신고 확인증<small>눌러서 크게 보기</small></span>
-          </button>
+        <p class="eyebrow">권장 놀이 연령</p>
+        <h2 class="h h--big">18개월부터 7세까지</h2>
+        <p class="p">우리 아이 나이에 맞춰 노는 방법이 달라져요</p>
+        <div class="steps" data-steps>
+          <div class="step">
+            <figure><img src="/frame/photos/age/real-1.jpg" alt="어른과 함께 노는 모습" width="560" height="560" loading="lazy" /></figure>
+            <b>18개월~3세</b><span>엄마랑 같이</span>
+          </div>
+          <div class="steps__arw" aria-hidden="true">&rarr;</div>
+          <div class="step">
+            <figure><img src="/frame/photos/age/real-2.jpg" alt="책상에서 혼자 노는 모습" width="560" height="560" loading="lazy" /></figure>
+            <b>4~5세</b><span>옆에서 지켜만 봐도</span>
+          </div>
+          <div class="steps__arw" aria-hidden="true">&rarr;</div>
+          <div class="step">
+            <figure><img src="/frame/photos/age/real-3.jpg" alt="바닥에서 혼자 노는 모습" width="560" height="560" loading="lazy" /></figure>
+            <b>6~7세</b><span>혼자서도 척척</span>
+          </div>
         </div>
-        <div class="cert">
-          완구 (부속서 6) · 영·유아용 완구 (3세 미만)
-          <dl>
-            <dt>신고확인증</dt><dd>CB065R3205-26001A</dd>
-            <dt>유효기간</dt><dd>2031. 02. 08</dd>
-            <dt>검사기관</dt><dd>FITI시험연구원</dd>
-            <dt>성적서</dt><dd>H111-26-00501 · 02852 · 03418</dd>
-          </dl>
-        </div>
-        <p class="p">프린세스·오션·정글 세 테마가 같은 신고 아래 각각 검사를 거쳤습니다.</p>
       </div>
     </div>
     <div class="note">
-      <h3>서류를 읽고 맞춘 것</h3>
-      <ul>
-        <li>성적서 세 건 모두 모델명이 <b>BUSY BOOK</b> 하나이고, 02852(DINOSAUR·FARM)와 03418(JUNGLE·OCEAN)은 용도가 <b>「동일모델추가 H111-26-00501」</b> 입니다. 한 신고 아래 테마별로 검사를 더 받은 구조라 <b>「세 테마 모두」</b>가 성립합니다.</li>
-        <li>신고확인증 <b>CB065R3205-26001A</b> · 유효기간 2031. 2. 8 · 업체명 에이치엔글로벌.</li>
-        <li>번호만 적으면 안 믿습니다. <b>신고확인증을 띄우고</b>, 누르면 전체화면으로 커집니다.</li>
-      </ul>
-      <div class="ask"><b>중요</b>성적서 본문에 이렇게 적혀 있습니다 &mdash; <b>「이 성적서는 FITI와 사전 서면 동의 없이 홍보, 선전, 광고 및 소송 용도로 사용될 수 없으며」</b>. <b>성적서 이미지는 올리지 않고 번호만</b> 적습니다. 신고확인증은 정부 서식이라 이런 제한이 없습니다. 문서가 요구하는 건 <b>사전 서면 동의</b>입니다. 서면으로 받아 두셨으면 성적서도 올릴 수 있습니다.</div>
-      <div class="ask"><b>확인 필요</b>신고확인증에 <b>제조국명 중국</b>, 제조업체명(GUANGZHOU SHOUJIA)이 그대로 적혀 있습니다. 이 이미지를 공개하면 같이 보입니다. 위키·브랜드 자료에서는 「기획·설계」까지만 적어 오셨는데, <b>여기서는 드러나도 괜찮은지</b> 판단해 주세요. 가리면 서류의 신뢰도가 떨어지니 <b>가리는 건 권하지 않습니다.</b></div>
+      <div class="brief">
+        <div class="brief__row"><div class="brief__k">의도</div><div class="brief__v"><p>나이에 상관없이 <b>우리 아이한테 맞춰 오래 쓴다</b>는 걸 보여주는 자리예요. 한 번 사서 몇 해를 쓴다는 계산이 서야 값이 싸 보입니다.</p></div></div>
+        <div class="brief__row"><div class="brief__k">내용</div><div class="brief__v"><p>세 칸이 스크롤에 맞춰 왼쪽부터 하나씩 올라옵니다. <b>18개월~3세 / 4~5세 / 6~7세.</b> 사진은 실사로 갑니다.</p></div></div>
+      </div>
+      
     
+      <div class="demos">
+        <button class="demo demo--play" type="button" data-play="steps">다시 보기</button>
+      </div>
     </div>
   </section>
 
   <!-- 8 -->
   <section class="block">
     <div class="screen">
-      <div class="screen__tab"><b>08</b> 리뷰 · 와디즈 · 언론<span style="margin-left:auto">전 06</span></div>
+      <div class="screen__tab"><b>08</b> 안전성 인증<span style="margin-left:auto">전 09</span></div>
       <div class="screen__body">
-        <h2 class="h">쿠팡 리뷰 406건이<br />먼저 답해 두었습니다</h2>
-        <div class="capshot">
-          <div class="slot slot--wide"><em>캡처</em>쿠팡 상품 리뷰 406 · 최고 96%</div>
-          <div class="slot slot--wide"><em>캡처</em>와디즈 4,939% 달성 · 24,697,000원 · 357명</div>
+        <p class="eyebrow">한국에서만 파는 게 아니라서</p>
+        <h2 class="h h--big">다섯 나라 기준을<br />하나씩 다 받았어요</h2>
+        <p class="p">나라마다 아이 손에 뭐가 닿아도 되는지 기준이 다 달라요. 파는 나라마다 그 기준으로 따로 검사를 받았습니다.</p>
+        <div class="cw__tally"><b>14건</b><span>시험성적서 · 인증서</span></div>
+        <div class="cw__grp">
+          <p class="cw__h"><span class="cw__flag">🇰🇷</span>한국 KC<b>4건</b></p>
+          <p class="cw__sub">어린이제품 안전확인 · FITI시험연구원</p>
+          <div class="cw__row">
+            <button class="cw__card" type="button" data-cert="/frame/certs/kr-notice.jpg" data-certtitle="한국 KC · 안전확인 변경신고 확인증"><img src="/frame/certs/kr-notice-sm.jpg" alt="안전확인 변경신고 확인증" width="109" height="154" loading="lazy" /><span class="cw__cap">안전확인 변경신고 확인증<small>CB065R3205-26001A</small></span></button>
+            <button class="cw__card" type="button" data-cert="/frame/certs/kr-00501.jpg" data-certtitle="한국 KC · 성적서 · BUSY BOOK"><img src="/frame/certs/kr-00501-sm.jpg" alt="성적서 · BUSY BOOK" width="109" height="154" loading="lazy" /><span class="cw__cap">성적서 · BUSY BOOK<small>H111-26-00501</small></span></button>
+            <button class="cw__card" type="button" data-cert="/frame/certs/kr-02852.jpg" data-certtitle="한국 KC · 성적서 · DINOSAUR·FARM"><img src="/frame/certs/kr-02852-sm.jpg" alt="성적서 · DINOSAUR·FARM" width="109" height="154" loading="lazy" /><span class="cw__cap">성적서 · DINOSAUR·FARM<small>H111-26-02852</small></span></button>
+            <button class="cw__card" type="button" data-cert="/frame/certs/kr-03418.jpg" data-certtitle="한국 KC · 성적서 · JUNGLE·OCEAN"><img src="/frame/certs/kr-03418-sm.jpg" alt="성적서 · JUNGLE·OCEAN" width="109" height="154" loading="lazy" /><span class="cw__cap">성적서 · JUNGLE·OCEAN<small>H111-26-03418</small></span></button>
+          </div>
         </div>
-        <p class="seqcap">캡처 화면 그대로 옮겼습니다. 쿠팡 리뷰는 <b>프린세스 단품 기준</b>입니다.</p>
-
-        <div class="rv">
-          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src">쿠팡</span></div>
-          <p class="rv__text">(실제 구매평 본문)</p>
+        <div class="cw__grp">
+          <p class="cw__h"><span class="cw__flag">🇪🇺</span>유럽 CE · EN71<b>3건</b></p>
+          <p class="cw__sub">EN71-1 물리적 성질 · EN71-2 불에 타는 정도 · EN71-3 유해 원소</p>
+          <div class="cw__row">
+            <button class="cw__card" type="button" data-cert="/frame/certs/eu-ce-bb7.jpg" data-certtitle="유럽 CE · EN71 · CE · EN71 전항목"><img src="/frame/certs/eu-ce-bb7-sm.jpg" alt="CE · EN71 전항목" width="109" height="154" loading="lazy" /><span class="cw__cap">CE · EN71 전항목<small>BCTC2508061062-1R</small></span></button>
+            <button class="cw__card" type="button" data-cert="/frame/certs/eu-en71-bb5.jpg" data-certtitle="유럽 CE · EN71 · EN71 + BS EN71"><img src="/frame/certs/eu-en71-bb5-sm.jpg" alt="EN71 + BS EN71" width="109" height="154" loading="lazy" /><span class="cw__cap">EN71 + BS EN71<small>COBO26040929</small></span></button>
+            <button class="cw__card" type="button" data-cert="/frame/certs/eu-en71-bb9.jpg" data-certtitle="유럽 CE · EN71 · EN71 + BS EN71"><img src="/frame/certs/eu-en71-bb9-sm.jpg" alt="EN71 + BS EN71" width="109" height="154" loading="lazy" /><span class="cw__cap">EN71 + BS EN71<small>COBO26061095</small></span></button>
+          </div>
         </div>
-        <div class="rv">
-          <div class="rv__top"><span class="rv__stars">★★★★★</span><span class="rv__src">쿠팡</span></div>
-          <p class="rv__text">(사진 있는 구매평 본문)</p>
+        <div class="cw__grp">
+          <p class="cw__h"><span class="cw__flag">🇬🇧</span>영국 UKCA<b>1건</b></p>
+          <p class="cw__sub">브렉시트 이후 영국이 따로 요구하는 인증</p>
+          <div class="cw__row">
+            <button class="cw__card" type="button" data-cert="/frame/certs/uk-ukca-bb7.jpg" data-certtitle="영국 UKCA · UKCA · EN71 전항목"><img src="/frame/certs/uk-ukca-bb7-sm.jpg" alt="UKCA · EN71 전항목" width="109" height="154" loading="lazy" /><span class="cw__cap">UKCA · EN71 전항목<small>BCTC2508061062-2R</small></span></button>
+          </div>
         </div>
-
-        <p class="p">네이버 블로그 후기 9편</p>
-        <div class="row3">
-          <div class="slot slot--wide"><em>썸네일</em></div>
-          <div class="slot slot--wide"><em>썸네일</em></div>
-          <div class="slot slot--wide"><em>썸네일</em></div>
+        <div class="cw__grp">
+          <p class="cw__h"><span class="cw__flag">🇺🇸</span>미국 CPC · ASTM F963<b>3건</b></p>
+          <p class="cw__sub">어린이제품 적합성 인증서 · 삼킴 위험과 작은 부품까지</p>
+          <div class="cw__row">
+            <button class="cw__card" type="button" data-cert="/frame/certs/us-cpc-bb5.jpg" data-certtitle="미국 CPC · ASTM F963 · CPC 적합성 인증"><img src="/frame/certs/us-cpc-bb5-sm.jpg" alt="CPC 적합성 인증" width="109" height="154" loading="lazy" /><span class="cw__cap">CPC 적합성 인증<small>RGST250828702R01</small></span></button>
+            <button class="cw__card" type="button" data-cert="/frame/certs/us-cpc-bb7.jpg" data-certtitle="미국 CPC · ASTM F963 · CPC 적합성 인증"><img src="/frame/certs/us-cpc-bb7-sm.jpg" alt="CPC 적합성 인증" width="109" height="154" loading="lazy" /><span class="cw__cap">CPC 적합성 인증<small>RGST251231704R02</small></span></button>
+            <button class="cw__card" type="button" data-cert="/frame/certs/us-cpc-bb9.jpg" data-certtitle="미국 CPC · ASTM F963 · CPC 적합성 인증"><img src="/frame/certs/us-cpc-bb9-sm.jpg" alt="CPC 적합성 인증" width="109" height="154" loading="lazy" /><span class="cw__cap">CPC 적합성 인증<small>COBO26011383</small></span></button>
+          </div>
         </div>
-
-        <div class="news news--anim" data-news>
-          <a href="https://www.gokorea.kr/news/articleView.html?idxno=873458" target="_blank" rel="noopener noreferrer"><b>고코리아</b><span>조이캣, 몬테소리 교육 원칙 반영한 감각놀이 완구 '비지북' 선봬</span></a>
-          <a href="https://www.gosiweek.com/article/1065580674842325" target="_blank" rel="noopener noreferrer"><b>고시위크</b><span>조이캣 비지북, 쿠팡 촉감발달완구 카테고리 2위 진입</span></a>
-          <a href="https://www.ksilbo.co.kr/news/articleView.html?idxno=1063634" target="_blank" rel="noopener noreferrer"><b>경상일보</b><span>조이캣 비지북, 오펜하임토이포트폴리오 플래티넘 수상</span></a>
-          <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90553" target="_blank" rel="noopener noreferrer"><b>한국목재신문</b><span>글로벌 완구 브랜드 조이캣, 한국 시장 진출</span></a>
-          <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90531" target="_blank" rel="noopener noreferrer"><b>한국목재신문</b><span>조이캣, 교육완구 기부로 아시아 아동 지원 확대</span></a>
+        <div class="cw__grp">
+          <p class="cw__h"><span class="cw__flag">🇨🇦</span>캐나다 SOR<b>3건</b></p>
+          <p class="cw__sub">납·프탈레이트 함량 기준을 따로 둔 규정</p>
+          <div class="cw__row">
+            <button class="cw__card" type="button" data-cert="/frame/certs/ca-sor-bb5.jpg" data-certtitle="캐나다 SOR · SOR 유해물질"><img src="/frame/certs/ca-sor-bb5-sm.jpg" alt="SOR 유해물질" width="109" height="154" loading="lazy" /><span class="cw__cap">SOR 유해물질<small>RGST250828701R01</small></span></button>
+            <button class="cw__card" type="button" data-cert="/frame/certs/ca-sor-bb7.jpg" data-certtitle="캐나다 SOR · SOR 유해물질"><img src="/frame/certs/ca-sor-bb7-sm.jpg" alt="SOR 유해물질" width="109" height="154" loading="lazy" /><span class="cw__cap">SOR 유해물질<small>RGST251231703R03</small></span></button>
+            <button class="cw__card" type="button" data-cert="/frame/certs/ca-sor-bb9.jpg" data-certtitle="캐나다 SOR · SOR 유해물질"><img src="/frame/certs/ca-sor-bb9-sm.jpg" alt="SOR 유해물질" width="109" height="154" loading="lazy" /><span class="cw__cap">SOR 유해물질<small>COBO26011384</small></span></button>
+          </div>
         </div>
+        <p class="seqcap">눌러서 서류를 크게 볼 수 있어요</p>
       </div>
     </div>
     <div class="note">
-      <h3>왜 캡처인가</h3>
-      <ul>
-        <li>숫자만 옮겨 적으면 <b>우리가 쓴 숫자</b>로 보입니다. 쿠팡과 와디즈 <b>화면을 그대로</b> 보여주면 그게 근거가 됩니다.</li>
-        <li>쿠팡 캡처: 별점 옆 <b>406</b>, 「400명 이상 만족했어요」, 최고 96%까지 한 화면에 들어오게.</li>
-        <li>와디즈 캡처: <b>4,939% 달성 · 24,697,000원 · 357명 참여</b>, 성공 배지까지.</li>
-      </ul>
-      <h3>뉴스</h3>
-      <ul>
-        <li>스크롤하면 <b>다섯 개가 하나씩 올라옵니다.</b> 한꺼번에 나오면 그냥 목록인데, 하나씩 쌓이면 「이만큼이나」로 읽힙니다.</li>
-      </ul>
-      <div class="ask"><b>필요한 것</b>쿠팡 리뷰 화면, 와디즈 달성 화면 <b>캡처 파일</b>.</div>
-      <div class="ask"><b>주의</b>캡처에 <b>다른 사람 얼굴이나 아이디</b>가 들어가면 가립니다. 리뷰 작성자 닉네임도 마찬가지입니다.</div>
-    
-      <div class="demos">
-        <button class="demo demo--play" type="button" data-play="news">다시 보기</button>
+      <div class="brief">
+        <div class="brief__row"><div class="brief__k">의도</div><div class="brief__v">
+          <p>안전하다는 말보다 <b>서류가 이만큼 많다</b>는 게 먼저 보여야 하는 자리입니다. 숫자와 나라 국기가 한 화면에 깔리면, 읽지 않아도 안심이 됩니다.</p>
+        </div></div>
+        <div class="brief__row"><div class="brief__k">내용</div><div class="brief__v">
+          <p>다섯 나라 <b>14건</b>을 나라별로 묶어 썸네일로 깔았습니다. 누르면 서류가 전체화면으로 커집니다.</p>
+          <p>한국 4 · 유럽 3 · 영국 1 · 미국 3 · 캐나다 3.</p>
+        </div></div>
       </div>
+      <div class="ask"><b>확인 필요</b>FITI 성적서에 <b>「사전 서면 동의 없이 홍보·광고에 쓸 수 없다」</b>고 적혀 있습니다. 한국 성적서 세 건이 거기 해당합니다. 서면 동의를 받아 두셨으면 그대로 가고, 아니면 <b>신고확인증 한 장만</b> 띄우고 나머지는 번호만 적습니다.</div>
+      <div class="ask"><b>확인 필요</b>신고확인증에 <b>제조국 중국</b>과 제조사명이 그대로 보입니다. 크게 띄우면 같이 읽힙니다.</div>
+    
     </div>
   </section>
 
@@ -893,17 +917,17 @@
     <div class="screen">
       <div class="screen__tab"><b>09</b> 할인 · 비공개 · 재고<span style="margin-left:auto">전 07</span></div>
       <div class="screen__body" data-deal>
-        <h2 class="h h--big">이 가격은<br />이 페이지에만 있습니다</h2>
+        <h2 class="h h--big">여기까지 보셨으니<br />제일 싼 값으로 드릴게요</h2>
 
         <div class="drop">
           <span class="drop__was">207,000원</span>
           <span class="drop__now" data-price>207,000원</span>
           <span class="drop__off">30%</span>
+          <span class="stamp">무료배송</span>
         </div>
-        <div><span class="stamp">무료배송</span></div>
 
-        <p class="shout">광고를 보고 들어오신 분께만 열어 둔 주소입니다.<br />
-          <b>공식몰 어디에도 이 가격은 없습니다.</b></p>
+        <p class="shout">광고 보고 들어오신 분들만 오는 주소예요.<br />
+          <b>공식몰 가도 이 값은 없어요.</b></p>
 
         <div class="live">
           <div class="live__row">
@@ -913,23 +937,14 @@
           <div class="live__bar"><div class="live__fill" data-stockbar></div></div>
         </div>
 
-        <p class="p">주문이 들어오는 대로 줄어듭니다.</p>
+        <p class="p">주문 들어오는 대로 줄어들어요. 생각하시는 중이면 수량만 한 번 봐주세요.</p>
       </div>
     </div>
     <div class="note">
-      <h3>움직임</h3>
-      <ul>
-        <li>가격이 <b>207,000 에서 144,000 으로 주루룩</b> 떨어집니다. 숫자가 구르는 동안 눈이 거기 머뭅니다.</li>
-        <li>무료배송은 글자가 아니라 <b>도장을 쾅 찍듯</b> 들어옵니다.</li>
-        <li>재고도 <b>170 에서 100 으로 떨어집니다.</b> 이미 70개가 나갔다는 게 숫자로 보입니다.</li>
-      </ul>
-      <h3>재고와 접속자 수 — 지금은 연결 안 돼 있습니다</h3>
-      <ul>
-        <li><b>지어낸 숫자는 넣지 않았습니다.</b> 「지금 23명이 보고 있어요」를 난수로 돌리는 랜딩이 많은데, 그건 기만이고 걸리면 표시광고법 문제입니다.</li>
-        <li><b>재고</b>는 브라우저에서 자사몰을 직접 못 읽습니다(다른 도메인이라 막힙니다). 아임웹 키를 랜딩 코드에 넣으면 누구나 꺼내 씁니다. <b>Vercel 함수 하나</b>를 두면 됩니다 &mdash; 서버를 따로 사거나 관리할 일은 없고, 그 함수가 읽어 숫자만 돌려줍니다.</li>
-        <li><b>접속자 수</b>는 누군가 세고 있어야 압니다. 같은 함수에 카운터를 붙이면 진짜 숫자가 나옵니다.</li>
-        <li>둘 다 <b>한 시간쯤</b>이면 붙입니다. 「연결 대기」로 둔 자리에 그대로 들어갑니다.</li>
-      </ul>
+      <div class="brief">
+        <div class="brief__row"><div class="brief__k">의도</div><div class="brief__v"><p><b>여기서만 받는 값</b>이라는 것과 <b>수량이 줄고 있다</b>는 조급함, 둘을 같이 거는 자리예요.</p></div></div>
+        <div class="brief__row"><div class="brief__k">내용</div><div class="brief__v"><p>207,000원이 144,000원으로 주루룩 떨어지고, 그 옆에 <b>무료배송 도장</b>이 쾅 찍힙니다. 아래에 남은 수량.</p></div></div>
+      </div>
       <div class="ask"><b>확인 필요</b>「준비한 수량 170 중 100 남음」이 <b>사실이어야</b> 합니다. 170에서 시작해 70개가 나갔다는 게 맞습니까. 아니면 숫자를 바꾸거나 수량 표시를 빼야 합니다.</div>
     
       <div class="demos">
@@ -968,7 +983,7 @@
 </div>
 
 <script>
-/* 04 블록(차트) 애니메이션. 화면에 들어오면 한 번 돈다.
+/* 05 블록(차트) 애니메이션. 화면에 들어오면 한 번 돈다.
    단계마다 클래스를 올리고 모양은 CSS 가 맡는다 - JS 에서 스타일을
    직접 건드리면 나중에 디자인만 고치려 해도 이 파일을 열어야 한다. */
 (function () {
