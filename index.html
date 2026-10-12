@@ -6,139 +6,239 @@
 <meta name="robots" content="noindex, follow" />
 <link rel="canonical" href="https://start.sensoria.kr/" />
 <meta name="naver-site-verification" content="f55049f1f784be6d28d08ab418ecc2a1bea43b32" />
-<meta name="description" content="조이캣 비지북 3종 세트 - 프린세스·오션·정글. 144,000원 무료배송." />
+<meta name="description" content="아마존 1위 조이캣 비지북 3종 세트 - 프린세스·오션·정글. 광고 특가 144,000원 무료배송." />
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://start.sensoria.kr/" />
 <meta property="og:site_name" content="조이캣" />
 <meta property="og:locale" content="ko_KR" />
-<meta property="og:title" content="조이캣 비지북 3종 세트" />
-<meta property="og:description" content="프린세스·오션·정글 세 가지를 한 번에. 144,000원 무료배송." />
+<meta property="og:title" content="조이캣 비지북 3종 세트 - 광고 특가" />
+<meta property="og:description" content="프린세스·오션·정글 세 권을 한 번에. 정가 207,000원 → 144,000원, 무료배송." />
 <meta property="og:image" content="https://start.sensoria.kr/og.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="조이캣 비지북" />
 <meta name="twitter:card" content="summary_large_image" />
 <title>조이캣 비지북 3종 세트</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" />
 <style>
-  /* 진짜 랜딩 자리. 블록이 하나씩 확정되는 대로 여기에 들어온다.
-     계측과 구매 동선은 지금부터 붙여 둔다 - 나중에 붙이면 그때부터
-     숫자가 시작돼서 그 전 기간과 비교를 못 한다. */
+  /* 자사몰 상세페이지를 그대로 옮긴 빠른 랜딩 (2026-10-12, 사장님 "아임웹은 로딩이 너무 느려").
+     글꼴 파일을 받지 않는다 - 첫 화면이 바로 뜨는 게 우선이다. */
   :root {
-    --paper: #f4f1ec; --card: #fff; --ink: #241f1a; --ink-dim: #6d6459;
-    --line: #ddd6cb; --pink: #d9566b;
+    --paper: #ffffff; --ink: #241f1a; --ink-dim: #6d6459;
+    --line: #ece6dd; --pink: #d9566b; --soft: #fbf1f2;
     color-scheme: light;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body {
-    background: var(--paper); color: var(--ink);
-    font-family: "Noto Sans KR", system-ui, sans-serif;
+    background: #f4f1ec; color: var(--ink);
+    font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     -webkit-font-smoothing: antialiased;
-    padding-bottom: 92px;
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
   }
-  .wrap { max-width: 420px; margin-inline: auto; padding: 56px 16px 32px; }
-  h1 {
-    margin: 0 0 12px; font-family: "Gowun Dodum", "Noto Sans KR", sans-serif;
-    font-size: 26px; line-height: 1.35; letter-spacing: -.02em;
-  }
-  p { margin: 0 0 12px; font-size: 14px; line-height: 1.7; color: var(--ink-dim); }
-  .price { margin: 22px 0 6px; font-size: 15px; }
-  .price s { color: var(--ink-dim); margin-right: 8px; }
-  .price b { font-size: 24px; }
-  .links { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--line); }
-  .links a { color: var(--ink); font-size: 13px; display: block; margin-bottom: 8px; }
+  .page { max-width: 860px; margin-inline: auto; background: var(--paper); }
 
-  /* 플로팅 바 — 구매 동선은 지금부터 산다 */
+  .head { padding: 22px 16px 20px; }
+  .badge {
+    display: inline-block; padding: 5px 10px; border-radius: 999px;
+    background: var(--soft); color: var(--pink); font-size: 13px; font-weight: 700;
+  }
+  h1 { margin: 12px 0 6px; font-size: 22px; line-height: 1.35; letter-spacing: -.02em; text-wrap: balance; }
+  .lede { margin: 0; font-size: 14px; line-height: 1.65; color: var(--ink-dim); }
+  .price { margin: 16px 0 4px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .price s { color: var(--ink-dim); font-size: 15px; }
+  .price .off { color: var(--pink); font-weight: 800; font-size: 20px; }
+  .price b { font-size: 26px; letter-spacing: -.02em; }
+  .points { list-style: none; margin: 14px 0 0; padding: 14px 0 0; border-top: 1px solid var(--line);
+    display: grid; gap: 8px; font-size: 14px; line-height: 1.55; }
+  .points li { display: flex; gap: 8px; }
+
+  .video { position: relative; aspect-ratio: 16 / 9; background: #000 center / cover no-repeat; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .detail img { display: block; width: 100%; height: auto; }
+
+  .end { padding: 28px 16px 36px; text-align: center; }
+  .end p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; }
+  .btn {
+    display: inline-block; text-decoration: none; border-radius: 10px;
+    padding: 15px 28px; background: var(--pink); color: #fff; font-weight: 800; font-size: 16px;
+  }
+
   .fbar {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
     padding: 9px 12px calc(9px + env(safe-area-inset-bottom, 0px));
     background: var(--ink);
-    display: grid; grid-template-columns: 1.35fr 1fr; gap: 8px;
+    display: grid; grid-template-columns: 1fr 1.6fr; gap: 8px;
   }
-  .fbtn {
+  .fbar > a {
     display: block; text-decoration: none; text-align: center;
-    border-radius: 9px; padding: 12px 8px; font-size: 14px;
-    font-weight: 700; line-height: 1.25;
+    border-radius: 9px; padding: 11px 8px; font-size: 14.5px; font-weight: 800; line-height: 1.25;
   }
-  .fbtn small { display: block; font-weight: 400; font-size: 10.5px; opacity: .78; }
+  .fbar small { display: block; font-weight: 400; font-size: 11px; opacity: .8; }
   .fbtn--buy { background: var(--pink); color: #fff; }
   .fbtn--rv { color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.4); }
+  a:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
+  @media (min-width: 900px) { .fbar { left: 50%; right: auto; width: 860px; transform: translateX(-50%); } }
 </style>
 </head>
 <body>
+<main class="page">
 
-<div class="wrap">
-  <h1>조이캣 비지북<br />3종 세트</h1>
-  <p>프린세스 &middot; 오션 &middot; 정글. 세 가지를 한 번에.</p>
-  <div class="price"><s>207,000원</s><b>144,000원</b></div>
-  <p>무료배송</p>
+  <section class="head">
+    <span class="badge">🔒 광고 특가 · 비공개 판매</span>
+    <h1>아마존 1위 조이캣 비지북<br />3종 세트 (프린세스·오션·정글)</h1>
+    <p class="lede">쇼핑몰 상품 목록·검색·외부 쇼핑몰 어디에도 올리지 않은, 광고 링크로만 살 수 있는 가격이에요.</p>
+    <div class="price"><s>207,000원</s><span class="off">30%</span><b>144,000원</b></div>
+    <ul class="points">
+      <li><span>📚</span><span>프린세스·오션·정글 3권을 한 번에</span></li>
+      <li><span>💸</span><span>63,000원 할인 · 🚚 무료배송</span></li>
+      <li><span>✋</span><span>떼고, 붙이고, 당기고, 끼우며 노는 펠트 감각놀이책. 18개월부터 외출·식당·비행기에서도 혼자 한참 몰입해요.</span></li>
+      <li><span>🏆</span><span>공식 수입원이 운영하는 조이캣 공식몰</span></li>
+    </ul>
+  </section>
 
-  <p style="margin-top:28px">이 페이지는 제작 중입니다. 구성과 문구가 확정되는 대로 여기에 들어옵니다.</p>
+  <div class="video" id="video" style="background-image:url(https://i.ytimg.com/vi/3D_HScC74RU/hqdefault.jpg)" aria-label="조이캣 비지북 소개 영상"></div>
 
-  <div class="links">
-    <a href="/frame/">기획 프레임 보기 (내부 검토용)</a>
-    <a href="/scroll-demo/">스크롤 연동 애니메이션 예시</a>
-  </div>
-</div>
+  <section class="detail">
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-000-860x443.jpeg" width="860" height="443" alt="" fetchpriority="high" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-001-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-002-857x390.jpeg" width="857" height="390" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-003-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-004-860x390.jpeg" width="860" height="390" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-005-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-006-860x390.jpeg" width="860" height="390" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-007-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-008-858x390.jpeg" width="858" height="390" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-009-1440x1100.webp" width="1440" height="1100" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-010-859x484.jpeg" width="859" height="484" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-011-859x475.jpeg" width="859" height="475" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-012-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-013-859x998.jpeg" width="859" height="998" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-019-860x751.jpeg" width="860" height="751" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-020-860x380.jpeg" width="860" height="380" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-021-860x380.jpeg" width="860" height="380" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-022-860x380.jpeg" width="860" height="380" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-023-860x380.jpeg" width="860" height="380" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-024-860x432.jpeg" width="860" height="432" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-025-860x908.png" width="860" height="908" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-026-860x801.webp" width="860" height="801" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-027-860x982.jpeg" width="860" height="982" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-028-860x943.jpeg" width="860" height="943" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-029-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-030-860x1117.jpeg" width="860" height="1117" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-031-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-032-860x1117.jpeg" width="860" height="1117" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-033-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-034-860x1416.jpeg" width="860" height="1416" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-035-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-036-860x583.jpeg" width="860" height="583" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-037-860x486.jpeg" width="860" height="486" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-038-860x1121.jpeg" width="860" height="1121" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-039-859x1506.jpeg" width="859" height="1506" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-040-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-041-859x837.jpeg" width="859" height="837" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-042-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-043-859x939.jpeg" width="859" height="939" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-044-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-045-859x855.jpeg" width="859" height="855" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-046-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-047-859x848.jpeg" width="859" height="848" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-048-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-049-859x2546.jpeg" width="859" height="2546" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-050-860x4922.jpeg" width="860" height="4922" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-051-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-052-860x887.jpeg" width="860" height="887" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-053-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-054-858x490.jpeg" width="858" height="490" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-055-860x1096.jpeg" width="860" height="1096" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-056-1440x1440.webp" width="1440" height="1440" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-057-860x2302.jpeg" width="860" height="2302" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-058-860x4227.jpeg" width="860" height="4227" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-059-860x5557.jpeg" width="860" height="5557" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-060-860x458.jpeg" width="860" height="458" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-061-860x5079.jpeg" width="860" height="5079" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-062-860x2848.jpeg" width="860" height="2848" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-063-860x949.jpeg" width="860" height="949" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-064-860x1124.jpeg" width="860" height="1124" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-065-859x2159.jpeg" width="859" height="2159" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-066-800x696.webp" width="800" height="696" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-067-860x675.jpeg" width="860" height="675" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-068-1440x1440.webp" width="1440" height="1440" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-069-860x484.jpeg" width="860" height="484" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-070-859x988.jpeg" width="859" height="988" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-071-800x669.webp" width="800" height="669" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-072-860x1986.jpeg" width="860" height="1986" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-073-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-074-859x391.jpeg" width="859" height="391" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-075-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-076-860x386.jpeg" width="860" height="386" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-077-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-078-860x761.jpeg" width="860" height="761" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-079-860x3209.jpeg" width="860" height="3209" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-080-860x470.jpeg" width="860" height="470" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-081-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-082-860x491.jpeg" width="860" height="491" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-083-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-084-860x548.jpeg" width="860" height="548" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-085-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-086-860x495.jpeg" width="860" height="495" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-087-860x5099.jpeg" width="860" height="5099" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-088-860x5251.jpeg" width="860" height="5251" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-089-860x5038.jpeg" width="860" height="5038" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-092-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-097-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-101-860x650.jpeg" width="860" height="650" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-102-860x836.jpeg" width="860" height="836" alt="" loading="lazy" decoding="async" />
+    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-103-860x2522.jpeg" width="860" height="2522" alt="" loading="lazy" decoding="async" />
+  </section>
+
+  <section class="end">
+    <p>🔒 광고 링크로만 드리는 특가예요<br /><b>정가 207,000원 → 144,000원 · 무료배송</b></p>
+    <a class="btn" data-cta="buy" href="https://sensoria.kr/shop_view/?idx=28">3종 세트 구매하기</a>
+  </section>
+
+</main>
 
 <nav class="fbar">
-  <a class="fbtn fbtn--buy" data-cta="buy" target="_blank" rel="noopener"
-     href="https://sensoria.kr/shop_view?idx=28">구매하러 가기<small>144,000원 · 무료배송</small></a>
-  <a class="fbtn fbtn--rv" href="#reviews">리뷰 확인하기<small>프린세스 리뷰 406건 · 4.96점</small></a>
+  <a class="fbtn--rv" data-cta="review" href="https://sensoria.kr/shop_view/?idx=28#prod_detail_review">구매평 보기<small>406건</small></a>
+  <a class="fbtn--buy" data-cta="buy" href="https://sensoria.kr/shop_view/?idx=28">구매하러 가기<small>144,000원 · 무료배송</small></a>
 </nav>
 
-<!-- 계측: GA4 · Clarity · 메타 픽셀. 지표 세션이 준 값 그대로.
-     전부 load 이후에 띄운다 - 루딕스·SHL 과 같은 방식이라 숫자를 나란히 놓고 볼 수 있다.
-     상점으로 가는 버튼에는 UTM 을 붙이지 않는다. 붙이면 GA4 가 세션 중간에
-     새 캠페인으로 보고 세션을 끊어, 랜딩에서 구매까지의 연결이 끊긴다. -->
+<!-- 계측: GA4 · Clarity · 메타 픽셀. 값과 이벤트 이름은 2026-10-08 판 그대로 (지표 세션 기준).
+     상점으로 가는 버튼에는 UTM 을 붙이지 않는다. 붙이면 GA4 가 세션을 새 캠페인으로 끊는다.
+     start.sensoria.kr 와 sensoria.kr 는 등록 도메인이 같아 GA 쿠키를 같이 쓴다(linker 불필요). -->
 <script>
 (function () {
-  var GA  = 'G-JMM010XK8T';          // 조이캣 속성 (자사몰·티스토리와 같은 스트림)
-  var CL  = 'ytykxcqdr0';            // Clarity '조이캣 랜딩'
-  var PX  = '2177455709866933';      // 센소리아 픽셀 (자사몰과 공용)
-
-  // 이 랜딩이 파는 것. item_id 는 자사몰이 보내는 값과 같아야 한다 —
-  // 아임웹이 상품 idx 를 문자열로 보내므로 여기서도 문자열 '28' 이다.
-  // 숫자 28 로 보내면 GA 에서 다른 상품처럼 갈라진다.
-  var P = {
-    id:    '28',
-    name:  '조이캣 비지북 3종 세트 (프린세스·오션·정글)',
-    price: 144000
-  };
-  function gaItems() {
-    return [{ item_id: P.id, item_name: P.name, price: P.price }];
-  }
+  var GA  = 'G-JMM010XK8T';
+  var CL  = 'ytykxcqdr0';
+  var PX  = '2177455709866933';
+  var P = { id: '28', name: '조이캣 비지북 3종 세트 (프린세스·오션·정글)', price: 144000 };
+  function gaItems() { return [{ item_id: P.id, item_name: P.name, price: P.price }]; }
   function pxItem() {
-    return { content_name: P.name, content_ids: [P.id],
-             content_type: 'product', value: P.price, currency: 'KRW' };
+    return { content_name: P.name, content_ids: [P.id], content_type: 'product', value: P.price, currency: 'KRW' };
   }
 
   function start() {
-    // ── GA4 ──────────────────────────────────────────────────────────
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { dataLayer.push(arguments); };
     gtag('js', new Date());
     gtag('config', GA);
     var g = document.createElement('script');
-    g.async = true;
-    g.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA;
+    g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA;
     document.head.appendChild(g);
 
-    // ── Clarity ──────────────────────────────────────────────────────
     (function (c, l, a, r, i, t, y) {
       c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-      t = l.createElement(r); t.async = 1;
-      t.src = 'https://www.clarity.ms/tag/' + i;
+      t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
       y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, 'clarity', 'script', CL);
 
-    // ── 메타 픽셀 ────────────────────────────────────────────────────
     (function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
@@ -151,27 +251,36 @@
     fbq('init', PX);
     fbq('track', 'PageView');
 
-    // 상품 조회 — 랜딩 진입 시 1회. 루딕스·SHL 과 같은 모양으로 보낸다.
-    // 자사몰 상품페이지에서도 view_item 이 나가 같은 사람이 두 번 쏘지만,
-    // 지표 쪽에서 hostName 으로 갈라 본다(start.* = 랜딩).
-    gtag('event', 'view_item',
-         { currency: 'KRW', value: P.price, items: gaItems() });
+    gtag('event', 'view_item', { currency: 'KRW', value: P.price, items: gaItems() });
     fbq('track', 'ViewContent', pxItem());
   }
 
-  if (document.readyState === 'complete') start();
-  else window.addEventListener('load', start);
+  // 영상은 첫 화면이 뜬 다음에 붙인다 - 유튜브 iframe 이 첫 로딩을 잡아먹지 않게.
+  function video() {
+    var box = document.getElementById('video');
+    if (!box || box.firstChild) return;
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube.com/embed/3D_HScC74RU?autoplay=1&mute=1&loop=1&playlist=3D_HScC74RU&playsinline=1&rel=0&modestbranding=1';
+    f.title = '조이캣 비지북 소개 영상';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture';
+    f.allowFullscreen = true;
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    box.appendChild(f);
+  }
 
-  // ── 구매 버튼 ──────────────────────────────────────────────────────
-  // 이름은 루딕스·SHL 과 똑같이 쓴다. 세 랜딩을 한 퍼널로 보려면 같아야 한다.
-  // 표준 이벤트(InitiateCheckout 등)는 쓰지 않는다. 자사몰이 진짜 결제
-  // 이벤트를 쏘고 있어서, 섞이면 광고 최적화가 엉뚱한 걸 배운다.
+  function boot() { start(); video(); }
+  if (document.readyState === 'complete') boot();
+  else window.addEventListener('load', boot);
+
   document.addEventListener('click', function (e) {
-    var el = e.target.closest && e.target.closest('[data-cta="buy"]');
+    var el = e.target.closest && e.target.closest('[data-cta]');
     if (!el) return;
-    if (window.fbq) fbq('trackCustom', 'ClickBuyNow', pxItem());
-    if (window.gtag) gtag('event', 'click_buy_now',
-      { currency: 'KRW', value: P.price, items: gaItems() });
+    if (el.getAttribute('data-cta') === 'buy') {
+      if (window.fbq) fbq('trackCustom', 'ClickBuyNow', pxItem());
+      if (window.gtag) gtag('event', 'click_buy_now', { currency: 'KRW', value: P.price, items: gaItems(), transport_type: 'beacon' });
+    } else if (window.gtag) {
+      gtag('event', 'click_review', { transport_type: 'beacon' });
+    }
   });
 })();
 </script>
