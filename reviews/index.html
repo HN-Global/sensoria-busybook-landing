@@ -11,7 +11,7 @@
 <meta property="og:image" content="https://start.sensoria.kr/og.jpg" />
 <title>조이캣 비지북 구매평</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&display=swap&text=%20%2C2EGS%E2%80%98%E2%80%99%EA%B0%81%EA%B0%90%EA%B0%95%EA%B2%BD%EA%B3%A0%EA%B3%B5%EA%B5%90%EA%B5%AC%EA%B5%AD%EA%B8%80%EA%B8%B0%EB%84%98%EB%86%80%EB%8B%AC%EB%8C%80%EB%8F%84%EB%8F%99%EB%93%9C%EB%9E%98%EB%9E%9C%EB%A1%9C%EB%A1%A0%EB%A6%AC%EB%A6%B0%EB%A9%B0%EB%AA%A9%EB%AA%AC%EB%AC%B8%EB%B0%98%EB%B0%9C%EB%B2%8C%EB%B3%B4%EB%B4%AC%EB%B6%80%EB%B6%81%EB%B8%8C%EB%B9%84%EC%83%81%EC%84%A0%EC%86%8C%EC%88%98%EC%8B%9C%EC%8B%9D%EC%8B%A0%EC%8B%A4%EC%95%84%EC%96%B8%EC%97%90%EC%98%81%EC%98%A4%EC%99%84%EC%9B%90%EC%9C%84%EC%9C%A1%EC%9D%B4%EC%9D%BC%EC%9E%84%EC%9E%85%EC%9E%A5%EC%9E%AC%EC%A1%B0%EC%A7%80%EC%A7%84%EC%B4%89%EC%B6%9C%EC%B9%99%EC%B9%B4%EC%BA%A3%EC%BF%A0%ED%81%AC%ED%85%8C%ED%86%A0%ED%8A%B8%ED%8B%B0%ED%8C%A1%ED%8E%9C%ED%8F%AC%ED%8F%B4%ED%94%8C%ED%95%98%ED%95%9C%ED%99%94%ED%99%95" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&display=swap&text=%20%2C2EGS%E2%80%98%E2%80%99%EA%B0%81%EA%B0%90%EA%B0%95%EA%B2%BD%EA%B3%A0%EA%B3%B5%EA%B5%90%EA%B5%AC%EA%B5%AD%EA%B8%80%EA%B8%B0%EB%84%98%EB%86%80%EB%8B%AC%EB%8C%80%EB%8F%99%EB%93%9C%EB%9E%98%EB%9E%9C%EB%A1%9C%EB%A6%AC%EB%A6%B0%EB%A9%B0%EB%AA%AC%EB%AC%B8%EB%B0%98%EB%B0%9C%EB%B2%8C%EB%B4%AC%EB%B6%80%EB%B6%81%EB%B8%8C%EB%B9%84%EC%83%81%EC%84%A0%EC%86%8C%EC%88%98%EC%8B%9C%EC%8B%9D%EC%8B%A0%EC%8B%A4%EC%95%84%EC%97%90%EC%98%81%EC%98%A4%EC%99%84%EC%9B%90%EC%9C%84%EC%9C%A1%EC%9D%B4%EC%9E%84%EC%9E%85%EC%9E%A5%EC%A1%B0%EC%A7%80%EC%A7%84%EC%B4%89%EC%B6%9C%EC%B9%99%EC%B9%B4%EC%BA%A3%EC%BF%A0%ED%85%8C%ED%86%A0%ED%8A%B8%ED%8B%B0%ED%8C%A1%ED%8E%9C%ED%8F%AC%ED%8F%B4%ED%94%8C%ED%95%98%ED%95%9C%ED%99%94%ED%99%95" />
 <style>
   :root { --ink:#241f1a; --dim:#6d6459; --line:#ece6dd; --pink:#d9566b; --soft:#fbf1f2; --paper:#fff; --ground:#f4f1ec; --star:#f5a623; color-scheme: light; }
   * { box-sizing: border-box; }
@@ -24,52 +24,51 @@
     display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; padding: 0 6px; }
   .gnb a { display: flex; align-items: center; justify-content: center; height: 48px; color: #3a2b2b; text-decoration: none; }
   .gnb img { height: 40px; width: auto; display: block; }
+  .gnb__mid, .gnb__ico { display: flex; align-items: center; justify-content: center; height: 48px; color: #3a2b2b; }
   .gnb svg { width: 24px; height: 24px; }
   .back { display: inline-block; margin-top: 14px; color: var(--dim); font-size: 13px; text-decoration: none; }
   h1 { font-size: 20px; margin: 20px 0 14px; letter-spacing: -.02em; }
-  /* 언론 보도 — 신문 1면 다섯 장이 탁자 위에 한 장씩 떨어져 쌓인다 (2026-10-12) */
-  .press { margin: 16px -16px 6px; padding: 18px 16px 10px; background:
-      radial-gradient(120% 80% at 50% 0%, #fff4f2 0%, #ffe6e4 70%); }
-  .press__h { margin: 0 0 4px; font-family: "Nanum Myeongjo", "AppleMyungjo", "Batang", serif; font-weight: 800;
+  /* 신문에 실린 조이캣 — 스크롤하면 신문이 한 장씩 떨어져 맨 위에 쌓인다 (2026-10-12) */
+  .press { margin: 0 -16px 6px; background: radial-gradient(120% 70% at 50% 0%, #fff4f2 0%, #ffe6e4 70%); }
+  .press__track { height: calc(100svh + 5 * 42svh); }
+  .press__stage { position: sticky; top: 60px; height: calc(100svh - 136px); padding: 16px 16px 8px;
+    display: flex; flex-direction: column; overflow: hidden; }
+  .press__h { margin: 0; font-family: "Nanum Myeongjo", "AppleMyungjo", "Batang", serif; font-weight: 800;
     font-size: 22px; letter-spacing: -.02em; }
-  .press__sub { margin: 0; font-size: 12.5px; color: #8a6168; }
-  .pile { position: relative; height: 545px; margin-top: 12px; }
-  .paper { position: absolute; width: 66%; max-width: 330px; display: block; color: #1d1b18; text-decoration: none;
-    background: #f4f0e6; padding: 10px 11px 12px; border-radius: 2px;
-    box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 10px 24px -8px rgba(60,30,30,.35);
-    transform: rotate(var(--r)); transform-origin: 50% 60%;
+  .press__sub { margin: 2px 0 0; font-size: 12.5px; color: #8a6168; font-variant-numeric: tabular-nums; }
+  .press__dots { display: flex; gap: 6px; margin-top: 8px; }
+  .press__dots i { width: 18px; height: 4px; border-radius: 4px; background: rgba(150,90,100,.22); transition: background .3s; }
+  .press__dots i.on { background: #d9566b; }
+  .pile { position: relative; flex: 1; margin-top: 10px; }
+  .paper { position: absolute; left: 50%; top: 4px; width: min(82%, 330px); display: block; color: #1d1b18; text-decoration: none;
+    background: #f4f0e6; padding: 10px 12px 12px; border-radius: 2px;
+    box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 12px 26px -10px rgba(60,30,30,.4);
+    transform: translate(calc(-50% + var(--x)), -125svh) rotate(calc(var(--r) * -3)); opacity: 0;
+    transition: transform .7s cubic-bezier(.2,.9,.25,1.1), opacity .25s ease;
     -webkit-tap-highlight-color: transparent; }
+  .paper.is-in { transform: translate(calc(-50% + var(--x)), var(--y)) rotate(var(--r)); opacity: 1; }
   .paper:focus-visible { outline: 3px solid #f2b705; outline-offset: 3px; }
-  .paper__mast { display: flex; align-items: baseline; justify-content: space-between; gap: 6px;
-    padding-bottom: 5px; border-bottom: 3px double currentColor; color: var(--m); }
-  .paper__name { font-family: "Nanum Myeongjo", "AppleMyungjo", "Batang", serif; font-weight: 800; font-size: 19px; letter-spacing: -.04em; white-space: nowrap; }
-  .paper__date { font-size: 9.5px; color: #6a645a; white-space: nowrap; }
-  .paper__head { margin: 8px 0 7px; font-family: "Nanum Myeongjo", "AppleMyungjo", "Batang", serif; font-weight: 800;
-    font-size: 14.5px; line-height: 1.35; letter-spacing: -.03em; text-wrap: balance; }
-  .paper__img { display: block; width: 100%; height: auto; aspect-ratio: var(--ar); object-fit: cover; filter: saturate(.92) contrast(1.02); }
-  .paper__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 8px; margin-top: 8px; }
+  .paper__mast { display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    padding-bottom: 6px; border-bottom: 3px double #2a2620; }
+  .paper__logo { display: block; height: 26px; width: auto; max-width: 62%; object-fit: contain; object-position: left center; mix-blend-mode: multiply; }
+  .paper__date { font-size: 10px; color: #6a645a; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .paper__head { display: block; margin: 9px 0 8px; font-family: "Nanum Myeongjo", "AppleMyungjo", "Batang", serif; font-weight: 800;
+    font-size: 16px; line-height: 1.35; letter-spacing: -.03em; text-wrap: balance; }
+  .paper__img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; filter: saturate(.92) contrast(1.02); }
+  .paper__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 8px; margin-top: 9px; }
   .paper__cols i { display: block; height: 3px; border-radius: 2px; background: #d6cfbf; }
   .paper__cols i:nth-child(4n) { width: 70%; }
-  .m-navy { --m: #1f3a68; } .m-green { --m: #1d6a46; } .m-red { --m: #b3262d; } .m-wood { --m: #6b4a2b; }
-  .paper.is-lift { animation: lift .32s ease; }
-  @keyframes lift { 50% { transform: rotate(var(--r)) translateY(-8px) scale(1.03); } }
-  @media (prefers-reduced-motion: no-preference) {
-    .pile.is-deal .paper { animation: drop .62s cubic-bezier(.2,.9,.25,1.12) both; animation-delay: calc(var(--i) * .22s); }
-    @keyframes drop {
-      0% { transform: translate(var(--fx), -115%) rotate(calc(var(--r) * -2.4)) scale(1.06); opacity: 0;
-           box-shadow: 0 40px 50px -20px rgba(60,30,30,.25); }
-      60% { opacity: 1; }
-      100% { transform: rotate(var(--r)); opacity: 1; }
-    }
-  }
-  .press__hint { margin: 6px 0 0; font-size: 12px; color: #8a6168; text-align: center; }
+  .paper__go { display: block; margin-top: 9px; font-size: 12px; font-weight: 700; color: #b3262d; opacity: 0; transition: opacity .3s; }
+  .paper.is-top .paper__go { opacity: 1; }
+  .press__hint { margin: 0; font-size: 12px; color: #8a6168; text-align: center; }
+  @media (prefers-reduced-motion: reduce) { .paper { transition: opacity .2s; } }
+  @media (min-width: 640px) { .paper { width: 340px; } }
   .news { margin: 12px 0 22px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-  .news a { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; align-items: baseline; padding: 11px 14px;
+  .news a { display: grid; grid-template-columns: 7.5em 1fr; gap: 2px 10px; align-items: baseline; padding: 11px 14px;
     border-top: 1px solid var(--line); color: var(--ink); text-decoration: none; }
   .news a:first-child { border-top: 0; }
   .news b { font-size: 12px; color: #6d6459; white-space: nowrap; font-weight: 700; }
   .news span { font-size: 13.5px; line-height: 1.45; }
-  @media (min-width: 640px) { .pile { height: 560px; } .paper { width: 46%; } }
   .sum { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center;
     padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: #fffaf6; }
   .sum__score { text-align: center; }
@@ -114,30 +113,34 @@
 <main class="page">
   <header class="gnb">
     <a href="/" aria-label="3종 세트로 돌아가기"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></a>
-    <a href="/" aria-label="조이캣"><img src="/assets/joycat-logo.png" width="103" height="66" alt="joycat" /></a>
-    <a href="https://sensoria.kr/shop_view/?idx=28" aria-label="구매하기" data-cta="buy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.3 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="10" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg></a>
+    <span class="gnb__mid"><img src="/assets/joycat-logo.png" width="103" height="66" alt="joycat" /></span>
+    <span class="gnb__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.3 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="10" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg></span>
   </header>
-  <a class="back" href="/">← 3종 세트 소개로 돌아가기</a>
   <section class="press" aria-label="언론 보도">
-    <h2 class="press__h">신문에 실린 조이캣</h2>
-    <p class="press__sub">기사 5건 · 2026년 7~8월</p>
-    <div class="pile" id="pile">
-      <a class="paper m-wood" href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90531" target="_blank" rel="noopener noreferrer" data-cta="news" style="left:3%;top:0px;--r:-6deg;--fx:-30%;--i:0;z-index:1;--ar:480/320" aria-label="한국목재신문 기사: 조이캣, 교육완구 기부로 아시아 아동 지원 확대하며 ESG 경영 강화"><span class="paper__mast"><span class="paper__name">한국목재신문</span><span class="paper__date">2026년 7월 29일</span></span><span class="paper__head" role="presentation">조이캣, 교육완구 기부로 아시아 아동 지원 확대하며 ESG 경영 강화</span><img class="paper__img" src="/assets/news/news5.webp" width="480" height="320" alt="" decoding="async" /><span class="paper__cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></a>
-      <a class="paper m-navy" href="https://www.gokorea.kr/news/articleView.html?idxno=873458" target="_blank" rel="noopener noreferrer" data-cta="news" style="left:31%;top:18px;--r:5deg;--fx:30%;--i:1;z-index:2;--ar:480/270" aria-label="공감신문 기사: 조이캣, 몬테소리 교육 원칙 반영한 감각놀이 완구 ‘비지북’ 선봬"><span class="paper__mast"><span class="paper__name">공감신문</span><span class="paper__date">2026년 7월 29일</span></span><span class="paper__head" role="presentation">조이캣, 몬테소리 교육 원칙 반영한 감각놀이 완구 ‘비지북’ 선봬</span><img class="paper__img" src="/assets/news/news1.webp" width="480" height="270" alt="" decoding="async" /><span class="paper__cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></a>
-      <a class="paper m-green" href="https://www.gosiweek.com/article/1065580674842325" target="_blank" rel="noopener noreferrer" data-cta="news" style="left:6%;top:112px;--r:3deg;--fx:-20%;--i:2;z-index:3;--ar:480/270" aria-label="고시위크 기사: 조이캣 비지북, 쿠팡 촉감발달완구 카테고리 2위 진입"><span class="paper__mast"><span class="paper__name">고시위크</span><span class="paper__date">2026년 7월 30일</span></span><span class="paper__head" role="presentation">조이캣 비지북, 쿠팡 촉감발달완구 카테고리 2위 진입</span><img class="paper__img" src="/assets/news/news2.webp" width="480" height="270" alt="" decoding="async" /><span class="paper__cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></a>
-      <a class="paper m-wood" href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90553" target="_blank" rel="noopener noreferrer" data-cta="news" style="left:29%;top:128px;--r:-4deg;--fx:25%;--i:3;z-index:4;--ar:480/360" aria-label="한국목재신문 기사: 글로벌 완구 브랜드 조이캣, 한국 시장 공식 진출"><span class="paper__mast"><span class="paper__name">한국목재신문</span><span class="paper__date">2026년 7월 31일</span></span><span class="paper__head" role="presentation">글로벌 완구 브랜드 조이캣, 한국 시장 공식 진출</span><img class="paper__img" src="/assets/news/news4.webp" width="480" height="360" alt="" decoding="async" /><span class="paper__cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></a>
-      <a class="paper m-red" href="https://www.ksilbo.co.kr/news/articleView.html?idxno=1063634" target="_blank" rel="noopener noreferrer" data-cta="news" style="left:15%;top:214px;--r:1.5deg;--fx:0%;--i:4;z-index:5;--ar:480/270" aria-label="경상일보 기사: 조이캣 비지북, 오펜하임 토이 포트폴리오 플래티넘 수상"><span class="paper__mast"><span class="paper__name">경상일보</span><span class="paper__date">2026년 8월 3일</span></span><span class="paper__head" role="presentation">조이캣 비지북, 오펜하임 토이 포트폴리오 플래티넘 수상</span><img class="paper__img" src="/assets/news/news3.webp" width="480" height="270" alt="" decoding="async" /><span class="paper__cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></a>
+    <div class="press__track" id="pressTrack">
+      <div class="press__stage">
+        <h2 class="press__h">신문에 실린 조이캣</h2>
+        <p class="press__sub" id="pressSub">기사 5건 중 1번째</p>
+        <div class="press__dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="pile" id="pile">
+      <a class="paper" href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90531" target="_blank" rel="noopener noreferrer" data-cta="news" style="--x:-14px;--y:0px;--r:-5deg;z-index:1" aria-label="한국목재신문 기사 원문: 조이캣, 교육완구 기부로 아시아 아동 지원 확대하며 ESG 경영 강화"><span class="paper__mast"><img class="paper__logo" src="/assets/news/lg_woodkorea.png" width="266" height="90" alt="한국목재신문" /><span class="paper__date">2026년 7월 29일</span></span><span class="paper__head">조이캣, 교육완구 기부로 아시아 아동 지원 확대하며 ESG 경영 강화</span><img class="paper__img" src="/assets/news/news5.webp" width="480" height="320" alt="" loading="lazy" decoding="async" /><span class="paper__cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="paper__go">기사 원문 보기</span></a>
+      <a class="paper" href="https://www.gokorea.kr/news/articleView.html?idxno=873458" target="_blank" rel="noopener noreferrer" data-cta="news" style="--x:14px;--y:10px;--r:4deg;z-index:2" aria-label="공감신문 기사 원문: 조이캣, 몬테소리 교육 원칙 반영한 감각놀이 완구 ‘비지북’ 선봬"><span class="paper__mast"><img class="paper__logo" src="/assets/news/lg_gokorea.png" width="198" height="79" alt="공감신문" /><span class="paper__date">2026년 7월 29일</span></span><span class="paper__head">조이캣, 몬테소리 교육 원칙 반영한 감각놀이 완구 ‘비지북’ 선봬</span><img class="paper__img" src="/assets/news/news1.webp" width="480" height="270" alt="" loading="lazy" decoding="async" /><span class="paper__cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="paper__go">기사 원문 보기</span></a>
+      <a class="paper" href="https://www.gosiweek.com/article/1065580674842325" target="_blank" rel="noopener noreferrer" data-cta="news" style="--x:-10px;--y:18px;--r:-2.5deg;z-index:3" aria-label="피앤피뉴스 기사 원문: 조이캣 비지북, 쿠팡 촉감발달완구 카테고리 2위 진입"><span class="paper__mast"><img class="paper__logo" src="/assets/news/lg_gosiweek.png" width="309" height="59" alt="피앤피뉴스" /><span class="paper__date">2026년 7월 30일</span></span><span class="paper__head">조이캣 비지북, 쿠팡 촉감발달완구 카테고리 2위 진입</span><img class="paper__img" src="/assets/news/news2.webp" width="480" height="270" alt="" loading="lazy" decoding="async" /><span class="paper__cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="paper__go">기사 원문 보기</span></a>
+      <a class="paper" href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90553" target="_blank" rel="noopener noreferrer" data-cta="news" style="--x:12px;--y:24px;--r:3deg;z-index:4" aria-label="한국목재신문 기사 원문: 글로벌 완구 브랜드 조이캣, 한국 시장 공식 진출"><span class="paper__mast"><img class="paper__logo" src="/assets/news/lg_woodkorea.png" width="266" height="90" alt="한국목재신문" /><span class="paper__date">2026년 7월 31일</span></span><span class="paper__head">글로벌 완구 브랜드 조이캣, 한국 시장 공식 진출</span><img class="paper__img" src="/assets/news/news4.webp" width="480" height="360" alt="" loading="lazy" decoding="async" /><span class="paper__cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="paper__go">기사 원문 보기</span></a>
+      <a class="paper" href="https://www.ksilbo.co.kr/news/articleView.html?idxno=1063634" target="_blank" rel="noopener noreferrer" data-cta="news" style="--x:0px;--y:30px;--r:-1deg;z-index:5" aria-label="경상일보 기사 원문: 조이캣 비지북, 오펜하임 토이 포트폴리오 플래티넘 수상"><span class="paper__mast"><img class="paper__logo" src="/assets/news/lg_ksilbo.png" width="220" height="61" alt="경상일보" /><span class="paper__date">2026년 8월 3일</span></span><span class="paper__head">조이캣 비지북, 오펜하임 토이 포트폴리오 플래티넘 수상</span><img class="paper__img" src="/assets/news/news3.webp" width="480" height="270" alt="" loading="lazy" decoding="async" /><span class="paper__cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="paper__go">기사 원문 보기</span></a>
+        </div>
+        <p class="press__hint">아래로 내리면 다음 기사가 올라와요</p>
+      </div>
     </div>
-    <p class="press__hint">신문을 누르면 맨 위로 올라와요. 맨 위 신문을 누르면 기사 원문이 열려요.</p>
   </section>
   <nav class="news" aria-label="기사 목록">
     <a href="https://www.ksilbo.co.kr/news/articleView.html?idxno=1063634" target="_blank" rel="noopener noreferrer" data-cta="news"><b>경상일보</b><span>조이캣 비지북, 오펜하임 토이 포트폴리오 플래티넘 수상</span></a>
     <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90553" target="_blank" rel="noopener noreferrer" data-cta="news"><b>한국목재신문</b><span>글로벌 완구 브랜드 조이캣, 한국 시장 공식 진출</span></a>
-    <a href="https://www.gosiweek.com/article/1065580674842325" target="_blank" rel="noopener noreferrer" data-cta="news"><b>고시위크</b><span>조이캣 비지북, 쿠팡 촉감발달완구 카테고리 2위 진입</span></a>
-    <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90531" target="_blank" rel="noopener noreferrer" data-cta="news"><b>한국목재신문</b><span>조이캣, 교육완구 기부로 아시아 아동 지원 확대하며 ESG 경영 강화</span></a>
+    <a href="https://www.gosiweek.com/article/1065580674842325" target="_blank" rel="noopener noreferrer" data-cta="news"><b>피앤피뉴스</b><span>조이캣 비지북, 쿠팡 촉감발달완구 카테고리 2위 진입</span></a>
     <a href="https://www.gokorea.kr/news/articleView.html?idxno=873458" target="_blank" rel="noopener noreferrer" data-cta="news"><b>공감신문</b><span>조이캣, 몬테소리 교육 원칙 반영한 감각놀이 완구 ‘비지북’ 선봬</span></a>
+    <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90531" target="_blank" rel="noopener noreferrer" data-cta="news"><b>한국목재신문</b><span>조이캣, 교육완구 기부로 아시아 아동 지원 확대하며 ESG 경영 강화</span></a>
   </nav>
-  <h1 style="margin-top:8px">구매평 406건</h1>
+  <h1 style="margin-top:20px">구매평 406건</h1>
 
   <section class="sum" aria-label="평점 요약">
     <div class="sum__score"><b>4.96</b><span class="stars" aria-hidden="true">★★★★★</span><small>5점 만점</small></div>
@@ -203,19 +206,36 @@
   document.getElementById('fAll').onclick = function () { setF(false); };
   document.getElementById('fPhoto').onclick = function () { setF(true); };
 
-  // 신문 더미: 아래 깔린 신문을 누르면 맨 위로, 맨 위 신문을 누르면 원문으로.
+  // 신문 더미 — 스크롤 진행도에 맞춰 k번째 신문까지 떨어뜨린다. 맨 위 신문을 누르면 원문.
   (function () {
-    var pile = document.getElementById('pile'); if (!pile) return;
-    var top = pile.children.length;
-    pile.classList.add('is-deal');
-    pile.addEventListener('click', function (e) {
-      var a = e.target.closest('.paper'); if (!a) return;
-      if (+a.style.zIndex < top) {
-        e.preventDefault(); e.stopPropagation();
-        top += 1; a.style.zIndex = top;
-        a.classList.remove('is-lift'); void a.offsetWidth; a.classList.add('is-lift');
-        if (window.gtag) gtag('event', 'press_pick', { product_slug: 'busybook-set3', link_url: a.href });
+    var track = document.getElementById('pressTrack'); if (!track) return;
+    var papers = [].slice.call(track.querySelectorAll('.paper'));
+    var dots = [].slice.call(track.querySelectorAll('.press__dots i'));
+    var sub = document.getElementById('pressSub'), N = papers.length, cur = -1, ticking = false;
+    function step() {
+      ticking = false;
+      var r = track.getBoundingClientRect(), vh = window.innerHeight;
+      var span = r.height - vh; var p = span > 0 ? (vh * 0.35 - r.top) / span : 0;
+      var k = Math.max(0, Math.min(N - 1, Math.floor(p * N)));
+      if (r.top > vh * 0.6) k = -1;            // 섹션이 아직 멀면 아무것도 안 떨어뜨림
+      if (k === cur) return; cur = k;
+      papers.forEach(function (el, i) {
+        el.classList.toggle('is-in', i <= k);
+        el.classList.toggle('is-top', i === k);
+        el.tabIndex = i === k ? 0 : -1;
+      });
+      dots.forEach(function (d, i) { d.classList.toggle('on', i <= k); });
+      if (k >= 0) {
+        sub.textContent = '기사 ' + N + '건 중 ' + (k + 1) + '번째';
+        if (window.gtag) gtag('event', 'press_view', { product_slug: 'busybook-set3', press_index: k + 1 });
       }
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(step); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    step();
+    track.addEventListener('click', function (e) {
+      var a = e.target.closest('.paper'); if (a && !a.classList.contains('is-top')) { e.preventDefault(); e.stopPropagation(); }
     }, true);
   })();
 
