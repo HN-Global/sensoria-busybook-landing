@@ -87,26 +87,27 @@
   }
   .fbar > a {
     display: block; text-decoration: none; text-align: center;
-    border-radius: 12px; padding: 11px 8px; font-size: 16px; font-weight: 900; line-height: 1.2; letter-spacing: -.02em;
+    border-radius: 12px; padding: 11px 8px; font-size: 15.5px; font-weight: 800; line-height: 1.2; letter-spacing: -.02em;
   }
   .fbar small { display: block; font-weight: 600; font-size: 11.5px; opacity: .85; margin-top: 2px; }
-  /* 하단 버튼 — 흰 바 위에 조이캣 핫핑크(구매)와 크레용 노랑(구매평). 둘 다 꽉 찬 색이라 멀리서도 보인다 */
-  .fbtn--buy { background: #ff2e74; color: #fff; box-shadow: 0 4px 0 #c8124f; }
-  .fbtn--rv { background: #ffd43b; color: #3a2600; box-shadow: 0 4px 0 #e0a800; }
-  .fbar > a:active { transform: translateY(3px); box-shadow: none; }
+  /* 하단 버튼 — 흰 바 위에 짙은 차콜(구매평)과 로즈(구매). 꽉 찬 색이라 잘 보이되 장난감처럼 보이지 않게 */
+  .fbtn--buy { background: #e3245f; color: #fff; }
+  .fbtn--rv { background: #2b2522; color: #fff; }
+  .fbar > a:active { opacity: .85; }
+  .fbar small s { opacity: .7; font-weight: 400; } .fbar small b { font-weight: 900; }
   /* 스크롤 중 '구매평 보기' 강조 — 말풍선이 튀어 오르고 버튼이 한 번 반짝인다 */
-  .rvtip { position: fixed; left: 12px; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); z-index: 51;
+  .rvtip { position: fixed; left: 12px; bottom: calc(80px + env(safe-area-inset-bottom, 0px)); z-index: 51;
     padding: 10px 14px; border-radius: 14px; background: #fff; color: var(--ink); font-size: 14px; font-weight: 700;
-    box-shadow: 0 8px 22px rgba(36,31,26,.28), inset 0 0 0 2px #e0a800; white-space: nowrap; cursor: pointer;
+    box-shadow: 0 8px 22px rgba(36,31,26,.28), inset 0 0 0 2px #2b2522; white-space: nowrap; cursor: pointer;
     visibility: hidden; opacity: 0; transform: translateY(12px) scale(.9); }
-  .rvtip b { color: #ff2e74; }
+  .rvtip b { color: #e3245f; }
   .rvtip::after { content: ""; position: absolute; left: 40px; bottom: -7px; width: 14px; height: 14px; background: #fff;
-    transform: rotate(45deg); box-shadow: 2px 2px 0 0 #e0a800; }
+    transform: rotate(45deg); box-shadow: 2px 2px 0 0 #2b2522; }
   .rvtip.is-show { visibility: visible; animation: tipPop .7s cubic-bezier(.2,1.25,.4,1) both; }
   @keyframes tipPop { 0% { opacity: 0; transform: translateY(16px) scale(.85); } 50% { opacity: 1; transform: translateY(-6px) scale(1.04); }
     100% { opacity: 1; transform: none; } }
   .fbtn--rv.is-glow { animation: rvGlow 1.4s ease 2; }
-  @keyframes rvGlow { 50% { box-shadow: 0 4px 0 #e0a800, 0 0 0 5px rgba(255,212,59,.55); transform: scale(1.04); } }
+  @keyframes rvGlow { 50% { box-shadow: 0 0 0 4px rgba(43,37,34,.25); transform: scale(1.03); } }
   @media (prefers-reduced-motion: reduce) { .rvtip.is-show { animation: none; opacity: 1; transform: none; } .fbtn--rv.is-glow { animation: none; } }
   @media (min-width: 900px) { .rvtip { left: calc(50% - 418px); } }
   a:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
@@ -238,7 +239,7 @@
 <div class="rvtip" id="rvtip" role="button" tabindex="-1">⭐ 구매평 <b>406건</b>, 평점 <b>4.96</b> 확인해 보세요</div>
 <nav class="fbar">
   <a class="fbtn--rv" data-cta="review" href="/reviews/">구매평 보기<small>406건 · ★4.96</small></a>
-  <a class="fbtn--buy" data-cta="buy" href="https://sensoria.kr/shop_view/?idx=28">구매하러 가기<small>144,000원 · 무료배송</small></a>
+  <a class="fbtn--buy" data-cta="buy" href="https://sensoria.kr/shop_view/?idx=28">구매하러 가기<small><s>207,000원</s> 30% <b>144,000원</b></small></a>
 </nav>
 
 <!-- 계측: GA4 · Clarity · 메타 픽셀. 값과 이벤트 이름은 2026-10-08 판 그대로 (지표 세션 기준).
@@ -363,6 +364,11 @@
     }, { passive: true });
     tip.addEventListener('click', function () { ev('click_review', { from: 'nudge', transport_type: 'beacon' }); location.href = '/reviews/'; });
   }
+
+  // 보던 위치 기억 — 구매평 갔다가 '상세 보기'로 돌아오면 그 자리(뒤로 가기는 브라우저가, 링크로 오면 여기서).
+  try { var y0 = +sessionStorage.getItem('jc_lp_y');
+    if (y0 && /\/reviews\//.test(document.referrer)) { history.scrollRestoration = 'manual'; scrollTo(0, y0); } } catch (e) {}
+  addEventListener('pagehide', function () { try { sessionStorage.setItem('jc_lp_y', String(scrollY)); } catch (e) {} });
 
   function boot() { rvTip(); start(); heroView(); scrollDepth(); lazyVideos(); }
   if (document.readyState === 'complete') boot();
