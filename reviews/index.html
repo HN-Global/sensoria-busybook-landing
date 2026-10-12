@@ -78,7 +78,10 @@
   .blog-note { margin: 4px 0 0; font-size: 11.5px; color: #9a8f84; }
 
   /* 리뷰 벽 — 한 줄 4개, 촘촘하게 */
-  .wall { columns: 4; column-gap: 6px; margin-top: 12px; }
+  .pwall { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; align-items: start; margin-top: 12px; }
+  .pwall .rv { margin: 0; }
+  @media (min-width: 720px) { .pwall { gap: 10px; } }
+  .wall { columns: 4; column-gap: 6px; margin-top: 6px; }
   .rv { break-inside: avoid; margin: 0 0 6px; padding: 7px; border-radius: 8px; background: #fff; border: 1px solid var(--line); display: grid; gap: 4px; }
   .rv .stars { font-size: 9px; letter-spacing: 0; }
   .rv__img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 5px; display: block; background: #f3ece8; }
@@ -132,7 +135,6 @@
       <a class="blog" href="https://blog.naver.com/cho_ee91/224334969224" target="_blank" rel="noopener noreferrer" data-cta="blog"><img class="blog__thumb" src="https://blogthumb.pstatic.net/MjAyNjA3MDFfMTIy/MDAxNzgyOTA3OTM3MjQ4.iAhfc74A4wmzkyTc5b7_Ml7yOAupI052Qr-vTimTmakg.q0PrmGNDKU0QpYISejGwkUNNjHAVY_A4kScAHxZ0Phgg.JPEG/output%A3%DF3022015028.jpg?type=w2" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" /><span class="blog__tag">후기</span><span class="blog__title">두돌아기 소근육 발달 놀이로 좋은 몬테소리 비지북</span><span class="blog__ex">현재 22개월로 두돌을 앞두고 있는 둘째 언니가 있어서 아무래도 종이접기나 색칠공부 같은 다양한 활동을 하고는 있지만</span><span class="blog__meta">TINY · 2026.07.03 · 사진 11장</span></a>
       <a class="blog" href="https://blog.naver.com/rmsahd/224337325686" target="_blank" rel="noopener noreferrer" data-cta="blog"><img class="blog__thumb" src="https://blogthumb.pstatic.net/MjAyNjA3MDVfMTUg/MDAxNzgzMjUyMTU1NzE4.bjv2thSftMjssTQoRLCqX42ZPV_0PFShp5m6HyeGYcAg.skgttgwFgsx-0D9Oo6psaxsd1lKcIUt1dc5z7yD7v8Ig.JPEG/IMG%A3%DF2277.jpg?type=w2" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" /><span class="blog__tag">후기</span><span class="blog__title">[육아외출템] 몬테소리 비지북 추천 ‘조이캣 비지북’</span><span class="blog__ex">이젠 손도 잘 쓰고 궁금한것도 많아진 10개월 아기 셈버맘 순몽입니다 🐣 아기가 10개월이 되면서</span><span class="blog__meta">순몽 · 2026.07.05 · 사진 9장</span></a>
   </div>
-  <p class="blog-note">네이버 블로그에 올라온 후기예요. 누르면 원문으로 가요.</p>
 
   <h2 class="sec-h">구매평 <small>406건</small></h2>
   <section class="sum" aria-label="평점 요약">
@@ -140,10 +142,9 @@
     <div class="bars" id="bars"></div>
   </section>
 
+  <div class="pwall" id="pwall"></div>
   <div class="wall" id="wall"></div>
   <div id="more" aria-hidden="true"></div>
-  <p class="note">3종 세트에 들어 있는 프린세스를 쿠팡에서 구매한 고객의 구매평이에요. 평점과 건수는 406건 전부로 계산했고,
-    별점만 남긴 217건과 이벤트 안내 문구만 있는 1건은 목록에서 뺐어요.</p>
 </main>
 
 <nav class="fbar">
@@ -166,7 +167,9 @@
 
   // 리뷰 벽
   var wall = document.getElementById('wall'), more = document.getElementById('more');
-  list = D.items.slice().sort(function (a, b) { return (b.images.length > 0) - (a.images.length > 0) || b.content.length - a.content.length; });
+  var byLen = function (a, b) { return b.content.length - a.content.length; };
+  document.getElementById('pwall').innerHTML = D.items.filter(function (x) { return x.images.length; }).sort(byLen).map(function (x) { return card(x); }).join('');
+  list = D.items.filter(function (x) { return !x.images.length; }).sort(byLen);
   function card(x) {
     return '<article class="rv"><span class="stars">' + stars(x.rating) + '</span>' +
       (x.images.length ? '<img class="rv__img" src="' + esc(x.images[0]) + '" alt="구매평 사진" loading="lazy" decoding="async" referrerpolicy="no-referrer" />' : '') +
@@ -180,7 +183,7 @@
   if ('IntersectionObserver' in window) new IntersectionObserver(function (es) {
     if (es[0].isIntersecting && shown < list.length) render(); }, { rootMargin: '900px 0px' }).observe(more);
   else while (shown < list.length) render();
-  wall.addEventListener('click', function (e) { var c = e.target.closest('.rv'); if (c) c.classList.toggle('is-open'); });
+  document.querySelector('.page').addEventListener('click', function (e) { var c = e.target.closest('.rv'); if (c) c.classList.toggle('is-open'); });
 
   // 신문 더미 — 0.5초마다 한 장, 스크롤하면 남은 걸 한꺼번에. 되돌리지 않는다.
   (function () {
