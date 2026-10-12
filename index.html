@@ -44,7 +44,7 @@
 
   /* 상단 헤더 — 조이캣 공식몰(sensoria.kr) 모바일 헤더와 같은 분홍 바·로고 */
   .gnb { position: sticky; top: 0; z-index: 40; height: 60px; background: #ffe6e4;
-    display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; padding: 0 6px; }
+    display: flex; align-items: center; justify-content: center; padding: 0 6px; }
   .gnb > span { display: flex; align-items: center; justify-content: center; height: 48px; color: #3a2b2b; text-decoration: none; }
   .gnb__logo img { height: 40px; width: auto; display: block; }
   .gnb svg { width: 24px; height: 24px; }
@@ -82,29 +82,31 @@
   .fbar {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
     padding: 9px 12px calc(9px + env(safe-area-inset-bottom, 0px));
-    background: var(--ink);
-    display: grid; grid-template-columns: 1fr 1.6fr; gap: 8px;
+    background: #fff; box-shadow: 0 -6px 18px rgba(80,30,40,.12);
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: 8px;
   }
   .fbar > a {
     display: block; text-decoration: none; text-align: center;
-    border-radius: 9px; padding: 11px 8px; font-size: 14.5px; font-weight: 800; line-height: 1.25;
+    border-radius: 12px; padding: 11px 8px; font-size: 16px; font-weight: 900; line-height: 1.2; letter-spacing: -.02em;
   }
-  .fbar small { display: block; font-weight: 400; font-size: 11px; opacity: .8; }
-  .fbtn--buy { background: var(--pink); color: #fff; }
-  .fbtn--rv { color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.4); }
+  .fbar small { display: block; font-weight: 600; font-size: 11.5px; opacity: .85; margin-top: 2px; }
+  /* 하단 버튼 — 흰 바 위에 조이캣 핫핑크(구매)와 크레용 노랑(구매평). 둘 다 꽉 찬 색이라 멀리서도 보인다 */
+  .fbtn--buy { background: #ff2e74; color: #fff; box-shadow: 0 4px 0 #c8124f; }
+  .fbtn--rv { background: #ffd43b; color: #3a2600; box-shadow: 0 4px 0 #e0a800; }
+  .fbar > a:active { transform: translateY(3px); box-shadow: none; }
   /* 스크롤 중 '구매평 보기' 강조 — 말풍선이 튀어 오르고 버튼이 한 번 반짝인다 */
-  .rvtip { position: fixed; left: 12px; bottom: calc(80px + env(safe-area-inset-bottom, 0px)); z-index: 51;
+  .rvtip { position: fixed; left: 12px; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); z-index: 51;
     padding: 10px 14px; border-radius: 14px; background: #fff; color: var(--ink); font-size: 14px; font-weight: 700;
-    box-shadow: 0 8px 22px rgba(36,31,26,.28), inset 0 0 0 2px var(--pink); white-space: nowrap; cursor: pointer;
+    box-shadow: 0 8px 22px rgba(36,31,26,.28), inset 0 0 0 2px #e0a800; white-space: nowrap; cursor: pointer;
     visibility: hidden; opacity: 0; transform: translateY(12px) scale(.9); }
-  .rvtip b { color: var(--pink); }
+  .rvtip b { color: #ff2e74; }
   .rvtip::after { content: ""; position: absolute; left: 40px; bottom: -7px; width: 14px; height: 14px; background: #fff;
-    transform: rotate(45deg); box-shadow: 2px 2px 0 0 var(--pink); }
+    transform: rotate(45deg); box-shadow: 2px 2px 0 0 #e0a800; }
   .rvtip.is-show { visibility: visible; animation: tipPop .7s cubic-bezier(.2,1.25,.4,1) both; }
   @keyframes tipPop { 0% { opacity: 0; transform: translateY(16px) scale(.85); } 50% { opacity: 1; transform: translateY(-6px) scale(1.04); }
     100% { opacity: 1; transform: none; } }
   .fbtn--rv.is-glow { animation: rvGlow 1.4s ease 2; }
-  @keyframes rvGlow { 50% { box-shadow: inset 0 0 0 2px #fff, 0 0 0 4px rgba(217,86,107,.55); background: rgba(217,86,107,.25); } }
+  @keyframes rvGlow { 50% { box-shadow: 0 4px 0 #e0a800, 0 0 0 5px rgba(255,212,59,.55); transform: scale(1.04); } }
   @media (prefers-reduced-motion: reduce) { .rvtip.is-show { animation: none; opacity: 1; transform: none; } .fbtn--rv.is-glow { animation: none; } }
   @media (min-width: 900px) { .rvtip { left: calc(50% - 418px); } }
   a:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
@@ -115,9 +117,7 @@
 <main class="page">
 
   <header class="gnb">
-    <span class="gnb__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
     <span class="gnb__logo"><img src="/assets/joycat-logo.png" width="103" height="66" alt="joycat" /></span>
-    <span class="gnb__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.3 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="10" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg></span>
   </header>
 
   <section class="head">
@@ -346,7 +346,7 @@
     window.addEventListener(t, function once() { video(); window.removeEventListener(t, once); }, { passive: true });
   });
 
-  // 구매평 강조: 25%·60% 지점에서 한 번씩 말풍선을 띄우고 버튼을 반짝인다(5초 뒤 사라짐).
+  // 구매평 강조: 10% 지점에서 말풍선을 띄우고 버튼을 반짝인다. 말풍선은 그 뒤로 계속 떠 있다.
   function rvTip() {
     var tip = document.getElementById('rvtip'), btn = document.querySelector('.fbtn--rv'), shown = {}, t;
     if (!tip || !btn) return;
@@ -355,12 +355,11 @@
       tip.classList.remove('is-show'); void tip.offsetWidth; tip.classList.add('is-show');
       btn.classList.remove('is-glow'); void btn.offsetWidth; btn.classList.add('is-glow');
       ev('review_nudge_view', { percent_scrolled: mark });
-      clearTimeout(t); t = setTimeout(function () { tip.classList.remove('is-show'); }, 5000);
     }
     window.addEventListener('scroll', function () {
       var max = document.documentElement.scrollHeight - window.innerHeight; if (max <= 0) return;
       var pct = window.scrollY / max * 100;
-      if (pct >= 25) show(25); if (pct >= 60) show(60);
+      if (pct >= 10) show(10);
     }, { passive: true });
     tip.addEventListener('click', function () { ev('click_review', { from: 'nudge', transport_type: 'beacon' }); location.href = '/reviews/'; });
   }
