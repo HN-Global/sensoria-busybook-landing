@@ -11,7 +11,6 @@
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://start.sensoria.kr/" />
@@ -67,7 +66,11 @@
   .video { position: relative; aspect-ratio: 16 / 9; background: #000 center / cover no-repeat; }
   .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
-  .detail img { display: block; width: 100%; height: auto; }
+  .detail img, .detail video { display: block; width: 100%; height: auto; }
+  .video__play { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border: 0; border-radius: 14px;
+    background: rgba(0,0,0,.72); cursor: pointer; }
+  .video__play::after { content: ""; position: absolute; left: 27px; top: 14px; border-style: solid;
+    border-width: 10px 0 10px 17px; border-color: transparent transparent transparent #fff; }
 
   .end { padding: 28px 16px 36px; text-align: center; }
   .end p { margin: 0 0 14px; font-size: 15px; line-height: 1.6; }
@@ -115,99 +118,99 @@
     </ul>
   </section>
 
-  <div class="video" id="video" style="background-image:url(https://i.ytimg.com/vi/3D_HScC74RU/hqdefault.jpg)" aria-label="조이캣 비지북 소개 영상"></div>
+  <div class="video" id="video" style="background-image:url(https://i.ytimg.com/vi/3D_HScC74RU/hqdefault.jpg)" aria-label="조이캣 비지북 소개 영상"><button class="video__play" type="button" aria-label="영상 재생"></button></div>
 
   <section class="detail">
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-000-860x443.jpeg" width="860" height="443" alt="" fetchpriority="high" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-001-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-002-857x390.jpeg" width="857" height="390" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-003-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-004-860x390.jpeg" width="860" height="390" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-005-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-006-860x390.jpeg" width="860" height="390" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-007-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-008-858x390.jpeg" width="858" height="390" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-009-1440x1100.webp" width="1440" height="1100" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-010-859x484.jpeg" width="859" height="484" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-011-859x475.jpeg" width="859" height="475" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-012-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-013-859x998.jpeg" width="859" height="998" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-019-860x751.jpeg" width="860" height="751" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-020-860x380.jpeg" width="860" height="380" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-021-860x380.jpeg" width="860" height="380" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-022-860x380.jpeg" width="860" height="380" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-023-860x380.jpeg" width="860" height="380" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-024-860x432.jpeg" width="860" height="432" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-025-860x908.png" width="860" height="908" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-026-860x801.webp" width="860" height="801" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-027-860x982.jpeg" width="860" height="982" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-028-860x943.jpeg" width="860" height="943" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-029-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-030-860x1117.jpeg" width="860" height="1117" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-031-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-032-860x1117.jpeg" width="860" height="1117" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-033-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-034-860x1416.jpeg" width="860" height="1416" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-035-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-036-860x583.jpeg" width="860" height="583" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-037-860x486.jpeg" width="860" height="486" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-038-860x1121.jpeg" width="860" height="1121" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-039-859x1506.jpeg" width="859" height="1506" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-040-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-041-859x837.jpeg" width="859" height="837" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-042-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-043-859x939.jpeg" width="859" height="939" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-044-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-045-859x855.jpeg" width="859" height="855" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-046-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-047-859x848.jpeg" width="859" height="848" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-048-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-049-859x2546.jpeg" width="859" height="2546" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-050-860x4922.jpeg" width="860" height="4922" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-051-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-052-860x887.jpeg" width="860" height="887" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-053-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-054-858x490.jpeg" width="858" height="490" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-055-860x1096.jpeg" width="860" height="1096" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-056-1440x1440.webp" width="1440" height="1440" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-057-860x2302.jpeg" width="860" height="2302" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-058-860x4227.jpeg" width="860" height="4227" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-059-860x5557.jpeg" width="860" height="5557" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-060-860x458.jpeg" width="860" height="458" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-061-860x5079.jpeg" width="860" height="5079" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-062-860x2848.jpeg" width="860" height="2848" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-063-860x949.jpeg" width="860" height="949" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-064-860x1124.jpeg" width="860" height="1124" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-065-859x2159.jpeg" width="859" height="2159" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-066-800x696.webp" width="800" height="696" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-067-860x675.jpeg" width="860" height="675" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-068-1440x1440.webp" width="1440" height="1440" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-069-860x484.jpeg" width="860" height="484" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-070-859x988.jpeg" width="859" height="988" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-071-800x669.webp" width="800" height="669" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-072-860x1986.jpeg" width="860" height="1986" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-073-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-074-859x391.jpeg" width="859" height="391" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-075-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-076-860x386.jpeg" width="860" height="386" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-077-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-078-860x761.jpeg" width="860" height="761" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-079-860x3209.jpeg" width="860" height="3209" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-080-860x470.jpeg" width="860" height="470" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-081-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-082-860x491.jpeg" width="860" height="491" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-083-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-084-860x548.jpeg" width="860" height="548" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-085-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-086-860x495.jpeg" width="860" height="495" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-087-860x5099.jpeg" width="860" height="5099" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-088-860x5251.jpeg" width="860" height="5251" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-089-860x5038.jpeg" width="860" height="5038" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-092-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-097-1440x810.webp" width="1440" height="810" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-101-860x650.jpeg" width="860" height="650" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-102-860x836.jpeg" width="860" height="836" alt="" loading="lazy" decoding="async" />
-    <img src="https://cdn.jsdelivr.net/gh/ajh322/brand-assets@main/joycat/busybook/COMMON/detail/COMMON-detail-103-860x2522.jpeg" width="860" height="2522" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-000-860x443.webp" width="750" height="386" alt="" fetchpriority="high" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-001-1440x810.jpg" data-src="/assets/detail/COMMON-detail-001-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-002-857x390.webp" width="750" height="341" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-003-1440x810.jpg" data-src="/assets/detail/COMMON-detail-003-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-004-860x390.webp" width="750" height="340" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-005-1440x810.jpg" data-src="/assets/detail/COMMON-detail-005-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-006-860x390.webp" width="750" height="340" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-007-1440x810.jpg" data-src="/assets/detail/COMMON-detail-007-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-008-858x390.webp" width="750" height="341" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="550" poster="/assets/detail/COMMON-detail-009-1440x1100.jpg" data-src="/assets/detail/COMMON-detail-009-1440x1100.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-010-859x484.webp" width="750" height="423" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-011-859x475.webp" width="750" height="415" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-012-1440x810.jpg" data-src="/assets/detail/COMMON-detail-012-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-013-859x998.webp" width="750" height="871" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-019-860x751.webp" width="750" height="655" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-020-860x380.webp" width="750" height="331" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-021-860x380.webp" width="750" height="331" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-022-860x380.webp" width="750" height="331" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-023-860x380.webp" width="750" height="331" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-024-860x432.webp" width="750" height="377" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-025-860x908.webp" width="750" height="792" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="670" poster="/assets/detail/COMMON-detail-026-860x801.jpg" data-src="/assets/detail/COMMON-detail-026-860x801.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-027-860x982.webp" width="750" height="856" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-028-860x943.webp" width="750" height="822" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-029-1440x810.jpg" data-src="/assets/detail/COMMON-detail-029-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-030-860x1117.webp" width="750" height="974" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-031-1440x810.jpg" data-src="/assets/detail/COMMON-detail-031-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-032-860x1117.webp" width="750" height="974" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-033-1440x810.jpg" data-src="/assets/detail/COMMON-detail-033-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-034-860x1416.webp" width="750" height="1235" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-035-1440x810.jpg" data-src="/assets/detail/COMMON-detail-035-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-036-860x583.webp" width="750" height="508" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-037-860x486.webp" width="750" height="424" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-038-860x1121.webp" width="750" height="978" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-039-859x1506.webp" width="750" height="1315" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-040-1440x810.jpg" data-src="/assets/detail/COMMON-detail-040-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-041-859x837.webp" width="750" height="731" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-042-1440x810.jpg" data-src="/assets/detail/COMMON-detail-042-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-043-859x939.webp" width="750" height="820" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-044-1440x810.jpg" data-src="/assets/detail/COMMON-detail-044-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-045-859x855.webp" width="750" height="747" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-046-1440x810.jpg" data-src="/assets/detail/COMMON-detail-046-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-047-859x848.webp" width="750" height="740" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-048-1440x810.jpg" data-src="/assets/detail/COMMON-detail-048-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-049-859x2546.webp" width="750" height="2223" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-050-860x4922.webp" width="750" height="4292" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-051-1440x810.jpg" data-src="/assets/detail/COMMON-detail-051-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-052-860x887.webp" width="750" height="774" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-053-1440x810.jpg" data-src="/assets/detail/COMMON-detail-053-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-054-858x490.webp" width="750" height="428" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-055-860x1096.webp" width="750" height="956" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="720" poster="/assets/detail/COMMON-detail-056-1440x1440.jpg" data-src="/assets/detail/COMMON-detail-056-1440x1440.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-057-860x2302.webp" width="750" height="2008" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-058-860x4227.webp" width="750" height="3686" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-059-860x5557.webp" width="750" height="4846" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-060-860x458.webp" width="750" height="399" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-061-860x5079.webp" width="750" height="4429" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-062-860x2848.webp" width="750" height="2484" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-063-860x949.webp" width="750" height="828" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-064-860x1124.webp" width="750" height="980" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-065-859x2159.webp" width="750" height="1885" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="626" poster="/assets/detail/COMMON-detail-066-800x696.jpg" data-src="/assets/detail/COMMON-detail-066-800x696.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-067-860x675.webp" width="750" height="589" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="720" poster="/assets/detail/COMMON-detail-068-1440x1440.jpg" data-src="/assets/detail/COMMON-detail-068-1440x1440.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-069-860x484.webp" width="750" height="422" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-070-859x988.webp" width="750" height="863" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="602" poster="/assets/detail/COMMON-detail-071-800x669.jpg" data-src="/assets/detail/COMMON-detail-071-800x669.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-072-860x1986.webp" width="750" height="1732" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-073-1440x810.jpg" data-src="/assets/detail/COMMON-detail-073-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-074-859x391.webp" width="750" height="341" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-075-1440x810.jpg" data-src="/assets/detail/COMMON-detail-075-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-076-860x386.webp" width="750" height="337" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-077-1440x810.jpg" data-src="/assets/detail/COMMON-detail-077-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-078-860x761.webp" width="750" height="664" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-079-860x3209.webp" width="750" height="2799" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-080-860x470.webp" width="750" height="410" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-081-1440x810.jpg" data-src="/assets/detail/COMMON-detail-081-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-082-860x491.webp" width="750" height="428" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-083-1440x810.jpg" data-src="/assets/detail/COMMON-detail-083-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-084-860x548.webp" width="750" height="478" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-085-1440x810.jpg" data-src="/assets/detail/COMMON-detail-085-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-086-860x495.webp" width="750" height="432" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-087-860x5099.webp" width="750" height="4447" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-088-860x5251.webp" width="750" height="4579" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-089-860x5038.webp" width="750" height="4394" alt="" loading="lazy" decoding="async" />
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-092-1440x810.jpg" data-src="/assets/detail/COMMON-detail-092-1440x810.mp4"></video>
+    <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-097-1440x810.jpg" data-src="/assets/detail/COMMON-detail-097-1440x810.mp4"></video>
+    <img src="/assets/detail/COMMON-detail-101-860x650.webp" width="750" height="567" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-102-860x836.webp" width="750" height="729" alt="" loading="lazy" decoding="async" />
+    <img src="/assets/detail/COMMON-detail-103-860x2522.webp" width="750" height="2199" alt="" loading="lazy" decoding="async" />
   </section>
 
   <section class="end">
@@ -268,9 +271,12 @@
   }
 
   // 영상은 첫 화면이 뜬 다음에 붙인다 - 유튜브 iframe 이 첫 로딩을 잡아먹지 않게.
+  // 유튜브는 첫 스크롤·터치·클릭 때 붙인다(플레이어 스크립트가 무거워 첫 로딩을 막지 않게).
+  var ytDone = false;
   function video() {
     var box = document.getElementById('video');
-    if (!box || box.firstChild) return;
+    if (!box || ytDone) return; ytDone = true;
+    box.innerHTML = '';
     var f = document.createElement('iframe');
     f.src = 'https://www.youtube.com/embed/3D_HScC74RU?autoplay=1&mute=1&loop=1&playlist=3D_HScC74RU&playsinline=1&rel=0&modestbranding=1';
     f.title = '조이캣 비지북 소개 영상';
@@ -308,7 +314,23 @@
       if (document.visibilityState === 'visible') { document.removeEventListener('visibilitychange', onVis); fire(); } });
   }
 
-  function boot() { start(); heroView(); scrollDepth(); video(); }
+  function lazyVideos() {
+    var vs = [].slice.call(document.querySelectorAll('video.dv'));
+    if (!('IntersectionObserver' in window)) { vs.forEach(function (v) { v.src = v.dataset.src; v.play(); }); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { if (!v.getAttribute('src')) v.src = v.dataset.src; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else if (v.getAttribute('src')) v.pause();
+      });
+    }, { rootMargin: '300px 0px' });
+    vs.forEach(function (v) { io.observe(v); });
+  }
+  ['scroll', 'touchstart', 'pointerdown', 'keydown'].forEach(function (t) {
+    window.addEventListener(t, function once() { video(); window.removeEventListener(t, once); }, { passive: true });
+  });
+
+  function boot() { start(); heroView(); scrollDepth(); lazyVideos(); }
   if (document.readyState === 'complete') boot();
   else window.addEventListener('load', boot);
 

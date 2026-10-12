@@ -25,6 +25,22 @@
   .gnb svg { width: 24px; height: 24px; }
   .back { display: inline-block; margin-top: 14px; color: var(--dim); font-size: 13px; text-decoration: none; }
   h1 { font-size: 20px; margin: 20px 0 14px; letter-spacing: -.02em; }
+  .news { margin: 14px 0 22px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .news h2 { margin: 0; padding: 12px 14px; font-size: 15px; background: #fffaf6; border-bottom: 1px solid var(--line); }
+  .news h2 small { font-weight: 400; color: var(--dim); font-size: 12px; margin-left: 6px; }
+  .news a { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 10px; align-items: center; padding: 12px 14px;
+    border-top: 1px solid var(--line); color: var(--ink); text-decoration: none; }
+  .news a:first-of-type { border-top: 0; }
+  .news b { font-size: 12px; color: #fff; background: var(--ink); border-radius: 4px; padding: 3px 7px; white-space: nowrap; }
+  .news span { font-size: 14px; font-weight: 600; line-height: 1.45; }
+  .news time { font-size: 11px; color: var(--dim); white-space: nowrap; }
+  @media (prefers-reduced-motion: no-preference) {
+    .news a { animation: up .5s ease both; }
+    .news a:nth-of-type(2) { animation-delay: .08s; } .news a:nth-of-type(3) { animation-delay: .16s; }
+    .news a:nth-of-type(4) { animation-delay: .24s; } .news a:nth-of-type(5) { animation-delay: .32s; }
+    @keyframes up { from { transform: translateY(10px); opacity: .35; } to { transform: none; opacity: 1; } }
+  }
+  @media (max-width: 420px) { .news a { grid-template-columns: auto 1fr; } .news time { grid-column: 2; } }
   .sum { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center;
     padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: #fffaf6; }
   .sum__score { text-align: center; }
@@ -73,6 +89,14 @@
     <a href="https://sensoria.kr/shop_view/?idx=28" aria-label="구매하기" data-cta="buy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.2l2.3 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="10" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg></a>
   </header>
   <a class="back" href="/">← 3종 세트 소개로 돌아가기</a>
+  <section class="news" aria-label="언론 보도">
+    <h2>언론 보도<small>기사 5건 · 누르면 원문으로 가요</small></h2>
+    <a href="https://www.gokorea.kr/news/articleView.html?idxno=873458" target="_blank" rel="noopener noreferrer" data-cta="news"><b>공감신문</b><span>조이캣, 몬테소리 교육 원칙 반영한 감각놀이 완구 ‘비지북’ 선봬</span><time>2026.07.29</time></a>
+    <a href="https://www.gosiweek.com/article/1065580674842325" target="_blank" rel="noopener noreferrer" data-cta="news"><b>고시위크</b><span>조이캣 비지북, 쿠팡 촉감발달완구 카테고리 2위 진입</span><time>2026.07.30</time></a>
+    <a href="https://www.ksilbo.co.kr/news/articleView.html?idxno=1063634" target="_blank" rel="noopener noreferrer" data-cta="news"><b>경상일보</b><span>조이캣 비지북, 오펜하임 토이 포트폴리오 플래티넘 수상</span><time>2026.08.03</time></a>
+    <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90553" target="_blank" rel="noopener noreferrer" data-cta="news"><b>한국목재신문</b><span>글로벌 완구 브랜드 조이캣, 한국 시장 공식 진출</span><time>2026.07.31</time></a>
+    <a href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90531" target="_blank" rel="noopener noreferrer" data-cta="news"><b>한국목재신문</b><span>조이캣, 교육완구 기부로 아시아 아동 지원 확대하며 ESG 경영 강화</span><time>2026.07.29</time></a>
+  </section>
   <h1 style="margin-top:8px">구매평 406건</h1>
 
   <section class="sum" aria-label="평점 요약">
@@ -154,6 +178,8 @@
   }
   if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
   document.addEventListener('click', function (e) {
+    var nw = e.target.closest && e.target.closest('[data-cta="news"]');
+    if (nw && window.gtag) { gtag('event', 'click_news', { product_slug: 'busybook-set3', link_url: nw.href, transport_type: 'beacon' }); return; }
     var el = e.target.closest && e.target.closest('[data-cta="buy"]'); if (!el) return;
     if (window.fbq) fbq('trackCustom', 'ClickBuyNow', { content_name: P.name, content_ids: [P.id], content_type: 'product', value: P.price, currency: 'KRW' });
     if (window.gtag) gtag('event', 'click_buy_now', { currency: 'KRW', value: P.price, items: [{ item_id: P.id, item_name: P.name, price: P.price }], transport_type: 'beacon' });
