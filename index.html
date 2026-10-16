@@ -638,9 +638,15 @@
       value: price, currency: 'KRW', option: option });
     if (window.gtag) gtag('event', 'click_buy_now', {
       currency: 'KRW', value: price, items: items, option: option, transport_type: 'beacon' });
-    document.getElementById('buyprod').value = idx;
     bsStep = 0; bsNav = 0;
     bsHide();
+    if (option === 'single') {
+      // 단품은 상품 페이지로. 거기서 필수옵션(테마)을 고르고 결제한다.
+      // 결제창 직행은 옵션 코드를 같이 보내야 해서 아직 못 한다.
+      location.href = 'https://sensoria.kr/shop_view/?idx=' + idx;
+      return;
+    }
+    document.getElementById('buyprod').value = idx;
     buyNow();
   }
 
