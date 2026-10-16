@@ -93,15 +93,23 @@
   .note { margin: 16px 0 0; font-size: 12px; line-height: 1.7; color: #9a8f84; }
 
   /* 하단 바 — 랜딩과 같은 색 */
-  .fbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 9px 12px calc(9px + env(safe-area-inset-bottom, 0px));
-    background: #fff; box-shadow: 0 -6px 18px rgba(80,30,40,.12); display: grid; grid-template-columns: 1fr 1.5fr; gap: 8px; }
-  .fbar a { display: block; text-decoration: none; text-align: center; border-radius: 12px; padding: 11px 8px;
-    font-size: 15.5px; font-weight: 800; line-height: 1.2; letter-spacing: -.02em; }
-  .fbar small { display: block; font-weight: 600; font-size: 11.5px; opacity: .9; margin-top: 2px; }
-  .fbar small s { opacity: .7; font-weight: 400; } .fbar small b { font-weight: 900; }
-  .b-back { background: #2b2522; color: #fff; }
-  .b-buy { background: #e3245f; color: #fff; }
-  .fbar a:active { opacity: .85; }
+  .fbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(255,255,255,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-radius: 18px 18px 0 0; box-shadow: 0 -8px 24px rgba(80,30,40,.12); display: grid; grid-template-columns: 1fr 1.45fr; gap: 8px; }
+  .fbar a { display: flex; align-items: center; gap: 9px; text-decoration: none; text-align: left; border-radius: 15px;
+    padding: 9px 12px 9px 9px; min-height: 54px; font-size: 15px; font-weight: 800; line-height: 1.15; letter-spacing: -.03em; transition: transform .15s ease; }
+  .fbar a:active { transform: scale(.97); }
+  .fbtn__ic { flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; font-size: 18px; line-height: 1; }
+  .fbtn__t { min-width: 0; flex: 1; }
+  .fbar small { display: block; font-weight: 600; font-size: 11.5px; margin-top: 3px; letter-spacing: -.01em; white-space: nowrap; }
+  .fbar small s { opacity: .7; font-weight: 400; } .b-buy small b { font-weight: 900; }
+  .b-back { background: #fff3f1; color: #2b2522; box-shadow: inset 0 0 0 1.5px #f4d9d5; }
+  .b-back .fbtn__ic { background: #fff; box-shadow: 0 2px 6px rgba(227,36,95,.18); }
+  .b-back small { color: #8a7d74; }
+  .b-buy { color: #fff; background: linear-gradient(135deg, #ff5d8a 0%, #e8336a 55%, #cf1d54 100%);
+    box-shadow: 0 8px 18px -6px rgba(227,36,95,.6), inset 0 1px 0 rgba(255,255,255,.35); }
+  .b-buy .fbtn__ic { background: rgba(255,255,255,.22); }
+  .b-buy::after { content: "›"; flex: none; font-size: 24px; font-weight: 400; line-height: 1; opacity: .9; margin-left: auto; }
   a:focus-visible, button:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
   @media (min-width: 990px) { .fbar { left: 50%; right: auto; width: 960px; transform: translateX(-50%); } }
 </style>
@@ -148,8 +156,8 @@
 </main>
 
 <nav class="fbar">
-  <a class="b-back" href="/">상세 보기<small>3종 세트 소개</small></a>
-  <a class="b-buy" data-cta="buy" href="https://sensoria.kr/shop_view/?idx=28">구매하러 가기<small><s>207,000원</s> → <b>144,000원</b></small></a>
+  <a class="b-back" href="/"><span class="fbtn__ic" aria-hidden="true">📖</span><span class="fbtn__t">상세 보기<small>3종 세트 소개</small></span></a>
+  <a class="b-buy" data-cta="buy" href="https://sensoria.kr/shop_view/?idx=28"><span class="fbtn__ic" aria-hidden="true">🛍️</span><span class="fbtn__t">구매하러 가기<small><s>207,000원</s> → <b>144,000원</b></small></span></a>
 </nav>
 
 <script src="./reviews-data.js"></script>
@@ -216,19 +224,39 @@
   addEventListener('pagehide', function () { try { sessionStorage.setItem('jc_rv_y', String(scrollY)); } catch (e) {} });
 
   // 계측 — 메인 랜딩과 같은 속성·이름(view_item 은 메인에서만).
-  var GA = 'G-JMM010XK8T', PX = '2177455709866933';
+  var GA = 'G-JMM010XK8T', PX = '2177455709866933', CL = 'ytykxcqdr0';
   var P = { id: '28', name: '조이캣 비지북 3종 세트 (프린세스·오션·정글)', price: 144000 };
-  function start() {
-    window.dataLayer = window.dataLayer || []; window.gtag = function () { dataLayer.push(arguments); };
-    gtag('js', new Date()); gtag('config', GA);
+  // 10/13: 'load'(사진 전부 받은 뒤)까지 미루면 그 전에 나간 사람이 안 잡혔다 → 바로 켠다. Clarity 도 메인과 같은 프로젝트로.
+  window.dataLayer = window.dataLayer || []; window.gtag = function () { dataLayer.push(arguments); };
+  gtag('js', new Date()); gtag('config', GA);
+  (function () {
     var g = document.createElement('script'); g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA; document.head.appendChild(g);
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, 'clarity', 'script', CL);
     (function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
       t = b.createElement(e); t.async = true; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
     })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', PX); fbq('track', 'PageView');
-  }
-  if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
+  })();
+  function ev(n, p) { try { gtag('event', n, Object.assign({ product_slug: 'busybook-set3', page_kind: 'reviews' }, p || {})); } catch (e) {} }
+  ev('view_reviews', { from_landing: fromLanding ? 1 : 0 });
+  // 얼마나 읽고 갔는지 (메인과 같은 이름 scroll_depth)
+  (function () {
+    var marks = [10, 25, 50, 75, 90], hit = {};
+    function chk() {
+      var h = document.documentElement.scrollHeight - innerHeight; if (h <= 0) return;
+      var p = scrollY / h * 100;
+      marks.forEach(function (m) { if (p >= m && !hit[m]) { hit[m] = 1; ev('scroll_depth', { percent: m }); } });
+    }
+    addEventListener('scroll', chk, { passive: true });
+  })();
+  [].forEach.call(document.querySelectorAll('a[href="/"]'), function (a) {
+    a.addEventListener('click', function () { ev('click_detail', { transport_type: 'beacon' }); });
+  });
   document.addEventListener('click', function (e) {
     var bl = e.target.closest && e.target.closest('[data-cta="blog"]');
     if (bl && window.gtag) gtag('event', 'click_blog', { product_slug: 'busybook-set3', link_url: bl.href, transport_type: 'beacon' });

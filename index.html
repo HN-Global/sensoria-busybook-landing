@@ -63,10 +63,19 @@
     display: grid; gap: 8px; font-size: 14px; line-height: 1.55; }
   .points li { display: flex; gap: 8px; }
 
-  .video { position: relative; aspect-ratio: 16 / 9; background: #000 center / cover no-repeat; }
-  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video { position: relative; aspect-ratio: 16 / 9; background: #000; }
+  .video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .snd { position: absolute; right: 10px; bottom: 10px; display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 13px 7px 11px; border: 0; border-radius: 999px; background: rgba(36,31,26,.72); color: #fff;
+    font: 700 13px/1.2 inherit; font-family: inherit; cursor: pointer; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  .snd:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
 
   .detail img, .detail video { display: block; width: 100%; height: auto; }
+  .newscard { position: relative; display: block; -webkit-tap-highlight-color: rgba(0,0,0,.06); }
+  .newscard__go { position: absolute; left: 6.5%; bottom: var(--go-b, 19%); padding: 4px 10px 4px 11px; border-radius: 999px;
+    background: rgba(43,37,34,.82); color: #fff; font-size: 11.5px; font-weight: 600; line-height: 1.4; letter-spacing: -.01em; }
+  .newscard__go::after { content: " ›"; }
+  .newscard:focus-visible { outline: 2px solid #e3245f; outline-offset: -2px; }
   .video__play { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border: 0; border-radius: 14px;
     background: rgba(0,0,0,.72); cursor: pointer; }
   .video__play::after { content: ""; position: absolute; left: 27px; top: 14px; border-style: solid;
@@ -78,23 +87,123 @@
     display: inline-block; text-decoration: none; border-radius: 10px;
     padding: 15px 28px; background: var(--pink); color: #fff; font-weight: 800; font-size: 16px;
   }
+  /* 바로 결제(2026-10-14): 버튼은 결제창으로, 낱권은 작은 글자 링크로만 남긴다 */
+  .lnk-themes { display: inline-block; margin-top: 14px; color: #8a7d74; font-size: 13.5px; text-decoration: underline; text-underline-offset: 3px; }
+  /* 구매 클릭 직후 대기 화면(10/14): 검은 막 + 도는 고리 + 점 세 개. 멈춘 것처럼 보이지 않게 */
+
+  /* ── 구매 선택창 ──
+     모바일은 아래에서 올라오는 시트, 640px 위로는 가운데 모달.
+     버튼은 전부 48px 이상, 시트 바닥엔 safe-area 여백. */
+  .bs { position: fixed; inset: 0; z-index: 95; }
+  .bs[hidden] { display: none; }
+  .bs__dim { position: absolute; inset: 0; background: rgba(28,22,20,.52);
+    opacity: 0; transition: opacity .22s ease; }
+  .bs.is-on .bs__dim { opacity: 1; }
+  .bs__panel {
+    position: absolute; left: 0; right: 0; bottom: 0; background: #fff;
+    border-radius: 20px 20px 0 0; padding: 10px 16px calc(18px + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -10px 40px rgba(36,31,26,.26);
+    transform: translateY(100%); transition: transform .26s cubic-bezier(.2,.9,.3,1);
+    max-height: 88vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  }
+  .bs.is-on .bs__panel { transform: none; }
+  .bs__grip { display: block; width: 38px; height: 4px; border-radius: 3px; background: #e6ded6; margin: 0 auto 10px; }
+  .bs__x { position: absolute; top: 8px; right: 10px; width: 40px; height: 40px; border: 0; background: none;
+    font-size: 26px; line-height: 1; color: #a89c92; cursor: pointer; }
+  .bs__t { margin: 0 0 12px; font-size: 17px; font-weight: 800; letter-spacing: -.02em; text-align: center; }
+
+  .bs__pick { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .bs-opt {
+    position: relative; display: flex; flex-direction: column; align-items: center; gap: 3px;
+    min-height: 130px; padding: 16px 10px 14px; border-radius: 16px; cursor: pointer;
+    border: 2px solid var(--line); background: #fff; color: var(--ink); font: inherit; text-align: center;
+  }
+  .bs-opt b { font-size: 16px; font-weight: 800; letter-spacing: -.02em; }
+  .bs-opt__d { font-size: 11.5px; color: var(--ink-dim); }
+  .bs-opt__p { margin-top: 5px; font-size: 15px; font-weight: 800; }
+  .bs-opt__p s { font-weight: 400; font-size: 11.5px; color: var(--ink-dim); margin-right: 4px; }
+  .bs-opt__s { font-size: 11px; color: var(--ink-dim); }
+  .bs-opt--set { border-color: #e8336a; background: linear-gradient(180deg, #fff6f8, #fff); }
+  .bs-opt--set .bs-opt__p { color: #e3245f; }
+  .bs-opt__tag {
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    background: #e8336a; color: #fff; font-size: 10.5px; font-weight: 700;
+    padding: 3px 9px; border-radius: 20px; white-space: nowrap;
+  }
+  .bs-opt:active { transform: scale(.98); }
+
+  .bs__head { position: relative; display: flex; align-items: center; min-height: 40px; margin-bottom: 8px; }
+  .bs__head .bs__t { flex: 1; margin: 0; }
+  .bs__back { position: absolute; left: 0; min-height: 40px; padding: 0 10px 0 0; border: 0; background: none;
+    font: 700 13.5px inherit; color: var(--ink-dim); cursor: pointer; }
+  .bs__tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .bs-tile {
+    display: flex; flex-direction: column; gap: 5px; padding: 6px 6px 9px; cursor: pointer;
+    border: 2px solid var(--line); border-radius: 14px; background: #fff; color: var(--ink); font: inherit;
+  }
+  .bs-tile img { width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover; border-radius: 9px; display: block; }
+  .bs-tile span { font-size: 12.5px; font-weight: 700; text-align: center; }
+  .bs-tile:active { transform: scale(.97); }
+  .bs__note { margin: 12px 0 0; text-align: center; font-size: 12px; color: var(--ink-dim); }
+
+  body.bs-lock { overflow: hidden; }
+
+  @media (min-width: 640px) {
+    .bs__panel { left: 50%; right: auto; bottom: auto; top: 50%; width: 460px; max-width: calc(100vw - 32px);
+      border-radius: 20px; padding-bottom: 20px; transform: translate(-50%, -46%) scale(.96); opacity: 0;
+      transition: transform .22s ease, opacity .22s ease; }
+    .bs.is-on .bs__panel { transform: translate(-50%, -50%); opacity: 1; }
+    .bs__grip { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bs__dim, .bs__panel { transition: none; }
+  }
+
+  .buyload { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; text-align: center;
+    background: rgba(12,10,12,.82); color: #fff; opacity: 0; visibility: hidden; transition: opacity .18s ease, visibility .18s; }
+  .buyload.is-on { opacity: 1; visibility: visible; }
+  .buyload__ring { width: 46px; height: 46px; margin: 0 auto 18px; border-radius: 50%;
+    border: 4px solid rgba(255,255,255,.18); border-top-color: #ff5d8a; animation: spin .75s linear infinite; }
+  .buyload__t { font-size: 17px; font-weight: 800; letter-spacing: -.02em; }
+  .buyload__t span { display: inline-block; width: 1.4em; text-align: left; }
+  .buyload__t span::after { content: ""; animation: dots 1.2s steps(4, end) infinite; }
+  .buyload__s { margin-top: 8px; font-size: 13px; opacity: .72; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75%, 100% { content: "..."; } }
+  @media (prefers-reduced-motion: reduce) { .buyload__ring { animation-duration: 1.6s; } }
 
   .fbar {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
-    padding: 9px 12px calc(9px + env(safe-area-inset-bottom, 0px));
-    background: #fff; box-shadow: 0 -6px 18px rgba(80,30,40,.12);
-    display: grid; grid-template-columns: 1fr 1.5fr; gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(255,255,255,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-radius: 18px 18px 0 0; box-shadow: 0 -8px 24px rgba(80,30,40,.12);
+    display: grid; grid-template-columns: 1fr 1.45fr; gap: 8px;
+    transform: translateY(120%); opacity: 0; visibility: hidden;
+    transition: transform .4s cubic-bezier(.2,.9,.3,1), opacity .3s ease, visibility .4s;
   }
+  /* 처음엔 숨겼다가 영상을 지나면 올라온다(SHL 랜딩과 같은 방식, 2026-10-13) */
+  .fbar.is-on { transform: none; opacity: 1; visibility: visible; }
+  /* 하단 버튼 (2026-10-13 다듬음): 이모지 동그라미 + 두 줄 글자. 구매평은 연한 블러시, 구매는 로즈 그라데이션 */
   .fbar > a {
-    display: block; text-decoration: none; text-align: center;
-    border-radius: 12px; padding: 11px 8px; font-size: 15.5px; font-weight: 800; line-height: 1.2; letter-spacing: -.02em;
+    display: flex; align-items: center; gap: 9px; text-decoration: none; text-align: left;
+    border-radius: 15px; padding: 9px 12px 9px 9px; min-height: 54px;
+    font-size: 15px; font-weight: 800; line-height: 1.15; letter-spacing: -.03em;
+    transition: transform .15s ease, filter .15s ease;
   }
-  .fbar small { display: block; font-weight: 600; font-size: 11.5px; opacity: .85; margin-top: 2px; }
-  /* 하단 버튼 — 흰 바 위에 짙은 차콜(구매평)과 로즈(구매). 꽉 찬 색이라 잘 보이되 장난감처럼 보이지 않게 */
-  .fbtn--buy { background: #e3245f; color: #fff; }
-  .fbtn--rv { background: #2b2522; color: #fff; }
-  .fbar > a:active { opacity: .85; }
-  .fbar small s { opacity: .7; font-weight: 400; } .fbar small b { font-weight: 900; }
+  .fbar > a:active { transform: scale(.97); }
+  .fbtn__ic { flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; font-size: 18px; line-height: 1; }
+  .fbtn__t { min-width: 0; flex: 1; }
+  .fbar small { display: block; font-weight: 600; font-size: 11.5px; margin-top: 3px; letter-spacing: -.01em; white-space: nowrap; }
+  .fbtn--rv { background: #fff3f1; color: #2b2522; box-shadow: inset 0 0 0 1.5px #f4d9d5; }
+  .fbtn--rv .fbtn__ic { background: #fff; box-shadow: 0 2px 6px rgba(227,36,95,.18); }
+  .fbtn--rv small { color: #8a7d74; }
+  .fbtn--rv small b { color: #f5a623; font-weight: 800; }
+  .fbtn--buy { color: #fff; background: linear-gradient(135deg, #ff5d8a 0%, #e8336a 55%, #cf1d54 100%);
+    box-shadow: 0 8px 18px -6px rgba(227,36,95,.6), inset 0 1px 0 rgba(255,255,255,.35); }
+  .fbtn--buy .fbtn__ic { background: rgba(255,255,255,.22); }
+  .fbtn--buy::after { content: "›"; flex: none; font-size: 24px; font-weight: 400; line-height: 1; opacity: .9; margin-left: auto; }
+  .fbtn--buy small { opacity: .95; }
+  .fbar small s { opacity: .7; font-weight: 400; } .fbtn--buy small b { font-weight: 900; }
   /* 스크롤 중 '구매평 보기' 강조 — 말풍선이 튀어 오르고 버튼이 한 번 반짝인다 */
   .rvtip { position: fixed; left: 12px; bottom: calc(80px + env(safe-area-inset-bottom, 0px)); z-index: 51;
     padding: 10px 14px; border-radius: 14px; background: #fff; color: var(--ink); font-size: 14px; font-weight: 700;
@@ -111,7 +220,7 @@
   @media (prefers-reduced-motion: reduce) { .rvtip.is-show { animation: none; opacity: 1; transform: none; } .fbtn--rv.is-glow { animation: none; } }
   @media (min-width: 900px) { .rvtip { left: calc(50% - 418px); } }
   a:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
-  @media (min-width: 900px) { .fbar { left: 50%; right: auto; width: 860px; transform: translateX(-50%); } }
+  @media (min-width: 900px) { .fbar { left: 50%; right: auto; width: 860px; transform: translate(-50%, 120%); } .fbar.is-on { transform: translateX(-50%); } }
 </style>
 </head>
 <body>
@@ -130,11 +239,15 @@
       <li><span>📚</span><span>프린세스·오션·정글 3권을 한 번에</span></li>
       <li><span>💸</span><span>63,000원 할인 · 🚚 무료배송</span></li>
       <li><span>✋</span><span>떼고, 붙이고, 당기고, 끼우며 노는 펠트 감각놀이책. 18개월부터 외출·식당·비행기에서도 혼자 한참 몰입해요.</span></li>
-      <li><span>🏆</span><span>공식 수입원이 운영하는 조이캣 공식몰</span></li>
+      <li><span>🏆</span><span>조이캣 공식몰 · 100% 정품</span></li>
     </ul>
   </section>
 
-  <div class="video" id="video" style="background-image:url(https://i.ytimg.com/vi/3D_HScC74RU/hqdefault.jpg)" aria-label="조이캣 비지북 소개 영상"><button class="video__play" type="button" aria-label="영상 재생"></button></div>
+  <div class="video" id="video">
+    <video id="brandv" muted loop playsinline preload="none" poster="/assets/brand/joycat-brand-poster.webp" width="720" height="406"
+      data-src="/assets/brand/joycat-brand.mp4" data-src-pc="/assets/brand/joycat-brand-pc.mp4" aria-label="조이캣 비지북 소개 영상"></video>
+    <button class="snd" id="snd" type="button" aria-pressed="false">🔇 소리 켜기</button>
+  </div>
 
   <section class="detail">
     <img src="/assets/detail/COMMON-detail-000-860x443.webp" width="750" height="386" alt="" fetchpriority="high" decoding="async" />
@@ -152,11 +265,11 @@
     <video class="dv" muted loop playsinline preload="none" width="720" height="404" poster="/assets/detail/COMMON-detail-012-1440x810.jpg" data-src="/assets/detail/COMMON-detail-012-1440x810.mp4"></video>
     <img src="/assets/detail/COMMON-detail-013-859x998.webp" width="750" height="871" alt="" loading="lazy" decoding="async" />
     <img src="/assets/detail/COMMON-detail-019-860x751.webp" width="750" height="655" alt="" loading="lazy" decoding="async" />
-    <img src="/assets/detail/COMMON-detail-020-860x380.webp" width="750" height="331" alt="" loading="lazy" decoding="async" />
-    <img src="/assets/detail/COMMON-detail-021-860x380.webp" width="750" height="331" alt="" loading="lazy" decoding="async" />
-    <img src="/assets/detail/COMMON-detail-022-860x380.webp" width="750" height="331" alt="" loading="lazy" decoding="async" />
-    <img src="/assets/detail/COMMON-detail-023-860x380.webp" width="750" height="331" alt="" loading="lazy" decoding="async" />
-    <img src="/assets/detail/COMMON-detail-024-860x432.webp" width="750" height="377" alt="" loading="lazy" decoding="async" />
+    <a class="newscard" href="https://www.gosiweek.com/article/1065580674842325" target="_blank" rel="noopener noreferrer" data-cta="news" aria-label="피앤피뉴스 기사 보기 (새 창)"><img src="/assets/detail/COMMON-detail-020-860x380.webp" width="750" height="331" alt="" loading="lazy" decoding="async" /><span class="newscard__go">기사 보기</span></a>
+    <a class="newscard" href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90553" target="_blank" rel="noopener noreferrer" data-cta="news" aria-label="한국목재신문 기사 보기 (새 창)"><img src="/assets/detail/COMMON-detail-021-860x380.webp" width="750" height="331" alt="" loading="lazy" decoding="async" /><span class="newscard__go">기사 보기</span></a>
+    <a class="newscard" href="https://www.gokorea.kr/news/articleView.html?idxno=873458" target="_blank" rel="noopener noreferrer" data-cta="news" aria-label="공감신문 기사 보기 (새 창)"><img src="/assets/detail/COMMON-detail-022-860x380.webp" width="750" height="331" alt="" loading="lazy" decoding="async" /><span class="newscard__go">기사 보기</span></a>
+    <a class="newscard" href="https://www.ksilbo.co.kr/news/articleView.html?idxno=1063634" target="_blank" rel="noopener noreferrer" data-cta="news" aria-label="경상일보 기사 보기 (새 창)"><img src="/assets/detail/COMMON-detail-023-860x380.webp" width="750" height="331" alt="" loading="lazy" decoding="async" /><span class="newscard__go">기사 보기</span></a>
+    <a class="newscard" href="https://www.woodkorea.co.kr/news/articleView.html?idxno=90531" target="_blank" rel="noopener noreferrer" data-cta="news" style="--go-b:30%" aria-label="한국목재신문 기사 보기 (새 창)"><img src="/assets/detail/COMMON-detail-024-860x432.webp" width="750" height="377" alt="" loading="lazy" decoding="async" /><span class="newscard__go">기사 보기</span></a>
     <img src="/assets/detail/COMMON-detail-025-860x908.webp" width="750" height="792" alt="" loading="lazy" decoding="async" />
     <video class="dv" muted loop playsinline preload="none" width="720" height="670" poster="/assets/detail/COMMON-detail-026-860x801.jpg" data-src="/assets/detail/COMMON-detail-026-860x801.mp4"></video>
     <img src="/assets/detail/COMMON-detail-027-860x982.webp" width="750" height="856" alt="" loading="lazy" decoding="async" />
@@ -231,15 +344,67 @@
 
   <section class="end">
     <p>🔒 광고 링크로만 드리는 특가예요<br /><b>정가 207,000원 → 144,000원 · 무료배송</b></p>
-    <a class="btn" data-cta="buy" href="https://sensoria.kr/shop_view/?idx=28">3종 세트 구매하기</a>
+    <a class="btn" data-cta="buy" href="https://sensoria.kr/shop_view/?idx=28">3종 세트 바로 구매하기</a><br />
+    <a class="lnk-themes" data-cta="themes" href="https://sensoria.kr/21">테마별 낱권 보기 ›</a>
   </section>
 
 </main>
 
+<div class="buyload" id="buyload" role="status" aria-live="polite">
+  <div><div class="buyload__ring" aria-hidden="true"></div>
+    <div class="buyload__t">주문서를 준비하고 있어요<span></span></div>
+    <div class="buyload__s">잠시만 기다려 주세요</div></div>
+</div>
+<form id="buyform" method="post" action="/api/order/" hidden><input type="hidden" name="p" id="buyprod" value="28" /></form>
+<!-- 구매 선택창 — 세트냐 단품이냐. 모바일은 아래에서 올라오는 시트, PC 는 가운데 모달. -->
+<div class="bs" id="buysheet" hidden>
+  <div class="bs__dim" data-bsclose="backdrop"></div>
+  <div class="bs__panel" role="dialog" aria-modal="true" aria-labelledby="bsTitle">
+    <button class="bs__x" type="button" data-bsclose="x" aria-label="닫기">&times;</button>
+    <span class="bs__grip" aria-hidden="true"></span>
+
+    <!-- 1단계 -->
+    <div class="bs__step" data-step="1">
+      <p class="bs__t" id="bsTitle">어떻게 구매하시겠어요?</p>
+      <div class="bs__pick">
+        <button class="bs-opt bs-opt--set" type="button" data-opt="set">
+          <span class="bs-opt__tag">가장 많이 사요</span>
+          <b>풀세트 구매</b>
+          <span class="bs-opt__d">프린세스 · 오션 · 정글 3권</span>
+          <span class="bs-opt__p"><s>207,000원</s> 144,000원</span>
+          <span class="bs-opt__s">무료배송</span>
+        </button>
+        <button class="bs-opt" type="button" data-opt="single">
+          <b>단품 구매</b>
+          <span class="bs-opt__d">5종 중 1권 고르기</span>
+          <span class="bs-opt__p">69,000원</span>
+          <span class="bs-opt__s">배송비 3,000원</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 2단계 -->
+    <div class="bs__step" data-step="2" hidden>
+      <div class="bs__head">
+        <button class="bs__back" type="button" data-bsback>&larr; 뒤로</button>
+        <p class="bs__t">어떤 테마로 보내드릴까요?</p>
+      </div>
+      <div class="bs__tiles">
+      <button class="bs-tile" type="button" data-theme="princess" data-idx="15" data-name="프린세스"><img src="/assets/themes/princess.jpg" alt="" width="500" height="500" loading="lazy" /><span>프린세스</span></button>
+      <button class="bs-tile" type="button" data-theme="ocean" data-idx="16" data-name="오션"><img src="/assets/themes/ocean.jpg" alt="" width="500" height="500" loading="lazy" /><span>오션</span></button>
+      <button class="bs-tile" type="button" data-theme="jungle" data-idx="17" data-name="정글"><img src="/assets/themes/jungle.jpg" alt="" width="500" height="500" loading="lazy" /><span>정글</span></button>
+      <button class="bs-tile" type="button" data-theme="farm" data-idx="18" data-name="농장"><img src="/assets/themes/farm.jpg" alt="" width="500" height="500" loading="lazy" /><span>농장</span></button>
+      <button class="bs-tile" type="button" data-theme="dino" data-idx="19" data-name="공룡"><img src="/assets/themes/dino.jpg" alt="" width="500" height="500" loading="lazy" /><span>공룡</span></button>
+      </div>
+      <p class="bs__note">한 권 69,000원 · 배송비 3,000원</p>
+    </div>
+  </div>
+</div>
+
 <div class="rvtip" id="rvtip" role="button" tabindex="-1">⭐ 구매평 <b>406건</b>, 평점 <b>4.96</b> 확인해 보세요</div>
 <nav class="fbar">
-  <a class="fbtn--rv" data-cta="review" href="/reviews/">구매평 보기<small>406건 · ★4.96</small></a>
-  <a class="fbtn--buy" data-cta="buy" href="https://sensoria.kr/shop_view/?idx=28">구매하러 가기<small><s>207,000원</s> → <b>144,000원</b></small></a>
+  <a class="fbtn--rv" data-cta="review" href="/reviews/"><span class="fbtn__ic" aria-hidden="true">💬</span><span class="fbtn__t">구매평 보기<small><b>★ 4.96</b> · 406건</small></span></a>
+  <a class="fbtn--buy" data-cta="buy" href="https://sensoria.kr/shop_view/?idx=28"><span class="fbtn__ic" aria-hidden="true">🛍️</span><span class="fbtn__t">바로 구매하기<small><s>207,000원</s> → <b>144,000원</b></small></span></a>
 </nav>
 
 <!-- 계측: GA4 · Clarity · 메타 픽셀. 값과 이벤트 이름은 2026-10-08 판 그대로 (지표 세션 기준).
@@ -289,19 +454,29 @@
 
   // 영상은 첫 화면이 뜬 다음에 붙인다 - 유튜브 iframe 이 첫 로딩을 잡아먹지 않게.
   // 유튜브는 첫 스크롤·터치·클릭 때 붙인다(플레이어 스크립트가 무거워 첫 로딩을 막지 않게).
+  // 영상(자체 호스팅, 2026-10-13 유튜브 대신)은 첫 화면이 뜬 다음에 받는다 — 첫 로딩과 회선을 나눠 쓰지 않게.
   var ytDone = false;
   function video() {
-    var box = document.getElementById('video');
-    if (!box || ytDone) return; ytDone = true;
-    box.innerHTML = '';
-    var f = document.createElement('iframe');
-    f.src = 'https://www.youtube.com/embed/3D_HScC74RU?autoplay=1&mute=1&loop=1&playlist=3D_HScC74RU&playsinline=1&rel=0&modestbranding=1';
-    f.title = '조이캣 비지북 소개 영상';
-    f.allow = 'autoplay; encrypted-media; picture-in-picture';
-    f.allowFullscreen = true;
-    f.referrerPolicy = 'strict-origin-when-cross-origin';
-    box.appendChild(f);
+    var v = document.getElementById('brandv');
+    if (!v || ytDone) return; ytDone = true;
+    var pc = window.matchMedia('(min-width: 900px)').matches;
+    v.src = (pc && v.dataset.srcPc) ? v.dataset.srcPc : v.dataset.src;
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
   }
+  (function () {
+    function later() { setTimeout(video, 1200); }
+    if (document.readyState === 'complete') later(); else window.addEventListener('load', later);
+    var b = document.getElementById('snd'), v = document.getElementById('brandv');
+    if (!b || !v) return;
+    b.addEventListener('click', function () {
+      video();
+      var on = v.muted; v.muted = !on;
+      if (on) { v.volume = 0.35; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.textContent = on ? '🔊 소리 끄기' : '🔇 소리 켜기';
+      try { gtag('event', on ? 'brand_video_sound_on' : 'brand_video_sound_off', { product_slug: 'busybook-set3' }); } catch (e) {}
+    });
+  })();
 
   // ── 퍼널 보강: 루딕스 rdx-track.js 와 이름·단계 똑같이 (README 「실제 랜딩으로 바꿀 때」) ──
   var SLUG = 'busybook-set3';
@@ -347,6 +522,18 @@
     window.addEventListener(t, function once() { video(); window.removeEventListener(t, once); }, { passive: true });
   });
 
+  (function barReveal() {
+    var bar = document.querySelector('.fbar'), box = document.getElementById('video'), ticking = false;
+    if (!bar || !box) return;
+    function check() {
+      ticking = false;
+      var on = box.getBoundingClientRect().bottom < window.innerHeight * 0.4;
+      if (on !== bar.classList.contains('is-on')) { bar.classList.toggle('is-on', on); if (on) ev('view_floating_bar'); }
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(check); } }, { passive: true });
+    check();
+  })();
+
   // 구매평 강조: 10% 지점에서 말풍선을 띄우고 버튼을 반짝인다. 말풍선은 그 뒤로 계속 떠 있다.
   function rvTip() {
     var tip = document.getElementById('rvtip'), btn = document.querySelector('.fbtn--rv'), shown = {}, t;
@@ -370,6 +557,132 @@
     if (y0 && /\/reviews\//.test(document.referrer)) { history.scrollRestoration = 'manual'; scrollTo(0, y0); } } catch (e) {}
   addEventListener('pagehide', function () { try { sessionStorage.setItem('jc_lp_y', String(scrollY)); } catch (e) {} });
 
+  // 바로 결제(2026-10-14): 누르면 숨은 폼을 /api/order/ 로 POST → 서버가 3종 세트 주문을 만들고 303 으로 결제창에 넘긴다.
+  // 주문은 클릭할 때만 만든다(아임웹 전환 API 가 생성 순간 InitiateCheckout 을 쏜다). 실패하면 서버가 상품 페이지로 보낸다.
+  // 주문 생성에 2~3초 걸리므로 그동안 검은 대기 화면(고리 + 점 세 개)을 띄운다. 픽셀·GA 신호 틈으로 0.12초 두고 보낸다.
+  var buying = false;
+  function buyNow() {
+    if (buying) return; buying = true;
+    var ov = document.getElementById('buyload'); if (ov) ov.classList.add('is-on');
+    var f = document.getElementById('buyform');
+    setTimeout(function () { f.submit(); }, 120);
+  }
+  // 결제창에서 뒤로 돌아오면(bfcache) 대기 화면을 끄고 다시 누를 수 있게
+  window.addEventListener('pageshow', function () { buying = false; var ov = document.getElementById('buyload'); if (ov) ov.classList.remove('is-on'); });
+
+
+  // ── 구매 선택창(2026-10-16) ───────────────────────────────────────
+  // 구매 버튼을 누르면 바로 결제로 가지 않고 세트/단품을 먼저 고르게 한다.
+  // 뒤로가기(브라우저·안드로이드 물리 버튼)로 페이지를 떠나지 않도록 단계마다 history 를 쌓는다.
+  var SET = { id: '28', name: '조이캣 비지북 3종 세트 (프린세스·오션·정글)', price: 144000 };
+  var SINGLE_PRICE = 69000;
+  var SINGLE_NAME = { '15': '조이캣 비지북 프린세스', '16': '조이캣 비지북 오션',
+                      '17': '조이캣 비지북 정글', '18': '조이캣 비지북 농장', '19': '조이캣 비지북 공룡' };
+  var sheet = document.getElementById('buysheet');
+  var step1 = sheet.querySelector('[data-step="1"]');
+  var step2 = sheet.querySelector('[data-step="2"]');
+  var bsStep = 0;            // 0 닫힘, 1 세트/단품, 2 테마
+  var bsFrom = '';           // 어느 버튼에서 열렸나
+  var bsNav = 0;             // 우리가 쌓은 history 개수
+
+  function clarity(a, b, c) { try { if (window.clarity) window.clarity(a, b, c); } catch (e) {} }
+
+  function bsShow(n) {
+    bsStep = n;
+    step1.hidden = n !== 1;
+    step2.hidden = n !== 2;
+    sheet.querySelector('.bs__panel').scrollTop = 0;
+  }
+  function bsOpen(from) {
+    if (bsStep) return;
+    bsFrom = from || 'unknown';
+    sheet.hidden = false;
+    bsShow(1);
+    requestAnimationFrame(function () { sheet.classList.add('is-on'); });
+    document.body.classList.add('bs-lock');
+    history.pushState({ bs: 1 }, ''); bsNav = 1;
+    ev('buy_sheet_open', { cta_location: bsFrom });
+    if (window.fbq) fbq('trackCustom', 'BuySheetOpen', { cta_location: bsFrom });
+    clarity('event', 'buy_sheet_open');
+  }
+  function bsHide() {
+    sheet.classList.remove('is-on');
+    document.body.classList.remove('bs-lock');
+    setTimeout(function () { if (!bsStep) sheet.hidden = true; }, 260);
+  }
+  // method: x | backdrop | hw_back
+  function bsClose(method) {
+    if (!bsStep) return;
+    var step = bsStep;
+    ev('buy_sheet_close', { step: step, method: method });
+    clarity('event', 'buy_sheet_close');
+    bsStep = 0;
+    bsHide();
+    if (method !== 'hw_back' && bsNav > 0) { var n = bsNav; bsNav = 0; history.go(-n); }
+    else bsNav = 0;
+  }
+  function bsBack(fromHw) {
+    ev('buy_sheet_back', { method: fromHw ? 'hw_back' : 'button' });
+    clarity('event', 'buy_sheet_back');
+    bsShow(1);
+    if (!fromHw && bsNav > 1) { bsNav--; history.back(); }
+    else if (fromHw) bsNav = Math.max(1, bsNav - 1);
+  }
+
+  // 결제로 넘어가기 직전에만 click_buy_now 를 쏜다(시트 열 때가 아니라).
+  function goBuy(idx, name, price, option) {
+    var items = [{ item_id: idx, item_name: name, price: price }];
+    if (window.fbq) fbq('trackCustom', 'ClickBuyNow', {
+      content_name: name, content_ids: [idx], content_type: 'product',
+      value: price, currency: 'KRW', option: option });
+    if (window.gtag) gtag('event', 'click_buy_now', {
+      currency: 'KRW', value: price, items: items, option: option, transport_type: 'beacon' });
+    document.getElementById('buyprod').value = idx;
+    bsStep = 0; bsNav = 0;
+    bsHide();
+    buyNow();
+  }
+
+  sheet.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target : null;
+    if (!t) return;
+    var close = t.closest('[data-bsclose]');
+    if (close) { bsClose(close.getAttribute('data-bsclose')); return; }
+    if (t.closest('[data-bsback]')) { bsBack(false); return; }
+
+    var opt = t.closest('[data-opt]');
+    if (opt) {
+      var which = opt.getAttribute('data-opt');
+      ev('buy_option_select', { option: which });
+      if (window.fbq) fbq('trackCustom', 'BuyOptionSelect', { option: which });
+      clarity('set', 'buy_option', which);
+      if (which === 'set') goBuy(SET.id, SET.name, SET.price, 'set');
+      else { bsShow(2); history.pushState({ bs: 2 }, ''); bsNav++; }
+      return;
+    }
+
+    var tile = t.closest('[data-theme]');
+    if (tile) {
+      var theme = tile.getAttribute('data-theme');
+      var idx = tile.getAttribute('data-idx');
+      ev('buy_theme_select', { theme: theme, item_id: idx });
+      if (window.fbq) fbq('trackCustom', 'BuyThemeSelect', { theme: theme, content_ids: [idx] });
+      clarity('set', 'buy_theme', theme);
+      goBuy(idx, SINGLE_NAME[idx], SINGLE_PRICE, 'single');
+    }
+  });
+
+  // 브라우저·안드로이드 물리 뒤로가기 — 페이지를 떠나지 말고 시트를 닫거나 1단계로.
+  window.addEventListener('popstate', function () {
+    if (!bsStep) return;
+    if (bsStep === 2) { bsBack(true); return; }
+    bsClose('hw_back');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape' || !bsStep) return;
+    if (bsStep === 2) bsBack(false); else bsClose('x');
+  });
+
   function boot() { rvTip(); start(); heroView(); scrollDepth(); lazyVideos(); }
   if (document.readyState === 'complete') boot();
   else window.addEventListener('load', boot);
@@ -378,12 +691,17 @@
     var el = e.target.closest && e.target.closest('[data-cta]');
     if (!el) return;
     if (el.getAttribute('data-cta') === 'buy') {
-      if (window.fbq) fbq('trackCustom', 'ClickBuyNow', pxItem());
-      if (window.gtag) gtag('event', 'click_buy_now', { currency: 'KRW', value: P.price, items: gaItems(), transport_type: 'beacon' });
+      // 바로 결제하지 않고 선택창을 띄운다. click_buy_now 는 결제로 넘어갈 때 쏜다.
+      e.preventDefault();
+      bsOpen(el.closest('.fbar') ? 'floating' : 'hero');
+    } else if (el.getAttribute('data-cta') === 'themes') {
+      ev('click_themes', { link_url: el.href, transport_type: 'beacon' });
     } else if (el.getAttribute('data-cta') === 'review') {
       ev('click_review', { transport_type: 'beacon' });
     } else if (el.getAttribute('data-cta') === 'home') {
       ev('click_shop_home', { transport_type: 'beacon' });
+    } else if (el.getAttribute('data-cta') === 'news') {
+      ev('click_news', { link_url: el.href, from: 'landing', transport_type: 'beacon' });
     }
   });
 })();
