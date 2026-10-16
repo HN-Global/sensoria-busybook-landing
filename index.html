@@ -584,6 +584,7 @@
   var bsStep = 0;            // 0 닫힘, 1 세트/단품, 2 테마
   var bsFrom = '';           // 어느 버튼에서 열렸나
   var bsNav = 0;             // 우리가 쌓은 history 개수
+  var bsSkipPop = 0;         // 우리가 일부러 부른 back 으로 들어온 popstate 는 흘려보낸다
 
   function clarity(a, b, c) { try { if (window.clarity) window.clarity(a, b, c); } catch (e) {} }
 
@@ -618,15 +619,15 @@
     clarity('event', 'buy_sheet_close');
     bsStep = 0;
     bsHide();
-    if (method !== 'hw_back' && bsNav > 0) { var n = bsNav; bsNav = 0; history.go(-n); }
+    if (method !== 'hw_back' && bsNav > 0) { var n = bsNav; bsNav = 0; bsSkipPop++; history.go(-n); }
     else bsNav = 0;
   }
   function bsBack(fromHw) {
     ev('buy_sheet_back', { method: fromHw ? 'hw_back' : 'button' });
     clarity('event', 'buy_sheet_back');
     bsShow(1);
-    if (!fromHw && bsNav > 1) { bsNav--; history.back(); }
-    else if (fromHw) bsNav = Math.max(1, bsNav - 1);
+    if (fromHw) { bsNav = Math.max(1, bsNav - 1); return; }
+    if (bsNav > 1) { bsNav--; bsSkipPop++; history.back(); }
   }
 
   // 결제로 넘어가기 직전에만 click_buy_now 를 쏜다(시트 열 때가 아니라).
@@ -674,6 +675,7 @@
 
   // 브라우저·안드로이드 물리 뒤로가기 — 페이지를 떠나지 말고 시트를 닫거나 1단계로.
   window.addEventListener('popstate', function () {
+    if (bsSkipPop > 0) { bsSkipPop--; return; }
     if (!bsStep) return;
     if (bsStep === 2) { bsBack(true); return; }
     bsClose('hw_back');
